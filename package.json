@@ -8,7 +8,7 @@
     "node-red-contrib-binary": "0.0.6",
     "node-red-contrib-lora-data-decrypt": "0.0.1",
     "node-red-contrib-modbus": "^2.5.0",
-    "node-red-contrib-play-audio": "^2.2.3",
+    "node-red-contrib-string": "^0.2.0",
     "node-red-contrib-ttn": "^2.0.1",
     "node-red-dashboard": "~2.3.0",
     "node-red-node-serialport": "^0.6.2"

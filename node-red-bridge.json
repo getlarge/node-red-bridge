@@ -7,7 +7,7 @@
                 "exec_interpreter": "node",
                 "interpreter_args": "--max-old-space-size=512",
                 "args": "--userDir /home/ed/node-red-bridge",
-                "watch": ["package.json", "flows.json", "flows_cred.json", "settings.js"],
+                "watch": ["package.json", "settings.js"],
                 "port": "1880",
                 "env": {
                 }

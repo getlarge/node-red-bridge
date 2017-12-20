@@ -107,6 +107,22 @@
         "birthPayload": ""
     },
     {
+        "id": "10e7685e.29f718",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    },
+    {
+        "id": "9e6c776d.11fb98",
+        "type": "ui_group",
+        "z": "",
+        "name": "Default",
+        "tab": "10e7685e.29f718",
+        "disp": true,
+        "width": "6"
+    },
+    {
         "id": "525ff7f8.b9aa7",
         "type": "mqtt out",
         "z": "c50efc5d.edf9d",
@@ -156,100 +172,6 @@
                 "525ff7f8.b9aa7"
             ]
         ]
-    },
-    {
-        "id": "3b820d52.52cff2",
-        "type": "function",
-        "z": "c50efc5d.edf9d",
-        "name": "function",
-        "func": "return {\n    dev_id: msg.dev_id,\n    port: msg.port,\n    //schedule: \"replace\",\n    confirmed: false,\n    payload: {\n        led: !msg.led,\n    },\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 359,
-        "y": 1719,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d6f3b3fa.4cf378",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "device",
-        "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 601,
-        "y": 1584,
-        "wires": []
-    },
-    {
-        "id": "40268e47.fefb",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "message",
-        "active": false,
-        "console": "false",
-        "complete": "true",
-        "x": 611,
-        "y": 1644,
-        "wires": []
-    },
-    {
-        "id": "67725649.06249",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "function",
-        "active": true,
-        "console": "false",
-        "complete": "true",
-        "x": 611,
-        "y": 1704,
-        "wires": []
-    },
-    {
-        "id": "1430b56c.861ea3",
-        "type": "ttn device",
-        "z": "c50efc5d.edf9d",
-        "name": "activations",
-        "app": "aa058fe2.e9d3e",
-        "dev_id": "",
-        "event": "activations",
-        "x": 322,
-        "y": 1566.9999694824219,
-        "wires": [
-            [
-                "d6f3b3fa.4cf378"
-            ]
-        ]
-    },
-    {
-        "id": "c084baee.d0df88",
-        "type": "ttn message",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "app": "aa058fe2.e9d3e",
-        "dev_id": "",
-        "field": "",
-        "x": 219,
-        "y": 1634,
-        "wires": [
-            [
-                "40268e47.fefb"
-            ]
-        ]
-    },
-    {
-        "id": "f1a96806.3f507",
-        "type": "ttn send",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "app": "aa058fe2.e9d3e",
-        "dev_id": "",
-        "port": "",
-        "x": 615,
-        "y": 1763,
-        "wires": []
     },
     {
         "id": "c8f5fd4b.26a06",
@@ -428,42 +350,6 @@
         ]
     },
     {
-        "id": "b5dff5ea.b69338",
-        "type": "function",
-        "z": "c50efc5d.edf9d",
-        "name": "function",
-        "func": "return {\n    dev_id: \"rak811_1\",\n    port: 1,\n    schedule: \"replace\",\n    confirmed: true,\n    payload: {\n        data: msg.payload\n    },\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 400,
-        "y": 1759,
-        "wires": [
-            [
-                "67725649.06249",
-                "f1a96806.3f507"
-            ]
-        ]
-    },
-    {
-        "id": "9cdcdb82.8c644",
-        "type": "inject",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "topic": "",
-        "payload": "6A6F62696A6F6261",
-        "payloadType": "str",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 193,
-        "y": 1758,
-        "wires": [
-            [
-                "b5dff5ea.b69338"
-            ]
-        ]
-    },
-    {
         "id": "8f6e07e2.c568",
         "type": "mqtt out",
         "z": "c50efc5d.edf9d",
@@ -509,7 +395,7 @@
         "name": "",
         "topic": "application/#",
         "qos": "2",
-        "broker": "24aaa0df.7f70e",
+        "broker": "e0014c7f.010148",
         "x": 139,
         "y": 333,
         "wires": [
@@ -597,7 +483,8 @@
         "y": 463.5000305175781,
         "wires": [
             [
-                "2644e68b.71ac82"
+                "dcc82877.79c17",
+                "c582a0f.451606"
             ]
         ]
     },
@@ -607,8 +494,8 @@
         "z": "c50efc5d.edf9d",
         "name": "",
         "splt": ":",
-        "x": 427,
-        "y": 359,
+        "x": 437,
+        "y": 328,
         "wires": [
             [
                 "cc1dda80.6dd1b8"
@@ -644,12 +531,10 @@
         "name": "",
         "AppSKey": "",
         "DevAddr": "",
-        "x": 536,
-        "y": 467,
+        "x": 631,
+        "y": 496,
         "wires": [
-            [
-                "c582a0f.451606"
-            ]
+            []
         ]
     },
     {
@@ -662,16 +547,6 @@
         "complete": "payload",
         "x": 693,
         "y": 400,
-        "wires": []
-    },
-    {
-        "id": "8791bfbc.6f07b8",
-        "type": "comment",
-        "z": "c50efc5d.edf9d",
-        "name": "TTN Connector",
-        "info": "",
-        "x": 295,
-        "y": 1498.75,
         "wires": []
     },
     {
@@ -691,7 +566,7 @@
         "name": "",
         "topic": "gateway/#",
         "qos": "2",
-        "broker": "24aaa0df.7f70e",
+        "broker": "e0014c7f.010148",
         "x": 140,
         "y": 227.5,
         "wires": [
@@ -699,5 +574,125 @@
                 "8da41f94.95702"
             ]
         ]
+    },
+    {
+        "id": "dcc82877.79c17",
+        "type": "string",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "methods": [
+            {
+                "name": "between",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "data :"
+                    },
+                    {
+                        "type": "str",
+                        "value": "}"
+                    }
+                ]
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 440,
+        "y": 390,
+        "wires": [
+            [
+                "c582a0f.451606"
+            ]
+        ]
+    },
+    {
+        "id": "a357188.d358d68",
+        "type": "ui_audio",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "group": "9e6c776d.11fb98",
+        "voice": "2",
+        "always": "",
+        "x": 395,
+        "y": 2427,
+        "wires": []
+    },
+    {
+        "id": "5fd5c744.1723c",
+        "type": "ui_text_input",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "label": "TTS Input",
+        "group": "9e6c776d.11fb98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 182,
+        "y": 2421.0000610351562,
+        "wires": [
+            [
+                "a357188.d358d68",
+                "ed4f46ac.cfcb1"
+            ]
+        ]
+    },
+    {
+        "id": "42ae75c7.c762b4",
+        "type": "ui_button",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "group": "9e6c776d.11fb98",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "button",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 237.75,
+        "y": 2481.9999389648438,
+        "wires": [
+            [
+                "a357188.d358d68"
+            ]
+        ]
+    },
+    {
+        "id": "c99b8183.8d16c",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "1/hermes/audioServer",
+        "topic": "hermes/audioServer",
+        "qos": "2",
+        "broker": "c95a0878.a7afa",
+        "x": 143.75,
+        "y": 2352.5,
+        "wires": [
+            [
+                "ed4f46ac.cfcb1"
+            ]
+        ]
+    },
+    {
+        "id": "ed4f46ac.cfcb1",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 535,
+        "y": 2368.75,
+        "wires": []
     }
 ]

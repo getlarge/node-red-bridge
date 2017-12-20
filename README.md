@@ -1,14 +1,12 @@
-# node-red-project-template
-This is a template for a Node-RED project meant to be run in local mode.  The idea is to run an instance of Node-RED entirely from within a local directory to make it more portable.  This also makes running multiple instances of Node-RED at the same time easier.
+# node-red-bridge
 
-Node-RED will start with a blank canvas and will save the flow file to flows.json the first time a deploy is done.  If you add your own flows.json file it will load that by default.
+Node-RED project running in local mode.
+Interface with several MQTT service ( LoRaWAN, MySensors, Aloes, Snips, ... )
 
 ## Usage
 
 ```
-mkdir MyNiceProject
-cd MyNiceProject
-git clone https://github.com/natcl/node-red-project-template.git .
+git clone https://github.com/getlarge/node-red-bridge.git 
 npm install
 npm start
 ```
@@ -24,6 +22,30 @@ To run a specific flow file:
 npm start -- testFlow.json
 ```
 
+## Start with PM2
+
+```
+npm install -g pm2
+```
+
+Edit node-red-bridge.json, then
+
+```
+pm2 start node-red-bridge.json
+```
+
+If you want autorestart
+
+```
+pm2 save
+pm2 startup
+```
+
 ## Dependencies
 
-You can easily add third party nodes by modifying the package.json file.  For this template we added the node-red-contrib-ui package.
+	node-red
+	node-red-contrib-binary
+	node-red-contrib-modbus
+	node-red-contrib-string
+	node-red-contrib-ttn
+	node-red-dashboard
