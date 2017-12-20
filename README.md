@@ -22,7 +22,7 @@ To run a specific flow file:
 npm start -- testFlow.json
 ```
 
-## Start with PM2
+## Starting with PM2
 
 ```
 npm install -g pm2

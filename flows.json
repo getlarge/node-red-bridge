@@ -123,6 +123,147 @@
         "width": "6"
     },
     {
+        "id": "8211ad14.71afb8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#133f50",
+                "baseFont": "Helvetica Neue",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#0c4245",
+                "baseFont": "Helvetica Neue",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#04436a",
+                "baseFont": "Helvetica Neue",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#4B7930",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#04436a",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#035b91",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#04436a",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                }
+            }
+        },
+        "site": {
+            "name": "Aloes GW Bridge",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "de72091a.390e08",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Config",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "47edbaf4.013314",
+        "type": "ui_group",
+        "z": "",
+        "name": "WiFi",
+        "tab": "de72091a.390e08",
+        "order": 1,
+        "disp": true,
+        "width": "8"
+    },
+    {
+        "id": "7669ff8e.4c",
+        "type": "ui_group",
+        "z": "",
+        "name": "LoRaWAN",
+        "tab": "de72091a.390e08",
+        "order": 2,
+        "disp": true,
+        "width": "8"
+    },
+    {
+        "id": "6ac0da26.c60e54",
+        "type": "ui_link",
+        "z": "",
+        "name": "",
+        "link": "https://app.aloes.io",
+        "icon": "open_in_browser",
+        "target": "newtab",
+        "order": 1
+    },
+    {
+        "id": "78ebd1b.e2249b",
+        "type": "ui_group",
+        "z": "",
+        "name": "LoRa",
+        "tab": "26c74f25.fceaa",
+        "disp": true,
+        "width": "8"
+    },
+    {
+        "id": "26c74f25.fceaa",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Logs",
+        "icon": "dashboard"
+    },
+    {
         "id": "525ff7f8.b9aa7",
         "type": "mqtt out",
         "z": "c50efc5d.edf9d",
@@ -131,8 +272,8 @@
         "qos": "",
         "retain": "",
         "broker": "c95a0878.a7afa",
-        "x": 392.75,
-        "y": 2068.5001525878906,
+        "x": 401.75,
+        "y": 1398.5001525878906,
         "wires": []
     },
     {
@@ -146,8 +287,8 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 125.75,
-        "y": 2068.5001525878906,
+        "x": 134.75,
+        "y": 1398.5001525878906,
         "wires": [
             [
                 "525ff7f8.b9aa7"
@@ -165,188 +306,12 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 126.75,
-        "y": 2117.5001525878906,
+        "x": 135.75,
+        "y": 1447.5001525878906,
         "wires": [
             [
                 "525ff7f8.b9aa7"
             ]
-        ]
-    },
-    {
-        "id": "c8f5fd4b.26a06",
-        "type": "mqtt in",
-        "z": "c50efc5d.edf9d",
-        "name": "MQTT Node - TheThingsNetwork",
-        "topic": "#",
-        "qos": "2",
-        "broker": "5acb1d09.85a22c",
-        "x": 251.25,
-        "y": 987,
-        "wires": [
-            [
-                "29335e61.379392",
-                "fff75504.580dc8"
-            ]
-        ]
-    },
-    {
-        "id": "d8546b63.b62268",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "msg.payload.payload_raw - DATA (as is)",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 441.25,
-        "y": 1178,
-        "wires": []
-    },
-    {
-        "id": "29335e61.379392",
-        "type": "function",
-        "z": "c50efc5d.edf9d",
-        "name": "Decrypt Payload",
-        "func": "// msg1 - Unencrypted (vanilla data)\nvar msg1 = { payload: msg.payload.length };\nmsg1.payload = JSON.parse(msg.payload);\nmsg1.payload = msg1.payload.payload_raw;\n\n// msg2 - Decrypt to Text\nvar msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload_raw, 'base64').toString('ascii');\n\n// msg3 - Decrypt as Binary value (MSB,LSB)\nvar msg3 = { payload: msg.payload.length };\nmsg3.payload = JSON.parse(msg.payload);\nmsg3.payload = new Buffer(msg3.payload.payload_raw, 'base64').toString('hex');\nmsg3.payload = parseInt(msg3.payload, 16);\n\nreturn [ msg1, msg2, msg3 ];",
-        "outputs": "3",
-        "noerr": 0,
-        "x": 518.25,
-        "y": 1036,
-        "wires": [
-            [
-                "d8546b63.b62268"
-            ],
-            [
-                "da27113d.fc9dc"
-            ],
-            [
-                "43d7dab0.3c3c04"
-            ]
-        ]
-    },
-    {
-        "id": "da27113d.fc9dc",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "msg.payload.payload_raw - DATA (decrypted to text)",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 477.25,
-        "y": 1240.5,
-        "wires": []
-    },
-    {
-        "id": "43d7dab0.3c3c04",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "msg.payload.payload_raw - DATA (decrypted to Bytes HiLo)",
-        "active": true,
-        "console": "false",
-        "complete": "payload",
-        "x": 487.25,
-        "y": 1305.5,
-        "wires": []
-    },
-    {
-        "id": "86d0a824.c29968",
-        "type": "debug",
-        "z": "c50efc5d.edf9d",
-        "name": "message (as is)",
-        "active": false,
-        "console": "false",
-        "complete": "payload",
-        "x": 656.25,
-        "y": 986.5,
-        "wires": []
-    },
-    {
-        "id": "9acf158d.4334c",
-        "type": "inject",
-        "z": "c50efc5d.edf9d",
-        "name": "Byte Value example",
-        "topic": "",
-        "payload": "{\"payload_raw\":\"ARA=\"}",
-        "payloadType": "str",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 226.25,
-        "y": 1062,
-        "wires": [
-            [
-                "29335e61.379392"
-            ]
-        ]
-    },
-    {
-        "id": "34ac0c0.bb70e74",
-        "type": "inject",
-        "z": "c50efc5d.edf9d",
-        "name": "Text example",
-        "topic": "",
-        "payload": "{\"payload_raw\":\"SGVsbG8sIHdvcmxkIQ==\"}",
-        "payloadType": "str",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "x": 208.25,
-        "y": 1112,
-        "wires": [
-            [
-                "29335e61.379392"
-            ]
-        ]
-    },
-    {
-        "id": "a34596e6.a05438",
-        "type": "function",
-        "z": "c50efc5d.edf9d",
-        "name": "Example A - Two \"byte pairs\" (4 bytes in total) for Temp and Humidity",
-        "func": "var buf = new Buffer(msg.payload.raw, 'base64'); // put in msg.payload the payload raw data stored initially as Base64\nvar node = msg.devEUI;\n\ntemp = buf[2] * 255 + buf[3];\nhum = buf[0] * 255 + buf[1];\n\n// construct a new object to store the data message\nvar data = {\npayload : [\n [{\n numValue: temp/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"temp\",\n sensor:node\n }],\n [{\n numValue: hum/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"hum\",\n sensor:node\n }]\n]};\nreturn data;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 403.25,
-        "y": 1374,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fff75504.580dc8",
-        "type": "json",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "x": 486.75,
-        "y": 987,
-        "wires": [
-            [
-                "86d0a824.c29968"
-            ]
-        ]
-    },
-    {
-        "id": "eb91e95a.6406a8",
-        "type": "comment",
-        "z": "c50efc5d.edf9d",
-        "name": "For MQTT \"user\"/\"password\", use \"Application ID\"/\"default key\" ",
-        "info": "\n1) Sign in to TTN and go to your application page where \"app_1\" is your \"Application ID\" e.g.\nhttps://console.thethingsnetwork.org/applications/app_1\n\n2) For MQTT User, use \"Application ID\" \n\n3) For MQTT password, scroll to bottom and use \"default key\" (you need to press the \"eye\" to see the long text)",
-        "x": 327.25,
-        "y": 910,
-        "wires": []
-    },
-    {
-        "id": "70195c34.b8c64c",
-        "type": "function",
-        "z": "c50efc5d.edf9d",
-        "name": "Example B - Two \"Float value Byte Quads\" (8 bytes in total) for Lat. and Longitude (Float)",
-        "func": "var msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload, 'base64').toString('hex');\nvar lat = Buffer(msg2.payload, 'hex').readFloatLE(0);\nvar lon = Buffer(msg2.payload, 'hex').readFloatLE(4);\nmsg2.payload= \"[{\\\"lat\\\":\" + lat + \",\\\"lng\\\":\" + lon + \"}]\";//\"{\"lat\":lat,\"lng\":lon};\nreturn msg2;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 450.25,
-        "y": 1426,
-        "wires": [
-            []
         ]
     },
     {
@@ -358,22 +323,24 @@
         "qos": "",
         "retain": "",
         "broker": "3b13e227.7e25c6",
-        "x": 444.75,
-        "y": 2220.5001525878906,
+        "x": 453.75,
+        "y": 1550.5001525878906,
         "wires": []
     },
     {
         "id": "ba9dcd54.90cc6",
         "type": "mqtt in",
         "z": "c50efc5d.edf9d",
-        "name": "2/hermes/tts/say",
-        "topic": "hermes/tts/say",
+        "name": "partialTextCaptured ",
+        "topic": " hermes/asr/partialTextCaptured ",
         "qos": "2",
-        "broker": "3b13e227.7e25c6",
-        "x": 135.75,
-        "y": 2292.5001525878906,
+        "broker": "c95a0878.a7afa",
+        "x": 154.75,
+        "y": 1622.5001525878906,
         "wires": [
-            []
+            [
+                "e080c649.c5bc58"
+            ]
         ]
     },
     {
@@ -384,8 +351,8 @@
         "active": false,
         "console": "false",
         "complete": "payload",
-        "x": 610,
-        "y": 283,
+        "x": 607.000003390842,
+        "y": 381.99998643663196,
         "wires": []
     },
     {
@@ -395,12 +362,13 @@
         "name": "",
         "topic": "application/#",
         "qos": "2",
-        "broker": "e0014c7f.010148",
-        "x": 139,
-        "y": 333,
+        "broker": "24aaa0df.7f70e",
+        "x": 136.00000339084204,
+        "y": 431.99998643663196,
         "wires": [
             [
-                "4823d9ea.7c39d"
+                "dcc82877.79c17",
+                "cc1dda80.6dd1b8"
             ]
         ]
     },
@@ -412,8 +380,8 @@
         "topic": "hermes/nlu/intentParsed",
         "qos": "2",
         "broker": "c95a0878.a7afa",
-        "x": 164.75,
-        "y": 2164.5001525878906,
+        "x": 173.75,
+        "y": 1494.5001525878906,
         "wires": [
             [
                 "1f1caab0.43d625"
@@ -428,8 +396,8 @@
         "func": "var msg = JSON.parse(msg.payload.decode('utf-8'));\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 398.75,
-        "y": 2135.5001525878906,
+        "x": 407.75,
+        "y": 1465.5001525878906,
         "wires": [
             [
                 "1f1caab0.43d625"
@@ -444,74 +412,20 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 562.75,
-        "y": 2165.5001525878906,
+        "x": 571.75,
+        "y": 1495.5001525878906,
         "wires": []
-    },
-    {
-        "id": "4823d9ea.7c39d",
-        "type": "split",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "splt": ",",
-        "x": 168.49996948242188,
-        "y": 466.25,
-        "wires": [
-            [
-                "2b832f81.06ffa"
-            ]
-        ]
-    },
-    {
-        "id": "2b832f81.06ffa",
-        "type": "switch",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "regex",
-                "v": "data",
-                "vt": "str",
-                "case": false
-            }
-        ],
-        "checkall": "false",
-        "outputs": 1,
-        "x": 295.75,
-        "y": 463.5000305175781,
-        "wires": [
-            [
-                "dcc82877.79c17",
-                "c582a0f.451606"
-            ]
-        ]
-    },
-    {
-        "id": "2644e68b.71ac82",
-        "type": "split",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "splt": ":",
-        "x": 437,
-        "y": 328,
-        "wires": [
-            [
-                "cc1dda80.6dd1b8"
-            ]
-        ]
     },
     {
         "id": "cc1dda80.6dd1b8",
         "type": "debug",
         "z": "c50efc5d.edf9d",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "payload",
-        "x": 639,
-        "y": 339,
+        "x": 539.3333774142795,
+        "y": 434.6666734483507,
         "wires": []
     },
     {
@@ -520,22 +434,9 @@
         "z": "c50efc5d.edf9d",
         "name": "Snips Connector",
         "info": "",
-        "x": 276.07147216796875,
-        "y": 2002.750244140625,
+        "x": 121.07147216796875,
+        "y": 1343.750244140625,
         "wires": []
-    },
-    {
-        "id": "7a66e084.2f2468",
-        "type": "fcc-decrypt",
-        "z": "c50efc5d.edf9d",
-        "name": "",
-        "AppSKey": "",
-        "DevAddr": "",
-        "x": 631,
-        "y": 496,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "c582a0f.451606",
@@ -544,19 +445,9 @@
         "name": "",
         "active": true,
         "console": "false",
-        "complete": "payload",
-        "x": 693,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "1e40cf03.4cb629",
-        "type": "comment",
-        "z": "c50efc5d.edf9d",
-        "name": "TTN Connector",
-        "info": "",
-        "x": 162.5,
-        "y": 853.75,
+        "complete": "true",
+        "x": 601.3333129882812,
+        "y": 480.4444274902344,
         "wires": []
     },
     {
@@ -566,9 +457,9 @@
         "name": "",
         "topic": "gateway/#",
         "qos": "2",
-        "broker": "e0014c7f.010148",
-        "x": 140,
-        "y": 227.5,
+        "broker": "24aaa0df.7f70e",
+        "x": 135.00000339084204,
+        "y": 376.49998643663196,
         "wires": [
             [
                 "8da41f94.95702"
@@ -582,28 +473,51 @@
         "name": "",
         "methods": [
             {
+                "name": "getRightMost",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "%"
+                    }
+                ]
+            },
+            {
+                "name": "delLeftMost",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "\"data\""
+                    }
+                ]
+            },
+            {
                 "name": "between",
                 "params": [
                     {
                         "type": "str",
-                        "value": "data :"
+                        "value": "\"object\""
                     },
                     {
                         "type": "str",
                         "value": "}"
                     }
                 ]
+            },
+            {
+                "name": "trim",
+                "params": []
             }
         ],
         "prop": "payload",
         "propout": "payload",
         "object": "msg",
         "objectout": "msg",
-        "x": 440,
-        "y": 390,
+        "x": 326.3333435058594,
+        "y": 474.4444580078125,
         "wires": [
             [
-                "c582a0f.451606"
+                "c582a0f.451606",
+                "6cbe57bf.dbff7"
             ]
         ]
     },
@@ -613,10 +527,10 @@
         "z": "c50efc5d.edf9d",
         "name": "",
         "group": "9e6c776d.11fb98",
-        "voice": "2",
+        "voice": "13",
         "always": "",
-        "x": 395,
-        "y": 2427,
+        "x": 408,
+        "y": 1784,
         "wires": []
     },
     {
@@ -633,8 +547,8 @@
         "mode": "text",
         "delay": 300,
         "topic": "",
-        "x": 182,
-        "y": 2421.0000610351562,
+        "x": 191,
+        "y": 1751.0000610351562,
         "wires": [
             [
                 "a357188.d358d68",
@@ -659,8 +573,8 @@
         "payload": "",
         "payloadType": "str",
         "topic": "",
-        "x": 237.75,
-        "y": 2481.9999389648438,
+        "x": 246.75,
+        "y": 1811.9999389648438,
         "wires": [
             [
                 "a357188.d358d68"
@@ -672,15 +586,13 @@
         "type": "mqtt in",
         "z": "c50efc5d.edf9d",
         "name": "1/hermes/audioServer",
-        "topic": "hermes/audioServer",
+        "topic": "hermes/audioServer/",
         "qos": "2",
         "broker": "c95a0878.a7afa",
-        "x": 143.75,
-        "y": 2352.5,
+        "x": 152.75,
+        "y": 1682.5,
         "wires": [
-            [
-                "ed4f46ac.cfcb1"
-            ]
+            []
         ]
     },
     {
@@ -691,8 +603,981 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 535,
-        "y": 2368.75,
+        "x": 398,
+        "y": 1739.75,
         "wires": []
+    },
+    {
+        "id": "bf547dc9.b12a88",
+        "type": "join",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "mode": "auto",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "timeout": "",
+        "count": "",
+        "x": 374,
+        "y": 531,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d061178.5d3fdf",
+        "type": "speaker out",
+        "z": "c50efc5d.edf9d",
+        "name": "Speaker Out",
+        "channels": "2",
+        "bitDepth": "16",
+        "sampleRate": "44100",
+        "x": 361.33331298828125,
+        "y": 1684.778076171875,
+        "wires": []
+    },
+    {
+        "id": "c00acd8b.8f37a8",
+        "type": "mqtt out",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "application/2/node/0004a30b002012ef/tx",
+        "qos": "2",
+        "retain": "",
+        "broker": "24aaa0df.7f70e",
+        "x": 661.3334350585938,
+        "y": 584.1110229492188,
+        "wires": []
+    },
+    {
+        "id": "b43f9c87.56dd6",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "example payload",
+        "func": "msg.payload = { \n    \"reference\": \"abcd1234\",                  // reference which will be used on ack or error (this can be a random string)\n    \"confirmed\": true,                        // whether the payload must be sent as confirmed data down or not\n    \"fPort\": 10,                              // FPort to use (must be > 0)\n    \"data\": \"....\",                            // base64 encoded data (plaintext, will be encrypted by LoRa Server)\n    \"object\": {                               // decoded object (when application coded has been configured)\n        \"temperatureSensor\": {\"1\": 25},       // when providing the 'object', you can omit 'data'\n        \"humiditySensor\": {\"1\": 32}\n    }\n};\nmsg.key = \"4f786e825a2ab789fbeba1a30a0aafd9\";\nmsg.sequenceCounter = 0;\nmsg.address = \"0004a30b002012ef\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 346.888916015625,
+        "y": 609.666748046875,
+        "wires": [
+            [
+                "c00acd8b.8f37a8"
+            ]
+        ]
+    },
+    {
+        "id": "11b7cf1a.3d5c59",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 136.8888888888889,
+        "y": 617.4444444444445,
+        "wires": [
+            [
+                "b43f9c87.56dd6"
+            ]
+        ]
+    },
+    {
+        "id": "992fa1da.012f3",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 519,
+        "y": 27,
+        "wires": []
+    },
+    {
+        "id": "e1948733.f2ee98",
+        "type": "exec",
+        "z": "c50efc5d.edf9d",
+        "command": "sudo shutdown #",
+        "addpay": true,
+        "append": "",
+        "useSpawn": false,
+        "timer": "",
+        "name": "",
+        "x": 313,
+        "y": 27.5,
+        "wires": [
+            [
+                "992fa1da.012f3"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bfcb7606.a23218",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 446,
+        "y": 167,
+        "wires": []
+    },
+    {
+        "id": "c16d4938.a13758",
+        "type": "file",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "filename": "/home/ed/test",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 479,
+        "y": 215,
+        "wires": []
+    },
+    {
+        "id": "4d0c913a.612308",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "GW conf file",
+        "func": "var loraServer = msg.payload.loraServer || \"lora.aloes.io\";\nvar username = msg.payload.username || \"\";\nvar password = msg.payload.password || \"\";\nvar logLevel = msg.payload.logLevel || \"4\";\nmsg.payload = \"UDP_BIND=0.0.0.0:1700\\rMQTT_SERVER=tcp://\"+ loraServer +\"\\rMQTT_USERNAME=\"+ username +\"\\rMQTT_PASSWORD=\"+ password +\"\\rLOG_LEVEL=\"+ logLevel +\"\\rSKIP_CRC_CHECK=True\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 283.75,
+        "y": 245.75,
+        "wires": [
+            [
+                "c16d4938.a13758",
+                "bfcb7606.a23218",
+                "3efcbc4e.1fdbd4"
+            ]
+        ]
+    },
+    {
+        "id": "215563e.8f23b1c",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "LoraServer Connector",
+        "info": "",
+        "x": 161,
+        "y": 314,
+        "wires": []
+    },
+    {
+        "id": "e080c649.c5bc58",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 360,
+        "y": 1623,
+        "wires": []
+    },
+    {
+        "id": "569cb8e6.a7b8f8",
+        "type": "ui_form",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "label": "Bridge configuration",
+        "group": "7669ff8e.4c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "GW server addresss",
+                "value": "loraServer",
+                "type": "text",
+                "required": true
+            },
+            {
+                "label": "User",
+                "value": "username",
+                "type": "text",
+                "required": false
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "text",
+                "required": false
+            },
+            {
+                "label": "Log Level",
+                "value": "logLevel",
+                "type": "text",
+                "required": false
+            }
+        ],
+        "formValue": {
+            "loraServer": "",
+            "username": "",
+            "password": "",
+            "logLevel": ""
+        },
+        "payload": "",
+        "topic": "",
+        "x": 137,
+        "y": 203,
+        "wires": [
+            [
+                "4d0c913a.612308"
+            ]
+        ]
+    },
+    {
+        "id": "f83188c6.7b911",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "Lora Gateway Bridge Config ",
+        "info": "",
+        "x": 171,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "ad6d48e7.f0e4f8",
+        "type": "wifiscan",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "x": 279,
+        "y": 961,
+        "wires": [
+            [
+                "86f1f5d.da10008",
+                "6236cc92.67fa04"
+            ]
+        ]
+    },
+    {
+        "id": "cb4e33b1.6f6f38",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "Wifi Config",
+        "info": "",
+        "x": 184,
+        "y": 873,
+        "wires": []
+    },
+    {
+        "id": "50678275.56a144",
+        "type": "exec",
+        "z": "c50efc5d.edf9d",
+        "command": "wpa_passphrase",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "",
+        "x": 681.25,
+        "y": 1242.75,
+        "wires": [
+            [
+                "5a2466b0.fcbf28",
+                "945abe63.007118"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "941881e4.2f8d5",
+        "type": "ui_form",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "label": "",
+        "group": "47edbaf4.013314",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Password",
+                "value": "pass",
+                "type": "password",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "pass": ""
+        },
+        "payload": "",
+        "topic": "",
+        "x": 539.7500610351562,
+        "y": 1164.2500305175781,
+        "wires": [
+            [
+                "e5397c58.2b457"
+            ]
+        ]
+    },
+    {
+        "id": "5a2466b0.fcbf28",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 941.25,
+        "y": 1214.5000610351562,
+        "wires": []
+    },
+    {
+        "id": "4a62c33c.19f3a4",
+        "type": "ui_button",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "group": "47edbaf4.013314",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Wifi Scanner",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 109,
+        "y": 961,
+        "wires": [
+            [
+                "ad6d48e7.f0e4f8"
+            ]
+        ]
+    },
+    {
+        "id": "3efcbc4e.1fdbd4",
+        "type": "ui_text",
+        "z": "c50efc5d.edf9d",
+        "group": "7669ff8e.4c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "config result",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 502.75,
+        "y": 263.75,
+        "wires": []
+    },
+    {
+        "id": "6cbe57bf.dbff7",
+        "type": "ui_text",
+        "z": "c50efc5d.edf9d",
+        "group": "78ebd1b.e2249b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "LoRa message",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 583,
+        "y": 525,
+        "wires": []
+    },
+    {
+        "id": "86f1f5d.da10008",
+        "type": "split",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "splt": "\\n",
+        "x": 432.25,
+        "y": 996.7500305175781,
+        "wires": [
+            [
+                "1e9c9304.fbe575",
+                "88be22dd.9554d",
+                "6c60c72a.bcfdf8"
+            ]
+        ]
+    },
+    {
+        "id": "4f6a8495.83b83c",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 109,
+        "y": 926,
+        "wires": [
+            [
+                "ad6d48e7.f0e4f8"
+            ]
+        ]
+    },
+    {
+        "id": "aea5cdb.c9af9b",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "MQTT Node - TheThingsNetwork",
+        "topic": "#",
+        "qos": "2",
+        "broker": "5acb1d09.85a22c",
+        "x": 194.75,
+        "y": 2796,
+        "wires": [
+            [
+                "c64c9025.fd7b7",
+                "1af68b4d.d8f88d"
+            ]
+        ]
+    },
+    {
+        "id": "3f2744bd.674b64",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (as is)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 384.75,
+        "y": 2987,
+        "wires": []
+    },
+    {
+        "id": "c64c9025.fd7b7",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Decrypt Payload",
+        "func": "// msg1 - Unencrypted (vanilla data)\nvar msg1 = { payload: msg.payload.length };\nmsg1.payload = JSON.parse(msg.payload);\nmsg1.payload = msg1.payload.payload_raw;\n\n// msg2 - Decrypt to Text\nvar msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload_raw, 'base64').toString('ascii');\n\n// msg3 - Decrypt as Binary value (MSB,LSB)\nvar msg3 = { payload: msg.payload.length };\nmsg3.payload = JSON.parse(msg.payload);\nmsg3.payload = new Buffer(msg3.payload.payload_raw, 'base64').toString('hex');\nmsg3.payload = parseInt(msg3.payload, 16);\n\nreturn [ msg1, msg2, msg3 ];",
+        "outputs": "3",
+        "noerr": 0,
+        "x": 461.75,
+        "y": 2845,
+        "wires": [
+            [
+                "3f2744bd.674b64"
+            ],
+            [
+                "d9f7e7a9.14bac"
+            ],
+            [
+                "94e285d.5d84778"
+            ]
+        ]
+    },
+    {
+        "id": "d9f7e7a9.14bac",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (decrypted to text)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 420.75,
+        "y": 3049.5,
+        "wires": []
+    },
+    {
+        "id": "94e285d.5d84778",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (decrypted to Bytes HiLo)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 430.75,
+        "y": 3114.5,
+        "wires": []
+    },
+    {
+        "id": "47619525.9d9ea4",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "message (as is)",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 599.75,
+        "y": 2795.5,
+        "wires": []
+    },
+    {
+        "id": "8fb5a117.c679",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "Byte Value example",
+        "topic": "",
+        "payload": "{\"payload_raw\":\"ARA=\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 169.75,
+        "y": 2871,
+        "wires": [
+            [
+                "c64c9025.fd7b7"
+            ]
+        ]
+    },
+    {
+        "id": "9f68d1f1.f081a",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "Text example",
+        "topic": "",
+        "payload": "{\"payload_raw\":\"SGVsbG8sIHdvcmxkIQ==\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 151.75,
+        "y": 2921,
+        "wires": [
+            [
+                "c64c9025.fd7b7"
+            ]
+        ]
+    },
+    {
+        "id": "bede4e8d.04f108",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Example A - Two \"byte pairs\" (4 bytes in total) for Temp and Humidity",
+        "func": "var buf = new Buffer(msg.payload.raw, 'base64'); // put in msg.payload the payload raw data stored initially as Base64\nvar node = msg.devEUI;\n\ntemp = buf[2] * 255 + buf[3];\nhum = buf[0] * 255 + buf[1];\n\n// construct a new object to store the data message\nvar data = {\npayload : [\n [{\n numValue: temp/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"temp\",\n sensor:node\n }],\n [{\n numValue: hum/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"hum\",\n sensor:node\n }]\n]};\nreturn data;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 346.75,
+        "y": 3183,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1af68b4d.d8f88d",
+        "type": "json",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "x": 430.25,
+        "y": 2796,
+        "wires": [
+            [
+                "47619525.9d9ea4"
+            ]
+        ]
+    },
+    {
+        "id": "5520480.114cfb8",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "For MQTT \"user\"/\"password\", use \"Application ID\"/\"default key\" ",
+        "info": "\n1) Sign in to TTN and go to your application page where \"app_1\" is your \"Application ID\" e.g.\nhttps://console.thethingsnetwork.org/applications/app_1\n\n2) For MQTT User, use \"Application ID\" \n\n3) For MQTT password, scroll to bottom and use \"default key\" (you need to press the \"eye\" to see the long text)",
+        "x": 270.75,
+        "y": 2719,
+        "wires": []
+    },
+    {
+        "id": "93340a4f.37eda",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Example B - Two \"Float value Byte Quads\" (8 bytes in total) for Lat. and Longitude (Float)",
+        "func": "var msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload, 'base64').toString('hex');\nvar lat = Buffer(msg2.payload, 'hex').readFloatLE(0);\nvar lon = Buffer(msg2.payload, 'hex').readFloatLE(4);\nmsg2.payload= \"[{\\\"lat\\\":\" + lat + \",\\\"lng\\\":\" + lon + \"}]\";//\"{\"lat\":lat,\"lng\":lon};\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 393.75,
+        "y": 3235,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "501a1d60.eae59c",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "TTN Connector",
+        "info": "",
+        "x": 106,
+        "y": 2662.75,
+        "wires": []
+    },
+    {
+        "id": "d2b6eedd.5f541",
+        "type": "switch",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ssid",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "signal_level",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "mac",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 3,
+        "x": 825,
+        "y": 1029.5000305175781,
+        "wires": [
+            [
+                "a01d48c0.efb4c8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d723f596.0405f",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "GW conf file",
+        "func": "var ssid = msg.payload.ssid;\nvar mac = msg.payload.mac;\nvar signal = msg.payload.signal_level;\nmsg.payload = \"1 - \"+ ssid +\"\\r2 - \"+ ssid +\"\\r\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 296,
+        "y": 1056,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5335f402.f4d3cc",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Decrypt Payload",
+        "func": "// msg1 - Unencrypted (vanilla data)\nvar msg1 = { payload: msg.payload.length };\nmsg1.payload = JSON.parse(msg.payload);\nmsg1.payload = msg1.payload.payload_raw;\n\n// msg2 - Decrypt to Text\nvar msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload_raw, 'base64').toString('ascii');\n\n// msg3 - Decrypt as Binary value (MSB,LSB)\nvar msg3 = { payload: msg.payload.length };\nmsg3.payload = JSON.parse(msg.payload);\nmsg3.payload = new Buffer(msg3.payload.payload_raw, 'base64').toString('hex');\nmsg3.payload = parseInt(msg3.payload, 16);\n\nreturn [ msg1, msg2, msg3 ];",
+        "outputs": "3",
+        "noerr": 0,
+        "x": 112,
+        "y": 1083,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "945abe63.007118",
+        "type": "file",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "filename": "/home/ed/wpa_supplicant.conf",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 956.25,
+        "y": 1262.5,
+        "wires": []
+    },
+    {
+        "id": "a01d48c0.efb4c8",
+        "type": "ui_dropdown",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "label": "SSID",
+        "place": "Select option",
+        "group": "47edbaf4.013314",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "ssid",
+        "x": 826.25,
+        "y": 1102.5,
+        "wires": [
+            [
+                "3c922e2d.720092"
+            ]
+        ]
+    },
+    {
+        "id": "c218ac28.827f48",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 795,
+        "y": 916.25,
+        "wires": []
+    },
+    {
+        "id": "1e9c9304.fbe575",
+        "type": "join",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload.ssid",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\r - ",
+        "timeout": "1",
+        "count": "10",
+        "x": 556.25,
+        "y": 992.5,
+        "wires": [
+            [
+                "5acf762.6a4a088"
+            ]
+        ]
+    },
+    {
+        "id": "88be22dd.9554d",
+        "type": "join",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload.signal_level",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "timeout": "1",
+        "count": "10",
+        "x": 557.5,
+        "y": 1038.75,
+        "wires": [
+            [
+                "e507b5b.ec333c8"
+            ]
+        ]
+    },
+    {
+        "id": "5acf762.6a4a088",
+        "type": "change",
+        "z": "c50efc5d.edf9d",
+        "name": "topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "ssid",
+                "tot": "str"
+            },
+            {
+                "t": "move",
+                "p": "payload.ssid",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "options",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 675,
+        "y": 986.25,
+        "wires": [
+            [
+                "c218ac28.827f48",
+                "d2b6eedd.5f541"
+            ]
+        ]
+    },
+    {
+        "id": "6c60c72a.bcfdf8",
+        "type": "join",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload.mac",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "timeout": "1",
+        "count": "10",
+        "x": 555,
+        "y": 1083.75,
+        "wires": [
+            [
+                "ca1223f7.e0cab"
+            ]
+        ]
+    },
+    {
+        "id": "e507b5b.ec333c8",
+        "type": "change",
+        "z": "c50efc5d.edf9d",
+        "name": "topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "signal_level",
+                "tot": "str"
+            },
+            {
+                "t": "move",
+                "p": "payload.signal_level",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 682.5,
+        "y": 1033.75,
+        "wires": [
+            [
+                "d2b6eedd.5f541"
+            ]
+        ]
+    },
+    {
+        "id": "ca1223f7.e0cab",
+        "type": "change",
+        "z": "c50efc5d.edf9d",
+        "name": "topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "mac",
+                "tot": "str"
+            },
+            {
+                "t": "move",
+                "p": "payload.mac",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 683.75,
+        "y": 1082.5,
+        "wires": [
+            [
+                "d2b6eedd.5f541"
+            ]
+        ]
+    },
+    {
+        "id": "6236cc92.67fa04",
+        "type": "string",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "methods": [
+            {
+                "name": "toString",
+                "params": []
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 485,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c922e2d.720092",
+        "type": "join",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": " ",
+        "timeout": "",
+        "count": "",
+        "x": 820,
+        "y": 1167.5,
+        "wires": [
+            [
+                "50678275.56a144"
+            ]
+        ]
+    },
+    {
+        "id": "e5397c58.2b457",
+        "type": "change",
+        "z": "c50efc5d.edf9d",
+        "name": "move",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.pass",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 682.5,
+        "y": 1165,
+        "wires": [
+            [
+                "3c922e2d.720092"
+            ]
+        ]
     }
 ]
