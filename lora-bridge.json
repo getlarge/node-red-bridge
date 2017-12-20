@@ -1,0 +1,15 @@
+{
+        "apps": [{
+                "name": "ttn-server",
+                "max_memory_restart": "512M",
+                "log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+                "script": "/home/ed/lora-bridge/node_modules/node-red/red.js -u -v .",
+                "exec_interpreter": "node",
+                "args": "--name lora-bridge",
+                "watch": ["package.json", "flows.json", "flows_cred.json", "settings.js"],
+                "port": "1880",
+                "env": {
+                }
+        }]
+}
+

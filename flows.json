@@ -1,0 +1,703 @@
+[
+    {
+        "id": "c50efc5d.edf9d",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "aa058fe2.e9d3e",
+        "type": "ttn app",
+        "z": "",
+        "appId": "egarden-connector",
+        "region": "eu",
+        "accessKey": "ttn-account-v2.SPPIvgpLvM8Z9AIZscdKRTHSPoBo9wlu30vEpxOJ6ZE"
+    },
+    {
+        "id": "5acb1d09.85a22c",
+        "type": "mqtt-broker",
+        "z": "c50efc5d.edf9d",
+        "broker": "eu.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "verifyservercert": true,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": null,
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": null,
+        "birthPayload": ""
+    },
+    {
+        "id": "c95a0878.a7afa",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "192.168.1.84",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "3b13e227.7e25c6",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "app.getlarge.eu",
+        "port": "8443",
+        "tls": "",
+        "clientid": "59e8ca2eef22e05dd40fd928",
+        "usetls": true,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "e0014c7f.010148",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "192.168.1.65",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "24aaa0df.7f70e",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "lora.aloes.io",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "525ff7f8.b9aa7",
+        "type": "mqtt out",
+        "z": "c50efc5d.edf9d",
+        "name": "1/",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "c95a0878.a7afa",
+        "x": 392.75,
+        "y": 2068.5001525878906,
+        "wires": []
+    },
+    {
+        "id": "b45208c3.fc218",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "test",
+        "payload": "alors?",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 125.75,
+        "y": 2068.5001525878906,
+        "wires": [
+            [
+                "525ff7f8.b9aa7"
+            ]
+        ]
+    },
+    {
+        "id": "726cb6a1.f5ec68",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "logs",
+        "payload": "alors?",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 126.75,
+        "y": 2117.5001525878906,
+        "wires": [
+            [
+                "525ff7f8.b9aa7"
+            ]
+        ]
+    },
+    {
+        "id": "3b820d52.52cff2",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "function",
+        "func": "return {\n    dev_id: msg.dev_id,\n    port: msg.port,\n    //schedule: \"replace\",\n    confirmed: false,\n    payload: {\n        led: !msg.led,\n    },\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 359,
+        "y": 1719,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6f3b3fa.4cf378",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "device",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 601,
+        "y": 1584,
+        "wires": []
+    },
+    {
+        "id": "40268e47.fefb",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "message",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 611,
+        "y": 1644,
+        "wires": []
+    },
+    {
+        "id": "67725649.06249",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "function",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 611,
+        "y": 1704,
+        "wires": []
+    },
+    {
+        "id": "1430b56c.861ea3",
+        "type": "ttn device",
+        "z": "c50efc5d.edf9d",
+        "name": "activations",
+        "app": "aa058fe2.e9d3e",
+        "dev_id": "",
+        "event": "activations",
+        "x": 322,
+        "y": 1566.9999694824219,
+        "wires": [
+            [
+                "d6f3b3fa.4cf378"
+            ]
+        ]
+    },
+    {
+        "id": "c084baee.d0df88",
+        "type": "ttn message",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "app": "aa058fe2.e9d3e",
+        "dev_id": "",
+        "field": "",
+        "x": 219,
+        "y": 1634,
+        "wires": [
+            [
+                "40268e47.fefb"
+            ]
+        ]
+    },
+    {
+        "id": "f1a96806.3f507",
+        "type": "ttn send",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "app": "aa058fe2.e9d3e",
+        "dev_id": "",
+        "port": "",
+        "x": 615,
+        "y": 1763,
+        "wires": []
+    },
+    {
+        "id": "c8f5fd4b.26a06",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "MQTT Node - TheThingsNetwork",
+        "topic": "#",
+        "qos": "2",
+        "broker": "5acb1d09.85a22c",
+        "x": 251.25,
+        "y": 987,
+        "wires": [
+            [
+                "29335e61.379392",
+                "fff75504.580dc8"
+            ]
+        ]
+    },
+    {
+        "id": "d8546b63.b62268",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (as is)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 441.25,
+        "y": 1178,
+        "wires": []
+    },
+    {
+        "id": "29335e61.379392",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Decrypt Payload",
+        "func": "// msg1 - Unencrypted (vanilla data)\nvar msg1 = { payload: msg.payload.length };\nmsg1.payload = JSON.parse(msg.payload);\nmsg1.payload = msg1.payload.payload_raw;\n\n// msg2 - Decrypt to Text\nvar msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload_raw, 'base64').toString('ascii');\n\n// msg3 - Decrypt as Binary value (MSB,LSB)\nvar msg3 = { payload: msg.payload.length };\nmsg3.payload = JSON.parse(msg.payload);\nmsg3.payload = new Buffer(msg3.payload.payload_raw, 'base64').toString('hex');\nmsg3.payload = parseInt(msg3.payload, 16);\n\nreturn [ msg1, msg2, msg3 ];",
+        "outputs": "3",
+        "noerr": 0,
+        "x": 518.25,
+        "y": 1036,
+        "wires": [
+            [
+                "d8546b63.b62268"
+            ],
+            [
+                "da27113d.fc9dc"
+            ],
+            [
+                "43d7dab0.3c3c04"
+            ]
+        ]
+    },
+    {
+        "id": "da27113d.fc9dc",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (decrypted to text)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 477.25,
+        "y": 1240.5,
+        "wires": []
+    },
+    {
+        "id": "43d7dab0.3c3c04",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "msg.payload.payload_raw - DATA (decrypted to Bytes HiLo)",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 487.25,
+        "y": 1305.5,
+        "wires": []
+    },
+    {
+        "id": "86d0a824.c29968",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "message (as is)",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 656.25,
+        "y": 986.5,
+        "wires": []
+    },
+    {
+        "id": "9acf158d.4334c",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "Byte Value example",
+        "topic": "",
+        "payload": "{\"payload_raw\":\"ARA=\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 226.25,
+        "y": 1062,
+        "wires": [
+            [
+                "29335e61.379392"
+            ]
+        ]
+    },
+    {
+        "id": "34ac0c0.bb70e74",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "Text example",
+        "topic": "",
+        "payload": "{\"payload_raw\":\"SGVsbG8sIHdvcmxkIQ==\"}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 208.25,
+        "y": 1112,
+        "wires": [
+            [
+                "29335e61.379392"
+            ]
+        ]
+    },
+    {
+        "id": "a34596e6.a05438",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Example A - Two \"byte pairs\" (4 bytes in total) for Temp and Humidity",
+        "func": "var buf = new Buffer(msg.payload.raw, 'base64'); // put in msg.payload the payload raw data stored initially as Base64\nvar node = msg.devEUI;\n\ntemp = buf[2] * 255 + buf[3];\nhum = buf[0] * 255 + buf[1];\n\n// construct a new object to store the data message\nvar data = {\npayload : [\n [{\n numValue: temp/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"temp\",\n sensor:node\n }],\n [{\n numValue: hum/10.0,\n time: new Date(msg.metadata.server_time).getTime()\n },\n {\n tag1:\"hum\",\n sensor:node\n }]\n]};\nreturn data;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 403.25,
+        "y": 1374,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fff75504.580dc8",
+        "type": "json",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "x": 486.75,
+        "y": 987,
+        "wires": [
+            [
+                "86d0a824.c29968"
+            ]
+        ]
+    },
+    {
+        "id": "eb91e95a.6406a8",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "For MQTT \"user\"/\"password\", use \"Application ID\"/\"default key\" ",
+        "info": "\n1) Sign in to TTN and go to your application page where \"app_1\" is your \"Application ID\" e.g.\nhttps://console.thethingsnetwork.org/applications/app_1\n\n2) For MQTT User, use \"Application ID\" \n\n3) For MQTT password, scroll to bottom and use \"default key\" (you need to press the \"eye\" to see the long text)",
+        "x": 327.25,
+        "y": 910,
+        "wires": []
+    },
+    {
+        "id": "70195c34.b8c64c",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "Example B - Two \"Float value Byte Quads\" (8 bytes in total) for Lat. and Longitude (Float)",
+        "func": "var msg2 = { payload: msg.payload.length };\nmsg2.payload = JSON.parse(msg.payload);\nmsg2.payload = new Buffer(msg2.payload.payload, 'base64').toString('hex');\nvar lat = Buffer(msg2.payload, 'hex').readFloatLE(0);\nvar lon = Buffer(msg2.payload, 'hex').readFloatLE(4);\nmsg2.payload= \"[{\\\"lat\\\":\" + lat + \",\\\"lng\\\":\" + lon + \"}]\";//\"{\"lat\":lat,\"lng\":lon};\nreturn msg2;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450.25,
+        "y": 1426,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b5dff5ea.b69338",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "function",
+        "func": "return {\n    dev_id: \"rak811_1\",\n    port: 1,\n    schedule: \"replace\",\n    confirmed: true,\n    payload: {\n        data: msg.payload\n    },\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 1759,
+        "wires": [
+            [
+                "67725649.06249",
+                "f1a96806.3f507"
+            ]
+        ]
+    },
+    {
+        "id": "9cdcdb82.8c644",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "",
+        "payload": "6A6F62696A6F6261",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 193,
+        "y": 1758,
+        "wires": [
+            [
+                "b5dff5ea.b69338"
+            ]
+        ]
+    },
+    {
+        "id": "8f6e07e2.c568",
+        "type": "mqtt out",
+        "z": "c50efc5d.edf9d",
+        "name": "2/hermes/intent/#",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "3b13e227.7e25c6",
+        "x": 444.75,
+        "y": 2220.5001525878906,
+        "wires": []
+    },
+    {
+        "id": "ba9dcd54.90cc6",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "2/hermes/tts/say",
+        "topic": "hermes/tts/say",
+        "qos": "2",
+        "broker": "3b13e227.7e25c6",
+        "x": 135.75,
+        "y": 2292.5001525878906,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8da41f94.95702",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 610,
+        "y": 283,
+        "wires": []
+    },
+    {
+        "id": "ee4fe5a6.fb178",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "application/#",
+        "qos": "2",
+        "broker": "24aaa0df.7f70e",
+        "x": 139,
+        "y": 333,
+        "wires": [
+            [
+                "4823d9ea.7c39d"
+            ]
+        ]
+    },
+    {
+        "id": "da1d41d9.42416",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "1/hermes/nlu/intentParsed",
+        "topic": "hermes/nlu/intentParsed",
+        "qos": "2",
+        "broker": "c95a0878.a7afa",
+        "x": 164.75,
+        "y": 2164.5001525878906,
+        "wires": [
+            [
+                "1f1caab0.43d625"
+            ]
+        ]
+    },
+    {
+        "id": "da07ac53.eaa108",
+        "type": "function",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "func": "var msg = JSON.parse(msg.payload.decode('utf-8'));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 398.75,
+        "y": 2135.5001525878906,
+        "wires": [
+            [
+                "1f1caab0.43d625"
+            ]
+        ]
+    },
+    {
+        "id": "1f1caab0.43d625",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 562.75,
+        "y": 2165.5001525878906,
+        "wires": []
+    },
+    {
+        "id": "4823d9ea.7c39d",
+        "type": "split",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "splt": ",",
+        "x": 168.49996948242188,
+        "y": 466.25,
+        "wires": [
+            [
+                "2b832f81.06ffa"
+            ]
+        ]
+    },
+    {
+        "id": "2b832f81.06ffa",
+        "type": "switch",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "regex",
+                "v": "data",
+                "vt": "str",
+                "case": false
+            }
+        ],
+        "checkall": "false",
+        "outputs": 1,
+        "x": 295.75,
+        "y": 463.5000305175781,
+        "wires": [
+            [
+                "2644e68b.71ac82"
+            ]
+        ]
+    },
+    {
+        "id": "2644e68b.71ac82",
+        "type": "split",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "splt": ":",
+        "x": 427,
+        "y": 359,
+        "wires": [
+            [
+                "cc1dda80.6dd1b8"
+            ]
+        ]
+    },
+    {
+        "id": "cc1dda80.6dd1b8",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 639,
+        "y": 339,
+        "wires": []
+    },
+    {
+        "id": "e01e773c.b44ef",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "Snips Connector",
+        "info": "",
+        "x": 276.07147216796875,
+        "y": 2002.750244140625,
+        "wires": []
+    },
+    {
+        "id": "7a66e084.2f2468",
+        "type": "fcc-decrypt",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "AppSKey": "",
+        "DevAddr": "",
+        "x": 536,
+        "y": 467,
+        "wires": [
+            [
+                "c582a0f.451606"
+            ]
+        ]
+    },
+    {
+        "id": "c582a0f.451606",
+        "type": "debug",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 693,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8791bfbc.6f07b8",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "TTN Connector",
+        "info": "",
+        "x": 295,
+        "y": 1498.75,
+        "wires": []
+    },
+    {
+        "id": "1e40cf03.4cb629",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "TTN Connector",
+        "info": "",
+        "x": 162.5,
+        "y": 853.75,
+        "wires": []
+    },
+    {
+        "id": "60d99df8.2c0034",
+        "type": "mqtt in",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "gateway/#",
+        "qos": "2",
+        "broker": "24aaa0df.7f70e",
+        "x": 140,
+        "y": 227.5,
+        "wires": [
+            [
+                "8da41f94.95702"
+            ]
+        ]
+    }
+]
