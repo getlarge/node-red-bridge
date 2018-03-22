@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "Node-RED bridge",
   "dependencies": {
-    "node-red": "~0.16.0",
+    "node-red": "^0.16.0",
     "node-red-admin": "^0.1.3",
     "node-red-contrib-binary": "0.0.6",
     "node-red-contrib-lora-data-decrypt": "0.0.1",

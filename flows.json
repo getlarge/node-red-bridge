@@ -9,7 +9,6 @@
         "type": "ttn app",
         "z": "",
         "appId": "egarden-connector",
-        "region": "eu",
         "accessKey": "ttn-account-v2.SPPIvgpLvM8Z9AIZscdKRTHSPoBo9wlu30vEpxOJ6ZE"
     },
     {
@@ -262,6 +261,24 @@
         "z": "",
         "name": "Logs",
         "icon": "dashboard"
+    },
+    {
+        "id": "a75a3f33.711f4",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "server2.getlarge.eu",
+        "port": "1884",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
     },
     {
         "id": "525ff7f8.b9aa7",
@@ -625,18 +642,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "1d061178.5d3fdf",
-        "type": "speaker out",
-        "z": "c50efc5d.edf9d",
-        "name": "Speaker Out",
-        "channels": "2",
-        "bitDepth": "16",
-        "sampleRate": "44100",
-        "x": 361.33331298828125,
-        "y": 1684.778076171875,
-        "wires": []
     },
     {
         "id": "c00acd8b.8f37a8",
@@ -1579,5 +1584,47 @@
                 "3c922e2d.720092"
             ]
         ]
+    },
+    {
+        "id": "acf2b07b.770f7",
+        "type": "mqtt out",
+        "z": "c50efc5d.edf9d",
+        "name": "",
+        "topic": "admin/stats",
+        "qos": "",
+        "retain": "",
+        "broker": "a75a3f33.711f4",
+        "x": 445,
+        "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "d746793b.4d91a",
+        "type": "inject",
+        "z": "c50efc5d.edf9d",
+        "name": "payload",
+        "topic": "",
+        "payload": "{ \"deviceNumber\": \"41\", \"userNumber\": \"11\", \"historyPoints\": \"1235976\" }",
+        "payloadType": "str",
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "x": 175.5,
+        "y": 2071,
+        "wires": [
+            [
+                "acf2b07b.770f7"
+            ]
+        ]
+    },
+    {
+        "id": "7c08a255.a53ca4",
+        "type": "comment",
+        "z": "c50efc5d.edf9d",
+        "name": "Fake Stats",
+        "info": "",
+        "x": 132,
+        "y": 1993,
+        "wires": []
     }
 ]
