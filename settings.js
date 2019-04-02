@@ -85,8 +85,8 @@ module.exports = {
     // adminAuth: {
     //    type: "credentials",
     //    users: [{
-    //        username: "getlarge",
-    //        password: "$2a$08$X79imQW8UBYSYFfPoU.39u9G0Wz8jeveTEiKDWu4T7aOgXuzc/yaG",
+    //        username: "",
+    //        password: "",
     //        permissions: "*"
     //    }]
     // },

@@ -1,7 +1,6 @@
 # node-red-bridge
 
-Node-RED project running in local mode.
-Interface with several MQTT service ( LoRaWAN, MySensors, Aloes, Snips, ... )
+Node-RED project running in local mode, served by Express
 
 ## Usage
 
@@ -20,6 +19,13 @@ To run a specific flow file:
 
 ```
 npm start -- testFlow.json
+```
+
+
+To run via Express ( ccreate .env file first ):
+
+```
+npm run start:dev
 ```
 
 ## Starting with PM2
@@ -41,11 +47,3 @@ pm2 save
 pm2 startup
 ```
 
-## Dependencies
-
-	node-red
-	node-red-contrib-binary
-	node-red-contrib-modbus
-	node-red-contrib-string
-	node-red-contrib-ttn
-	node-red-dashboard
