@@ -1,0 +1,91 @@
+[
+    {
+        "id": "da9abd85.b48",
+        "type": "function",
+        "z": "7c8380e0.0564e",
+        "name": "saveEnvToFile",
+        "func": "try {\n    const storeType = env.get(\"store_type\") || \"memory\";\n    const processEnv = global.get(\"processEnv\", storeType);\n    if (!processEnv) throw new Error(\"process.env not available\");\n    if (processEnv.NODE_ENV === \"development\") {\n        msg.filename = \"./deploy/.env_dev\";\n    } else if (processEnv.NODE_ENV === \"local\") {\n        msg.filename = \"./deploy/.env_local\";\n    } else if (processEnv.NODE_ENV === \"staging\") {\n        msg.filename = \"./deploy/.env_staging\";\n    } else if (processEnv.NODE_ENV === \"production\") {\n        msg.filename = \"./deploy/.env_production\";\n    } else {\n        //  msg.filename = \"./.env\";\n        msg.filename = \"./deploy/.env_dev\";\n    }\n    msg.payload = `NODE_NAME=${env.get(\"NODE_NAME\")}\nNODE_RED_URL=${env.get(\"NODE_RED_URL\")}\nNODE_RED_HOST=${env.get(\"NODE_RED_HOST\")}\nNODE_RED_PORT=${env.get(\"NODE_RED_PORT\")}\nNODE_RED_ADMIN_ROOT=${env.get(\"NODE_RED_ADMIN_ROOT\")}\nNODE_RED_API_ROOT=${env.get(\"NODE_RED_API_ROOT\")}\nNODE_RED_UI_PATH=${env.get(\"NODE_RED_UI_PATH\")}\nNODE_RED_USER_DIR=${env.get(\"NODE_RED_USER_DIR\")}\nNODE_RED_USERNAME=${env.get(\"NODE_RED_USERNAME\")}\nNODE_RED_PASSHASH=${env.get(\"NODE_RED_PASSHASH\")}\nNODE_RED_ADMIN_PASSHASH=${env.get(\"NODE_RED_ADMIN_PASSHASH\")}\nNODE_RED_CREDENTIAL_SECRET=${env.get(\"NODE_RED_CREDENTIAL_SECRET\")}\nNODE_RED_STORE_TYPE=${env.get(\"NODE_RED_STORE_TYPE\")}\nALOES_HTTP_HOST=${env.get(\"ALOES_HTTP_HOST\")}\nALOES_HTTP_PORT=${env.get(\"ALOES_HTTP_PORT\")}\nALOES_MQTT_HOST=${env.get(\"ALOES_MQTT_HOST\")}\nALOES_MQTT_PORT=${env.get(\"ALOES_MQTT_PORT\")}\nALOES_USER_ID=${env.get(\"ALOES_USER_ID\")}\nALOES_USER_EMAIL=${env.get(\"ALOES_USER_EMAIL\")}\nALOES_USER_PASSWORD=${env.get(\"ALOES_USER_PASSWORD\")}\nALOES_TOKEN=${env.get(\"ALOES_TOKEN\")}\nALOES_TOPIC_IN=${env.get(\"ALOES_TOPIC_IN\")}\nSERVER_LOGGER_LEVEL=${env.get(\"SERVER_LOGGER_LEVEL\")}\nGIT_REPO_SSH_URL=${env.get(\"GIT_REPO_SSH_URL\")}\nVPS_STAGE_HOST=${env.get(\"VPS_STAGE_HOST\")}\nVPS_STAGE_USER=${env.get(\"VPS_STAGE_USER\")}\nVPS_PROD_HOST=${env.get(\"VPS_PROD_HOST\")}\nVPS_PROD_USER=${env.get(\"VPS_PROD_USER\")}`\n    return msg;\n}catch(error){\n    return error;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "24c56d8b.15cdea"
+            ]
+        ]
+    },
+    {
+        "id": "24c56d8b.15cdea",
+        "type": "file",
+        "z": "7c8380e0.0564e",
+        "name": "",
+        "filename": "",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 630,
+        "y": 140,
+        "wires": [
+            [
+                "a6dba8a3.63ccb"
+            ]
+        ]
+    },
+    {
+        "id": "5566d78.53eafa8",
+        "type": "ui_toast",
+        "z": "7c8380e0.0564e",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 707,
+        "y": 257,
+        "wires": []
+    },
+    {
+        "id": "a6dba8a3.63ccb",
+        "type": "function",
+        "z": "7c8380e0.0564e",
+        "name": "buildNotif",
+        "func": "msg.payload = \"Environment variables file updated, please restart app to validate them.\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 680,
+        "y": 200,
+        "wires": [
+            [
+                "5566d78.53eafa8"
+            ]
+        ]
+    },
+    {
+        "id": "655f39c4.fb6d28",
+        "type": "delay",
+        "z": "7c8380e0.0564e",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "da9abd85.b48"
+            ]
+        ]
+    }
+]

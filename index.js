@@ -1,21 +1,20 @@
 const nodemon = require('nodemon');
 
 nodemon({
-  script: 'server.js',
+  script: 'lib/server.js',
   ext: 'js json',
+  ignore: ['lib/flows/*', 'lib/uitemplates/*', 'nodes_modules', '*.test.js', '*.json'],
+  watch: ['lib/*', '*.js', '.env', 'deploy/*'],
 });
 
 nodemon
-  .on('start', function() {
+  .on('start', () => {
     console.log('App has started');
   })
-  .on('quit', function() {
+  .on('quit', () => {
     console.log('App has quit');
     process.exit();
   })
-  .on('restart', function(files) {
+  .on('restart', files => {
     console.log('App restarted due to: ', files);
   });
-
-
-  

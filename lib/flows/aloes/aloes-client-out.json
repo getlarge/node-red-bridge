@@ -1,0 +1,85 @@
+[
+    {
+        "id": "9f87363f.569e18",
+        "type": "mqtt out",
+        "z": "204303d7.5bcc04",
+        "name": "Aloes out",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "c54750f7.89655",
+        "x": 600,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ea3c7b88.6a6fe",
+        "type": "function",
+        "z": "204303d7.5bcc04",
+        "name": "",
+        "func": "if (!msg.topic) return [null,null];\nmsg.parts = msg.topic.split(\"/\");\nconst userId = env.get(\"ALOES_USER\");\nif (!userId || msg.parts[0] !== userId) return [null,null];\nconst qos = env.get(\"qos\") || \"0\";\nconst retain = env.get(\"retain\") || \"false\";\nmsg.qos = Number(qos);\nmsg.retain = Boolean(retain);\nif (env.get(\"debug\")) {\n    return [msg,msg];\n}\nreturn [msg,null];\n",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "9f87363f.569e18"
+            ],
+            [
+                "12e273a.f0f478c"
+            ]
+        ]
+    },
+    {
+        "id": "12e273a.f0f478c",
+        "type": "debug",
+        "z": "204303d7.5bcc04",
+        "name": "Aloes-Client-Out",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 470,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "c747a526.aef76",
+        "type": "status",
+        "z": "204303d7.5bcc04",
+        "name": "Aloes-Client status",
+        "scope": [
+            "9f87363f.569e18"
+        ],
+        "x": 370,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c54750f7.89655",
+        "type": "mqtt-broker",
+        "z": "204303d7.5bcc04",
+        "name": "Aloes client",
+        "broker": "${ALOES_MQTT_HOST}",
+        "port": "${ALOES_MQTT_PORT}",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

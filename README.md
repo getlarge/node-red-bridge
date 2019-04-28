@@ -1,28 +1,41 @@
-# node-red-bridge
+# Node-red-bridge
 
 Node-RED project running in local mode, served by Express
+
+## Settings
+Use settings.js for regular start ( with node-red commands ).
+Use lib/node-setup.js and deploy/ for express wrapping.
+
+To generate a new password, use this command : 
+
+```bash
+node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" your-password-here
+```
+And copy generated password into settings.js, or deploy/.env files coresponding to your NODE_ENV.
 
 ## Usage
 
 ```
-git clone https://github.com/getlarge/node-red-bridge.git 
+git clone https://framagit.org/getlarge/node-red-bridge.git 
 npm install
-npm start
 ```
+
+## Starting with Node-red CLI
 
 When running multiple instances in parallel, you can specify a port:
 
 ```
-npm start -- -p 1885
+npm run start -- -p 1885
 ```
 To run a specific flow file:
 
 ```
-npm start -- testFlow.json
+npm run start -- testFlow.json
 ```
 
+## Starting with Nodemon
 
-To run via Express ( ccreate .env file first ):
+To run via Express ( create .env file first using .env.sample as model ):
 
 ```
 npm run start:dev
@@ -37,10 +50,10 @@ npm install -g pm2
 Edit node-red-bridge.json, then
 
 ```
-pm2 start node-red-bridge.json
+npm run start:local
 ```
 
-If you want autorestart
+If you want to autorestart node-red
 
 ```
 pm2 save

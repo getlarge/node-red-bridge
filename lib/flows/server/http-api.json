@@ -1,0 +1,139 @@
+[
+    {
+        "id": "1d274cbf.4b473b",
+        "type": "http response",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "cc133d63.de9988",
+        "type": "function",
+        "z": "857f53ab.3577a",
+        "name": "Set Content-Type header",
+        "func": "msg.headers = {\n    \"Content-Type\":\"image/jpeg\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 140,
+        "wires": [
+            [
+                "1d274cbf.4b473b"
+            ]
+        ]
+    },
+    {
+        "id": "52535a68.76bcd4",
+        "type": "file in",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "filename": "/tmp/example.jpg",
+        "format": "",
+        "sendError": true,
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "cc133d63.de9988"
+            ]
+        ]
+    },
+    {
+        "id": "34461dd9.2abe4a",
+        "type": "http in",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "url": "/testImage",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "52535a68.76bcd4"
+            ]
+        ]
+    },
+    {
+        "id": "5b096f5e.592be8",
+        "type": "comment",
+        "z": "857f53ab.3577a",
+        "name": "HTTP API",
+        "info": "",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "df38e7b1.0529d",
+        "type": "http request",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "proxy": "",
+        "authType": "basic",
+        "x": 570,
+        "y": 320,
+        "wires": [
+            [
+                "4d12b942.bf84d",
+                "91611ad9.a0d228"
+            ]
+        ]
+    },
+    {
+        "id": "2a2c136.3d9faec",
+        "type": "function",
+        "z": "857f53ab.3577a",
+        "name": "setInternalRequest",
+        "func": "try {\n    const host = env.get(\"node_red_host\");\n    const port = env.get(\"node_red_port\");\n    const apiRoot = env.get(\"node_red_api_root\");\n    const url = env.get(\"node_red_url\");\n    const token = env.get(\"node_red_admin_passhash\");\n    //  console.log(\"token\", token)\n    //  msg.url = `http://${host}:${port}/${apiRoot}/start`;\n    if (!token) throw new Error(\"No token retrieved\");\n    let reqUrl;\n    //  console.log(\"payload\", msg.payload)\n    if (msg.payload.requestUrl) {\n        reqUrl = msg.payload.requestUrl;\n    } else {\n        reqUrl = \"start\";\n    }\n    let method;\n    if (msg.payload.method) {\n        method = msg.payload.method;\n    } else {\n        method = \"GET\";\n    }\n    msg.url = `${url}${apiRoot}/${reqUrl}`;\n    msg.method = method;\n    msg.headers = {};\n    msg.headers['Authorization'] = token;\n    msg.headers['Accept'] = \"application/json\";\n    msg.headers['Content-Type'] = \"application/json\";\n    msg.headers['x-access-token'] = token;\n    if (msg.payload.query) {\n        //  msg.body = msg.payload.query;\n        const query = JSON.stringify(msg.payload.query);\n        msg.payload = query;\n        console.log(\"payload\", msg.payload)\n    } else {\n        msg.payload = {token, userId: 'test'};\n    }\n    //  msg.query = {filter};\n    return msg;\n} catch(error) {\n    return error;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "df38e7b1.0529d",
+                "91611ad9.a0d228"
+            ]
+        ]
+    },
+    {
+        "id": "4d12b942.bf84d",
+        "type": "function",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 780,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "91611ad9.a0d228",
+        "type": "debug",
+        "z": "857f53ab.3577a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 740,
+        "y": 260,
+        "wires": []
+    }
+]

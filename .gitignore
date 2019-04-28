@@ -41,6 +41,7 @@ node_modules
 *json.backup
 flows_cred.json
 flows.json
+context/
 
 # Environment variables
 .env
