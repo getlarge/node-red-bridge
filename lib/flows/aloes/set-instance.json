@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c52bdac9.e6935",
+    "type": "function",
+    "z": "55cffea4.f18f7",
+    "name": "",
+    "func": "if (!msg.topic) return [null,null];\nif (!msg.parts) {\n    msg.parts = msg.topic.split(\"/\");\n}\nconst debug = env.get(\"debug\");\nif (msg.device && msg.device !== null) {\n    if (debug) {\n        const message = {topic: msg.topic, payload : msg.device}\n        return [msg, null, null, message];\n    }\n    return [msg, null, null, null];\n} else if (msg.sensor && msg.sensor !== null) {\n    if (debug) {\n        const message = {topic: msg.topic, payload : msg.sensor}\n        return [null, msg, null, message];\n    }\n    return [null, msg, null, null];\n} else if (msg.status && msg.status !== null) {\n    if (debug) {\n        const message = {topic: msg.topic, payload : msg.status}\n        return [null, null, msg, message];\n    }\n    return [null, null, msg, null];\n}\nreturn [null,null, null, null];",
+    "outputs": 4,
+    "noerr": 0,
+    "x": 270,
+    "y": 220,
+    "wires": [["32850fbd.e1adc8"], ["816b61ce.d96828"], [], []]
+  },
+  {
+    "id": "816b61ce.d96828",
+    "type": "function",
+    "z": "55cffea4.f18f7",
+    "name": "saveSensor",
+    "func": "try {\n    const storeType = env.get(\"store_type\") || \"default\";\n    const deviceName = env.get(\"device_name\");\n    if (!deviceName) throw new Error(\"Missing env vars\"); \n    const objectId = msg.sensor.type;\n    const nativeSensorId = msg.sensor.nativeSensorId;\n    const storeKey = `sensor-${deviceName}-${objectId}-${nativeSensorId}`;\n    //  console.log(\"save sensor storeKey : \", storeKey);\n    if(!storeKey) throw new Error(\"Missing params\");\n    global.set(storeKey, msg.sensor, storeType, err => {\n        if(err) throw err;\n    });  \n    return msg;\n} catch(error){\n    return error;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 470,
+    "y": 200,
+    "wires": [[]]
+  },
+  {
+    "id": "32850fbd.e1adc8",
+    "type": "function",
+    "z": "55cffea4.f18f7",
+    "name": "saveDevice",
+    "func": "try {\n    const storeType = env.get(\"store_type\") || \"default\";\n    const deviceName = env.get(\"device_name\");\n    if (!deviceName) throw new Error(\"Missing env vars\"); \n    const storeKey = `device-${deviceName}`;\n    //  console.log(\"saveDevice storeKey : \", storeKey);\n    if(!storeKey) throw new Error(\"Missing params\");\n    global.set(storeKey, msg.device, storeType, err => {\n        if(err) throw err;\n    });  \n    return msg;\n} catch(error){\n    return error;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 470,
+    "y": 140,
+    "wires": [[]]
+  }
+]

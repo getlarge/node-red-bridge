@@ -1,0 +1,397 @@
+[
+  {
+    "id": "18342300.c317bd",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedHost",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "NODE_RED_HOST",
+        "tot": "env"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 280,
+    "y": 140,
+    "wires": [["1cc1704f.271bd"]]
+  },
+  {
+    "id": "b3c1fabf.ff3dd8",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedHost",
+    "rules": [
+      {
+        "t": "move",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.nodeRedHost",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 640,
+    "y": 140,
+    "wires": [["92099d2b.dd7908"]]
+  },
+  {
+    "id": "1cc1704f.271bd",
+    "type": "ui_text_input",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "label": "HTTP Host",
+    "tooltip": "",
+    "group": "8dfc409f.e7494",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "mode": "text",
+    "delay": "0",
+    "topic": "",
+    "x": 450,
+    "y": 140,
+    "wires": [["b3c1fabf.ff3dd8"]]
+  },
+  {
+    "id": "c9d9bdb5.5883d",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedPort",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "NODE_RED_PORT",
+        "tot": "env"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 280,
+    "y": 180,
+    "wires": [["6abd5cad.74f104"]]
+  },
+  {
+    "id": "55724d05.92b644",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedPort",
+    "rules": [
+      {
+        "t": "move",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.nodeRedPort",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 620,
+    "y": 180,
+    "wires": [["92099d2b.dd7908"]]
+  },
+  {
+    "id": "6abd5cad.74f104",
+    "type": "ui_text_input",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "label": "HTTP Port",
+    "tooltip": "",
+    "group": "8dfc409f.e7494",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "mode": "text",
+    "delay": "0",
+    "topic": "",
+    "x": 450,
+    "y": 180,
+    "wires": [["55724d05.92b644"]]
+  },
+  {
+    "id": "92099d2b.dd7908",
+    "type": "function",
+    "z": "cc47e9d1.6c5828",
+    "name": "setEnv",
+    "func": "try {\n    const storeType = env.get(\"store_type\") || \"memory\";\n    const processEnv = global.get(\"processEnv\", storeType);\n    if (!processEnv) throw new Error(\"process.env not available\");\n \n    if (msg.payload.nodeRedUrl) {\n        processEnv.NODE_RED_URL = msg.payload.nodeRedUrl;\n    }   \n    if (msg.payload.nodeRedPort) {\n        processEnv.NODE_RED_PORT = msg.payload.nodeRedPort;\n    }\n    if (msg.payload.nodeRedHost) {\n        processEnv.NODE_RED_HOST = msg.payload.nodeRedHost;\n    }    \n    if (msg.payload.nodeRedAdminRoot) {\n        processEnv.NODE_RED_ADMIN_ROOT = msg.payload.nodeRedAdminRoot;\n    } \n    if (msg.payload.nodeRedApiRoot) {\n        processEnv.NODE_RED_API_ROOT = msg.payload.nodeRedApiRoot;\n    }\n    if (env.get(\"debug\")) {\n        return [msg,msg];\n    }\n    return [msg,null];\n}catch(error){\n    return error;\n}\n",
+    "outputs": 2,
+    "noerr": 0,
+    "x": 910,
+    "y": 180,
+    "wires": [[], ["518f0eef.9ab4c8"]]
+  },
+  {
+    "id": "fa4f9510.4fbd3",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedUrl",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "NODE_RED_URL",
+        "tot": "env"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 270,
+    "y": 100,
+    "wires": [["2123fd41.50c4c2"]]
+  },
+  {
+    "id": "a8bcfdc9.281c08",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedUrl",
+    "rules": [
+      {
+        "t": "move",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.nodeRedUrl",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 630,
+    "y": 100,
+    "wires": [["92099d2b.dd7908"]]
+  },
+  {
+    "id": "2123fd41.50c4c2",
+    "type": "ui_text_input",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "label": "HTTP URL",
+    "tooltip": "",
+    "group": "8dfc409f.e7494",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "mode": "text",
+    "delay": "0",
+    "topic": "",
+    "x": 450,
+    "y": 100,
+    "wires": [["a8bcfdc9.281c08"]]
+  },
+  {
+    "id": "6f471f89.3cf96",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedAdminRoot",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "NODE_RED_ADMIN_ROOT",
+        "tot": "env"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 260,
+    "y": 220,
+    "wires": [["898863b5.49286"]]
+  },
+  {
+    "id": "444d1856.8e4148",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedAdminRoot",
+    "rules": [
+      {
+        "t": "move",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.nodeRedAdminRoot",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 680,
+    "y": 220,
+    "wires": [["92099d2b.dd7908"]]
+  },
+  {
+    "id": "898863b5.49286",
+    "type": "ui_text_input",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "label": "HTTP Admin Root",
+    "tooltip": "URL/<admin root>",
+    "group": "8dfc409f.e7494",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "mode": "text",
+    "delay": "0",
+    "topic": "",
+    "x": 470,
+    "y": 220,
+    "wires": [["444d1856.8e4148"]]
+  },
+  {
+    "id": "880d11eb.0a9358",
+    "type": "ui_text_input",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "label": "HTTP API Root",
+    "tooltip": "URL/<api root>",
+    "group": "8dfc409f.e7494",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "mode": "text",
+    "delay": "0",
+    "topic": "",
+    "x": 460,
+    "y": 260,
+    "wires": [["b436c221.04ff08"]]
+  },
+  {
+    "id": "4b540f4e.c6271",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedApiRoot",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "NODE_RED_API_ROOT",
+        "tot": "env"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 250,
+    "y": 260,
+    "wires": [["880d11eb.0a9358"]]
+  },
+  {
+    "id": "b436c221.04ff08",
+    "type": "change",
+    "z": "cc47e9d1.6c5828",
+    "name": "nodeRedApiRoot",
+    "rules": [
+      {
+        "t": "move",
+        "p": "payload",
+        "pt": "msg",
+        "to": "payload.nodeRedApiRoot",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 650,
+    "y": 260,
+    "wires": [["92099d2b.dd7908"]]
+  },
+  {
+    "id": "518f0eef.9ab4c8",
+    "type": "debug",
+    "z": "cc47e9d1.6c5828",
+    "name": "NodeRedSettingsUpdate",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 1010,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "e711112d.01ed",
+    "type": "ui_button",
+    "z": "cc47e9d1.6c5828",
+    "name": "",
+    "group": "8dfc409f.e7494",
+    "order": 8,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "Restart app",
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "icon": "",
+    "payload": "{\"requestUrl\":\"restart\",\"method\":\"GET\"}",
+    "payloadType": "json",
+    "topic": "",
+    "x": 610,
+    "y": 380,
+    "wires": [[]]
+  },
+  {
+    "id": "8dfc409f.e7494",
+    "type": "ui_group",
+    "z": "cc47e9d1.6c5828",
+    "name": "Node-red",
+    "tab": "43886f69.f45e68",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  },
+  {
+    "id": "43886f69.f45e68",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Application",
+    "icon": "dashboard",
+    "order": 4,
+    "disabled": false,
+    "hidden": false
+  }
+]

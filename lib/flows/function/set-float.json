@@ -1,0 +1,14 @@
+[
+  {
+    "id": "e637d10a.d41828",
+    "type": "function",
+    "z": "1840d321.de2f95",
+    "name": "setFloat",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    if (!msg || msg === null || !msg.sensor) throw new Error(\"No input to parse\");\n    const resourceId = env.get(\"resource_id\");\n    if (!resourceId) throw new Error(\"no resource id set\")\n    const value = msg.sensor.resources[resourceId];\n    //  const value = msg.sensor.value;\n    if (value === undefined || value === null) throw new Error(\"no sensor value found\")\n    if (debug) {\n        console.log(`get-float for ${resourceId} :`, value)\n    }\n    if (typeof value === \"string\") {\n        if (value === \"1\" || value === \"true\") {\n            msg.payload = 1;\n        } else if (value === \"0\" || value === \"false\") {\n            msg.payload = 0;\n        } else {\n            msg.payload = Number(value); \n        }\n    } else if (typeof value === \"number\") {\n        msg.payload = value;\n    } else if (typeof value === \"boolean\") {\n        if (value === true) {\n            msg.payload = 1;\n        } else if (value === false) {\n            msg.payload = 0;\n        } \n    } else if (typeof value === \"object\" && value.type && value.data){\n        msg.payload = Number(value.data.toString('utf-8'));\n    } else if (Buffer.isBuffer(value)){\n        msg.payload = Number(value.toString('utf-8'));\n    } \n    \n    if (msg.payload === undefined) throw new Error(\"no payload\");\n    const precision = env.get(\"precision\") || msg.sensor.resources[\"5701\"];\n    const unit = env.get(\"unit\");\n    if (unit && unit !== null) {\n        msg.unit = unit;\n    }\n    //msg.payload = Number(msg.payload);\n    //if (precision && precision !== null) {\n    //    msg.payload = msg.payload.toPrecision(precision)\n    //}\n    if (debug) {\n        console.log(`set-float for ${resourceId} : ${msg.payload}`)\n    }\n    return msg;\n} catch(error) {\n    return error;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 120,
+    "wires": [[]]
+  }
+]

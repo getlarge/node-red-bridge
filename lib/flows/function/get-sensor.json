@@ -1,0 +1,16 @@
+[
+    {
+        "id": "7126c04a.613b88",
+        "type": "function",
+        "z": "46bbcdbe.77fd64",
+        "name": "getSensor",
+        "func": "try {\n    const debug = env.get(\"debug\");\n    const storeType = env.get(\"store_type\") || \"default\";\n    const deviceName = env.get(\"device_name\");\n    if (!deviceName) throw new Error(\"Missing env vars\"); \n    const objectId = \"3306\";\n    const nativeSensorId = \"1\";\n    const storeKey = `sensor-${deviceName}-${objectId}-${nativeSensorId}`;\n    //  console.log(\"save sensor storeKey : \", storeKey);\n    if(!storeKey) throw new Error(\"Missing params\");\n    if (debug) {\n        console.log(\"get sensor store_key\", storeKey)\n    }\n    global.get(storeKey, storeType, (err,res) => {\n        if(err) throw err;\n        msg.sensor = res;\n    }); \n    if (!msg.sensor || msg.sensor === null) throw new Error(\"no sensor found\"); \n    const userId = env.get(\"user_id\");\n    msg.parts = [userId, \"Sensor\", \"HEAD\", msg.sensor.id];\n    msg.topic = msg.parts.join(\"/\");\n    if (debug) {\n        console.log(\"get sensor topic\", msg.topic)\n    }\n    const resources = Object.keys(msg.sensor.resources);\n     if (debug) {\n        console.log(\"get sensor resources\", resources)\n    }\n    resources.forEach(resource => {\n        msg.sensor.resource = resource;\n        msg.sensor.method = \"HEAD\";\n        //  msg.payload = msg.sensor.resources[resource];\n        return node.send(msg);\n    });\n    return null;\n} catch(error) {\n    return error;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    }
+]

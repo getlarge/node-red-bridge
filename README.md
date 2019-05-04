@@ -1,51 +1,86 @@
-# node-red-bridge
+# Node-red-bridge
 
-Node-RED project running in local mode.
-Interface with several MQTT service ( LoRaWAN, MySensors, Aloes, Snips, ... )
+Node-RED running in local mode, served by Express.
+
+- Custom authentification schemes, using Aloes backend ( [device-manager](https://framagit.org/aloes/device-manager.git) ). 
+
+- Contains subflows to quickly connect to Aloes API.
+
+- Fast interface prototyping to validate concepts.
+
+- Edit scenarios to create interactions chains with your device.
+
+
+
+## Settings
+
+### Required : 
+- Use settings.js for Node-red standalone start ( with node-red commands ).
+- Use lib/node-setup.js and deploy/ when embedding in express application.
+
+
+### Optionals :
+
+- If you don't have any device yet, you can setup your own with [Gateway Manager](https://framagit.org/aloes/gatewaymanager.git) for Arduino, or [node-red-device](https://framagit.org/getlarge/node-red-device.git) for any Linux device.
+
+- Register a new device with [Aloes Client](https://framagit.org/aloes/aloes-client.git)
+
+- To generate a new password, use this command : 
+
+```bash
+node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" your-password-here
+```
+
+And copy generated password into settings.js, or deploy/.env files coresponding to your NODE_ENV.
+
 
 ## Usage
 
-```
-git clone https://github.com/getlarge/node-red-bridge.git 
+```bash
+git clone https://framagit.org/aloes/node-red-bridge.git 
 npm install
-npm start
 ```
+
+## Starting with Node-red CLI
 
 When running multiple instances in parallel, you can specify a port:
 
-```
-npm start -- -p 1885
+```bash
+npm run start -- -p 1885
 ```
 To run a specific flow file:
 
+```bash
+npm run start -- testFlow.json
 ```
-npm start -- testFlow.json
+
+## Starting with Nodemon
+
+To run via Express ( create .env file first using .env.sample as model ):
+
+```bash
+npm run start:dev
 ```
 
 ## Starting with PM2
 
-```
+
+```bash
 npm install -g pm2
 ```
 
-Edit node-red-bridge.json, then
+Create deploy/.env_ files coresponding to your NODE_ENV. ( .env_local for NODE_ENV=local ).
 
-```
-pm2 start node-red-bridge.json
+Edit ecosystem.config.js, then
+
+```bash
+npm run start:local
 ```
 
-If you want autorestart
+If you want to autorestart node-red
 
-```
-pm2 save
+```bash
 pm2 startup
+pm2 save
 ```
 
-## Dependencies
-
-	node-red
-	node-red-contrib-binary
-	node-red-contrib-modbus
-	node-red-contrib-string
-	node-red-contrib-ttn
-	node-red-dashboard

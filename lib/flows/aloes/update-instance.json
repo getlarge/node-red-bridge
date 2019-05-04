@@ -1,0 +1,41 @@
+[
+  {
+    "id": "9257ae9d.5557e",
+    "type": "function",
+    "z": "c0de6673.b307c",
+    "name": "findInstance",
+    "func": "try {\n    // pattern : POST/sensor/3339/3/5523\n    if (msg.topic) {\n        const t = msg.topic.split(\"/\");\n        const storeType = env.get(\"store_type\") || \"default\";\n        const deviceName = env.get(\"device_name\") || t[0];\n        const debug = env.get(\"debug\");\n        const userId = env.get(\"user_id\");\n        if (debug) {\n            console.log(\"instance payload: \", deviceName, msg.topic, msg.payload);\n        }\n        if (msg.payload === undefined) throw new Error(\"Missing payload\"); \n        if (!userId || !deviceName) throw new Error(\"Missing env vars\"); \n        const method = t[0];\n        const collection = t[1].toLowerCase();\n        const objectId = t[2];\n        const nativeSensorId = t[3];\n        const resourceId = t[4];\n        let storeKey;\n        if (collection === \"sensor\" && objectId && nativeSensorId) {\n            storeKey = `sensor-${deviceName}-${objectId}-${nativeSensorId}`;\n        } else if (collection === \"device\") {\n            storeKey = `device-${deviceName}`;\n        }\n        if (debug) {\n            console.log(\"findInstance storeKey : \", storeKey);\n        }\n        if(!storeKey) throw new Error(\"Missing params\");\n        let instance;\n        global.get(storeKey, storeType, (err, res) => {\n            if(err) throw err;\n            instance = res;\n            return instance;\n        });  \n        if (!instance) throw new Error('No instance found');\n        if (debug) {\n            console.log(\"foundInstance: \", instance.name);\n        }\n        if (msg.save) {\n            //const collectionName = `${collection.charAt(0).toUpperCase()}${collection.slice(1)}`;\n            //if (method === \"POST\") {\n            //    msg.topic = `${userId}/${collectionName}/${method}`;\n            //} else {\n            //    msg.topic = `${userId}/${collectionName}/${method}/${instance.id}`;\n            //}\n        } else {\n            //msg.topic = `${userId}/IoTAgent/${method}/${instance.id}`;\n        }\n        \n        msg.topic = `${userId}/IoTAgent/${method}/${instance.id}`;\n\n        msg[collection] = instance;\n        msg.value = msg.payload;\n        msg.resource = resourceId;\n        msg.attribute = objectId;\n        if (debug) {\n            console.log(\"instance params: \", msg.topic, msg.resource);\n        }\n        return msg;\n    }\n    throw new Error(\"Missing params\");\n} catch(error){\n    return error;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 250,
+    "y": 220,
+    "wires": [["59b87ec0.4ecfa8"]]
+  },
+  {
+    "id": "59b87ec0.4ecfa8",
+    "type": "function",
+    "z": "c0de6673.b307c",
+    "name": "updateInstance",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    const storeType = env.get(\"store_type\") || \"default\";\n    let updater; \n    global.get(\"aloesHandlers\", storeType, (err,res) => {\n        if (err) throw err;\n        updater = res.updateAloesSensors;\n    });\n    if (!updater) throw new Error(\"Can't import Aloes Handlers\");\n    //  console.log(\"resource : \", msg.resource);\n    if (msg.payload === undefined) throw new Error(\"undefined sensor.value\");\n    if (msg.sensor && msg.resource) {\n        if (debug) {\n            console.log(\"updateInstance value type: \", typeof msg.payload);\n        }\n        const sensor = updater(msg.sensor, Number(msg.resource), msg.payload);\n        if (!sensor || sensor === null ) throw new Error(\"Error while updating sensor\");\n        if (debug) {\n            console.log(\"updateInstance : \", sensor.name, sensor.resource);\n        }\n        delete msg.sensor;\n        msg.payload = sensor;\n        if (msg instanceof Error) {\n            console.log(\"updateInstance Error : \",msg)\n        }\n        if (env.get(\"debug\")) {\n            return [msg, msg];\n        }\n        return [msg,null];\n        //  return msg;\n    }\n    throw new Error(\"no sensor instance\");\n} catch(error){\n    return error;\n}\n",
+    "outputs": 2,
+    "noerr": 0,
+    "x": 460,
+    "y": 220,
+    "wires": [[], ["b8e8199.4aadee8"]]
+  },
+  {
+    "id": "b8e8199.4aadee8",
+    "type": "debug",
+    "z": "c0de6673.b307c",
+    "name": "updateInstance",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 560,
+    "y": 280,
+    "wires": []
+  }
+]

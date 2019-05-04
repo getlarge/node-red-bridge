@@ -1,0 +1,14 @@
+[
+  {
+    "id": "3580e208.831c3e",
+    "type": "function",
+    "z": "b5e544cd.6db56",
+    "name": "setBuffer",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    if (!msg || msg === null || !msg.sensor) throw new Error(\"No input to parse\");\n    const resourceId = env.get(\"resource_id\");\n    if (!resourceId) throw new Error(\"no resource id set\")\n    const value = msg.sensor.resources[resourceId];    //  const value = msg.sensor.value;\n    if (!value) throw new Error(\"no sensor value found\")\n    if (typeof value === \"string\") {\n        if ( value === \"1\" ||  value === \"true\") return null;\n        else if (value === \"false\" || value === \"0\") {\n            msg.reset = true;\n            return msg;\n        }    \n        //  msg.payload = Buffer.from(value, 'utf-8').toJSON(); \n        msg.payload = Buffer.from(value, 'utf-8').toJSON().data; \n    } else if (typeof value === \"object\" && value.type && value.data){\n        msg.payload = value.data;\n    } else if (Buffer.isBuffer(value)){\n        msg.payload = value;\n    }\n    const type = env.get(\"content_type\");\n    if (type && type !== null) {\n        msg.mimetype = type; \n    }\n    msg.payload = Buffer.from(msg.payload);\n    if (debug) {\n        console.log(`set-buffer for ${resourceId} : ${msg.payload}`)\n    }\n    return msg;\n} catch(error) {\n    return error;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 320,
+    "y": 200,
+    "wires": [[]]
+  }
+]
