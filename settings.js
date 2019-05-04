@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs');
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
-//var fs = require("fs");
+//  const fs = require("fs");
+
 const result = dotenv.config();
 if (result.error) {
   throw result.error;

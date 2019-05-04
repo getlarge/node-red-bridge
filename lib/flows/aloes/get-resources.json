@@ -1,85 +1,71 @@
 [
-    {
-        "id": "99a81e5f.0ba4d",
-        "type": "http request",
-        "z": "46c98519.080884",
-        "name": "getDevices",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": true,
-        "url": "",
-        "tls": "",
-        "proxy": "",
-        "authType": "bearer",
-        "x": 510,
-        "y": 220,
-        "wires": [
-            [
-                "81e3be27.dc6b9"
-            ]
-        ]
-    },
-    {
-        "id": "aeec2c26.101c78",
-        "type": "function",
-        "z": "46c98519.080884",
-        "name": "setQuery",
-        "func": "try {\n    const host = env.get(\"ALOES_HTTP_HOST\");\n    const port = env.get(\"ALOES_HTTP_PORT\");\n    const token = env.get(\"ALOES_TOKEN\");\n    const userId = env.get(\"ALOES_USER_ID\");\n    msg.url = `http://${host}:${port}/api/users/${userId}/devices`;\n    msg.method = \"GET\";\n    msg.headers = {};\n    msg.headers['Authorization'] = token;\n    msg.headers['Accept'] = \"application/json\";\n    msg.headers['Content-Type'] = \"application/json\";\n    msg.headers['x-access-token'] = token;\n    const filter = JSON.stringify({\n          where: {ownerId: userId},\n          include: 'sensors',\n          limit: 20,\n        })\n    //  console.log(msg.url, msg.headers)\n    msg.payload = {token, filter};\n    return msg;\n} catch(error) {\n    return error;\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 380,
-        "y": 220,
-        "wires": [
-            [
-                "99a81e5f.0ba4d"
-            ]
-        ]
-    },
-    {
-        "id": "d364ced7.db10d",
-        "type": "comment",
-        "z": "46c98519.080884",
-        "name": "refresh devices and sensors state",
-        "info": "",
-        "x": 240,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "81e3be27.dc6b9",
-        "type": "function",
-        "z": "46c98519.080884",
-        "name": "parsePayload",
-        "func": "try {\n    if (msg.payload && msg.payload !== null && msg.payload.length > 0) {\n        msg.payload.forEach(device => {\n            const deviceName = device.name.toLowerCase();\n            let message;\n            const userId = env.get(\"ALOES_USER_ID\");\n            if (device.sensors && device.sensors !== null) {\n               device.sensors.forEach(sensor => {\n                    message = {sensor, topic: `${userId}/Sensor/PUT`}\n                    node.send(message);\n               })\n            }\n            message = {device, topic: `${userId}/Device/PUT`}\n            node.send(message);\n        })\n        return null;\n    }\n    throw new Error(\"Wrong payload format\")\n} catch(error){\n    return error;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 660,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3b72865b.d5eb92",
-        "type": "delay",
-        "z": "46c98519.080884",
-        "name": "debounce",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "4",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "x": 260,
-        "y": 220,
-        "wires": [
-            [
-                "aeec2c26.101c78"
-            ]
-        ]
-    }
+  {
+    "id": "99a81e5f.0ba4d",
+    "type": "http request",
+    "z": "46c98519.080884",
+    "name": "getDevices",
+    "method": "use",
+    "ret": "obj",
+    "paytoqs": true,
+    "url": "",
+    "tls": "",
+    "proxy": "",
+    "authType": "bearer",
+    "x": 510,
+    "y": 220,
+    "wires": [["81e3be27.dc6b9"]]
+  },
+  {
+    "id": "aeec2c26.101c78",
+    "type": "function",
+    "z": "46c98519.080884",
+    "name": "setQuery",
+    "func": "try {\n    const host = env.get(\"ALOES_HTTP_HOST\");\n    const port = env.get(\"ALOES_HTTP_PORT\");\n    const token = env.get(\"ALOES_TOKEN\");\n    const userId = env.get(\"ALOES_USER_ID\");\n    msg.url = `http://${host}:${port}/api/users/${userId}/devices`;\n    msg.method = \"GET\";\n    msg.headers = {};\n    msg.headers['Authorization'] = token;\n    msg.headers['Accept'] = \"application/json\";\n    msg.headers['Content-Type'] = \"application/json\";\n    msg.headers['x-access-token'] = token;\n    const filter = JSON.stringify({\n          where: {ownerId: userId},\n          include: 'sensors',\n          limit: 20,\n        })\n    //  console.log(msg.url, msg.headers)\n    msg.payload = {token, filter};\n    return msg;\n} catch(error) {\n    return error;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 380,
+    "y": 220,
+    "wires": [["99a81e5f.0ba4d"]]
+  },
+  {
+    "id": "d364ced7.db10d",
+    "type": "comment",
+    "z": "46c98519.080884",
+    "name": "refresh devices and sensors state",
+    "info": "",
+    "x": 240,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "81e3be27.dc6b9",
+    "type": "function",
+    "z": "46c98519.080884",
+    "name": "parsePayload",
+    "func": "try {\n    if (msg.payload && msg.payload !== null && msg.payload.length > 0) {\n        msg.payload.forEach(device => {\n            const deviceName = device.name.toLowerCase();\n            let message;\n            const method = \"HEAD\"; // \"PUT\"\n            const userId = env.get(\"ALOES_USER_ID\");\n            if (device.sensors && device.sensors !== null) {\n               device.sensors.forEach(sensor => {\n                    sensor.method = method;\n                    message = {sensor, topic: `${userId}/Sensor/${method}`}\n                    node.send(message);\n               })\n            }\n            message = {device, topic: `${userId}/Device/${method}`}\n            node.send(message);\n        })\n        return null;\n    }\n    throw new Error(\"Wrong payload format\")\n} catch(error){\n    return error;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 660,
+    "y": 220,
+    "wires": [[]]
+  },
+  {
+    "id": "3b72865b.d5eb92",
+    "type": "delay",
+    "z": "46c98519.080884",
+    "name": "debounce",
+    "pauseType": "rate",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "4",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 260,
+    "y": 220,
+    "wires": [["aeec2c26.101c78"]]
+  }
 ]

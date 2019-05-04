@@ -11,8 +11,8 @@ module.exports = {
       name: `${result.parsed.NODE_NAME}-${result.parsed.NODE_ENV}`,
       script: './lib/server.js',
       interpreter: 'node',
-      watch: ['lib/*', '.env', 'deploy/*'],
-      ignore_watch: ['lib/flows/*', 'lib/uitemplates/*', 'node_modules', '*.json'],
+      watch: ['lib/*', '.env'],
+      ignore_watch: ['lib/flows/*', 'lib/uitemplates/*', 'deploy/*', 'node_modules', '*.json'],
       watch_options: {
         followSymlinks: false,
       },

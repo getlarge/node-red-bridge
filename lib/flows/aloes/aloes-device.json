@@ -1,49 +1,39 @@
 [
-    {
-        "id": "1f57770.e47af89",
-        "type": "function",
-        "z": "d6de4e87.a646a8",
-        "name": "setInstance",
-        "func": "try {\n    let deviceName = env.get(\"device_name\");\n    if (!deviceName) throw new Error(\"Missing device_name variable\");\n    deviceName = deviceName.toLowerCase();\n    if (msg.device && msg.device !== null && msg.device.id) {\n        const deviceId = env.get(\"device_id\");\n        if (msg.device.id.toString() === deviceId) {\n            const storeType = env.get(\"store_type\") || \"default\";\n            if (msg.device.status) {\n               node.status({fill:\"green\",shape:\"ring\",text:\"connected\"});\n            }\n            else {\n                node.status({fill:\"red\",shape:\"ring\",text:\"disconnected\"});\n            }\n            if (msg.device.sensors) {\n                delete msg.device.sensors;\n            }\n            const storeKey = `device-${deviceName}`;\n            //  console.log(\"setInstance :\", storeKey);\n            global.set(storeKey, msg.device, storeType, (err) => {\n                if(err) throw err;\n            });\n            if (env.get(\"debug\")) {\n                const message = {topic: msg.topic, payload : msg.device}\n                return [msg, null, message];\n            }\n            return [msg, null, null];\n        }\n        return [null, null, null];\n    } else if (msg.sensor && msg.sensor !== null && msg.sensor.deviceId) {\n        const deviceId = env.get(\"device_id\");\n        if (msg.sensor.deviceId.toString() === deviceId) {\n            const storeType = env.get(\"store_type\") || \"memory\";\n            const storeKey = `sensor-${deviceName}-${msg.sensor.type}-${msg.sensor.nativeSensorId}`;\n            //  console.log(\"setInstance : \", storeKey);\n            global.set(storeKey, msg.sensor, storeType, (err) => {\n                if(err) throw err;\n            });\n            if (env.get(\"debug\")) {\n                const message = {topic: msg.topic, payload : msg.sensor}\n                return [null, msg, message];\n            }\n            return [null, msg, null];\n        }\n        return [null, null, null];\n    } \n    throw new Error(\"No instance to parse\")\n} catch(error){\n    return error;\n}\n",
-        "outputs": 3,
-        "noerr": 0,
-        "x": 310,
-        "y": 220,
-        "wires": [
-            [],
-            [],
-            [
-                "20b88b1c.d7bae4"
-            ]
-        ]
-    },
-    {
-        "id": "20b88b1c.d7bae4",
-        "type": "debug",
-        "z": "d6de4e87.a646a8",
-        "name": "${device_name}",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 400,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "1c8cd56c.71b7bb",
-        "type": "status",
-        "z": "d6de4e87.a646a8",
-        "name": "Aloes-Client status",
-        "scope": [
-            "1f57770.e47af89"
-        ],
-        "x": 250,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    }
+  {
+    "id": "1f57770.e47af89",
+    "type": "function",
+    "z": "d6de4e87.a646a8",
+    "name": "setInstance",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    let deviceName = env.get(\"device_name\");\n    if (!deviceName) throw new Error(\"Missing device_name variable\");\n    deviceName = deviceName.toLowerCase();\n    if (msg.device && msg.device !== null && msg.device.id) {\n        const deviceId = env.get(\"device_id\");\n        if (msg.device.id.toString() === deviceId) {\n            if (msg.device.status) {\n               node.status({fill:\"green\",shape:\"ring\",text:\"connected\"});\n            }\n            else {\n                node.status({fill:\"red\",shape:\"ring\",text:\"disconnected\"});\n            }\n            if (msg.device.sensors) {\n                delete msg.device.sensors;\n            }\n            if (debug) {\n                const message = {topic: msg.topic, payload : msg.device}\n                return [msg, null, message];\n            }\n            return [msg, null, null];\n        }\n        return [null, null, null];\n    } else if (msg.sensor && msg.sensor !== null && msg.sensor.deviceId) {\n        const deviceId = env.get(\"device_id\");\n        if (msg.sensor.deviceId.toString() === deviceId) {\n            if (debug) {\n                const message = {topic: msg.topic, payload : msg.sensor}\n                return [null, msg, message];\n            }\n            return [null, msg, null];\n        }\n        return [null, null, null];\n    } \n    throw new Error(\"No instance to parse\")\n} catch(error){\n    return error;\n}\n",
+    "outputs": 3,
+    "noerr": 0,
+    "x": 310,
+    "y": 220,
+    "wires": [[], [], ["20b88b1c.d7bae4"]]
+  },
+  {
+    "id": "20b88b1c.d7bae4",
+    "type": "debug",
+    "z": "d6de4e87.a646a8",
+    "name": "${device_name}",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 400,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "1c8cd56c.71b7bb",
+    "type": "status",
+    "z": "d6de4e87.a646a8",
+    "name": "Aloes-Client status",
+    "scope": ["1f57770.e47af89"],
+    "x": 250,
+    "y": 80,
+    "wires": [[]]
+  }
 ]

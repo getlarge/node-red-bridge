@@ -1,0 +1,14 @@
+[
+  {
+    "id": "38b42356.81877c",
+    "type": "function",
+    "z": "1febbaa6.b1a055",
+    "name": "setText",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    if (!msg || msg === null || !msg.sensor) throw new Error(\"No input to parse\");\n    const resourceId = env.get(\"resource_id\");\n    if (!resourceId) throw new Error(\"no resource id set\")\n    const value = msg.sensor.resources[resourceId];\n    if (!value) throw new Error(\"no sensor value found\")\n    if (debug) {\n        console.log(`get-text for ${resourceId} :`, value)\n    }\n    if (typeof value === \"string\") {\n        msg.payload = value; \n    } else if (typeof value === \"number\") {\n        msg.payload = value.toString();\n    } else if (typeof value === \"boolean\") {\n        msg.payload = value.toString();\n    } else if (typeof value === \"object\" && value.type && value.data){\n        msg.payload = value.data.toString('utf-8');\n    } else if (Buffer.isBuffer(value)){\n        msg.payload = value.toString('utf-8');\n    } else {\n        return null;\n    }\n    if (debug) {\n        console.log(`set-text for ${resourceId} : ${msg.payload}`)\n    }\n    return msg;\n} catch(error) {\n    return error;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 310,
+    "y": 160,
+    "wires": [[]]
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "9a6a72d.777139",
+    "type": "function",
+    "z": "6ed0ecb5.468ecc",
+    "name": "setTopic",
+    "func": "try {\n    const debug = env.get(\"debug\");\n    const userId = env.get(\"user_id\");\n    const save = env.get(\"save_instance\");\n    if (!userId ) throw new Error(\"Missing params\"); \n    if (save) {\n        msg.save = save;\n    }\n    if (debug) {\n        console.log(\"get-topic\", msg.topic, msg.save)\n    }\n    if (!msg.sensor) {\n        const method = env.get(\"method\") || \"HEAD\";\n        const collection = env.get(\"collection\") || \"sensor\";\n        const objectId = env.get(\"object_id\") || \"3300\";\n        const instanceId = env.get(\"sensor_id\");\n        const resourceId = env.get(\"resource_id\");\n        msg.topic = `${method}/${collection}/${objectId}/${instanceId}/${resourceId}`;\n        if (debug) {\n            console.log(\"set-topic from empty\", msg.topic)\n        }\n        return msg;\n    } else if (msg.sensor && msg.sensor.method && msg.sensor.method === \"HEAD\") {\n        if (debug) {\n            console.log(\"get-topic\", msg.sensor.method)\n        }\n        return null;\n    } else if (msg.topic.startsWith(userId) && msg.parts) {\n        const method = msg.parts[2];\n        const collection = msg.parts[1].toLowerCase();\n        const objectId = msg.sensor.type;\n        const instanceId = msg.sensor.nativeSensorId;\n        const resourceId = msg.sensor.resource;\n        msg.topic = `${method}/${collection}/${objectId}/${instanceId}/${resourceId}`;\n        if (debug) {\n            console.log(\"set-topic from existing\", msg.topic)\n        }\n        return msg;\n    }\n    return null;\n} catch(error) {\n    return error;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 420,
+    "y": 160,
+    "wires": [[]]
+  }
+]
