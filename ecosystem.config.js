@@ -9,7 +9,7 @@ module.exports = {
   apps: [
     {
       name: `${result.parsed.NODE_NAME}-${result.parsed.NODE_ENV}`,
-      script: './lib/server.js',
+      script: './dist/index.js',
       interpreter: 'node',
       watch: ['lib/*', '.env'],
       ignore_watch: ['lib/flows/*', 'lib/uitemplates/*', 'deploy/*', 'node_modules', '*.json'],
@@ -23,7 +23,7 @@ module.exports = {
       wait_ready: true,
       listen_timeout: 3000,
       env: {
-        NODE_ENV: 'local',
+        NODE_ENV: result.parsed.NODE_ENV,
       },
       env_staging: {
         NODE_ENV: 'staging',
