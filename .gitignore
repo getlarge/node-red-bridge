@@ -45,3 +45,6 @@ context/
 
 # Environment variables
 .env
+
+# build files
+dist

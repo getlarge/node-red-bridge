@@ -41,7 +41,7 @@ git clone https://framagit.org/aloes/node-red-bridge.git
 npm install
 ```
 
-## Starting with Node-red CLI
+### Starting with Node-red CLI
 
 When running multiple instances in parallel, you can specify a port:
 
@@ -54,7 +54,7 @@ To run a specific flow file:
 npm run start -- testFlow.json
 ```
 
-## Starting with Nodemon
+### Starting with Nodemon
 
 To run via Express ( create .env file first using .env.sample as model ):
 
@@ -62,8 +62,7 @@ To run via Express ( create .env file first using .env.sample as model ):
 npm run start:dev
 ```
 
-## Starting with PM2
-
+### Starting with PM2
 
 ```bash
 npm install -g pm2
