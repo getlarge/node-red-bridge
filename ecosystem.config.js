@@ -12,7 +12,14 @@ module.exports = {
       script: './dist/index.js',
       interpreter: 'node',
       watch: ['lib/*', '.env'],
-      ignore_watch: ['lib/flows/*', 'lib/uitemplates/*', 'deploy/*', 'node_modules', '*.json'],
+      ignore_watch: [
+        'lib/flows/*',
+        'lib/functions/*',
+        'lib/uitemplates/*',
+        'deploy/*',
+        'node_modules',
+        '*.json',
+      ],
       watch_options: {
         followSymlinks: false,
       },

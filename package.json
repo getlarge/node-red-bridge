@@ -4,15 +4,18 @@
   "description": "Node-RED running in local mode, served by Express",
   "scripts": {
     "lint": "npx eslint --ext js .",
-    "build": "npx babel lib --out-dir dist --ignore './lib/uitemplates/*'",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "npm run clean ; npx babel lib --out-dir dist --copy-files --ignore './lib/uitemplates/*','./lib/functions/*'",
     "start": "node node_modules/node-red/red.js -v -u .",
-    "start:dev": "cp deploy/.env_development .env ; NODE_ENV=development node ./nodemon.js",
-    "start:local": "cp deploy/.env_local .env ; NODE_ENV=local node ./nodemon.js",
-    "deploy:local": "npm run build ; cp deploy/.env_local .env ; pm2 startOrRestart ecosystem.config.js --update-env"
+    "start:dev": "cp deploy/.env_development .env ; npm run build ; export NODE_ENV=development ; node ./nodemon.js",
+    "start:local": "cp deploy/.env_local .env ; npm run build ; export NODE_ENV=local; --max-old-space-size=4096  --max-memory-restart=4096 node ./nodemon.js",
+    "start:stage": "cp deploy/.env_staging .env ; npm run build ; export NODE_ENV=staging ; node --max-old-space-size=4096 --max-memory-restart=4096 ./nodemon.js",
+    "deploy:local": "cp deploy/.env_local .env ; npm run build ; pm2 startOrRestart ecosystem.config.js --update-env",
+    "deploy:stage": "cp deploy/.env_staging .env ; npm run build ; pm2 startOrRestart ecosystem.config.js --update-env"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
-    "aloes-handlers": "^1.2.6",
+    "aloes-handlers": "^1.2.11",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-basic-auth": "^1.2.0",
@@ -24,7 +27,7 @@
     "node-red-contrib-browser-utils": "0.0.8",
     "node-red-contrib-osc": "~1.1.0",
     "node-red-contrib-slip": "~1.0.1",
-    "node-red-dashboard": "^2.15.0",
+    "node-red-dashboard": "^2.15.5",
     "node-red-node-email": "^1.4.0",
     "node-red-node-serialport": "~0.8.1"
   },
