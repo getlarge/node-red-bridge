@@ -24,7 +24,7 @@
     "node-red-contrib-browser-utils": "0.0.8",
     "node-red-contrib-osc": "~1.1.0",
     "node-red-contrib-slip": "~1.0.1",
-    "node-red-dashboard": "^2.15.0",
+    "node-red-dashboard": "^2.17.0",
     "node-red-node-email": "^1.4.0",
     "node-red-node-serialport": "~0.8.1"
   },
