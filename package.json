@@ -5,10 +5,13 @@
   "scripts": {
     "lint": "npx eslint --ext js .",
     "build": "npx babel lib --out-dir dist --ignore './lib/uitemplates/*'",
+    "build:docker": "cp deploy/.env_docker .env ; docker build -t getlarge/node-red-bridge:staging .",
     "start": "node node_modules/node-red/red.js -v -u .",
     "start:dev": "cp deploy/.env_development .env ; NODE_ENV=development node ./nodemon.js",
     "start:local": "cp deploy/.env_local .env ; NODE_ENV=local node ./nodemon.js",
-    "deploy:local": "npm run build ; cp deploy/.env_local .env ; pm2 startOrRestart ecosystem.config.js --update-env"
+    "start:docker": "cp deploy/.env_docker .env ; docker run -p 9000:9000 --restart always --name node-red-bridge -d getlarge/node-red-bridge:staging",
+    "deploy:local": "npm run build ; cp deploy/.env_local .env ; pm2 startOrRestart ecosystem.config.js --update-env",
+    "stop:docker": "docker stop node-red-bridge"
   },
   "dependencies": {
     "@babel/runtime": "^7.9.6",
