@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.6",
-    "aloes-handlers": "^1.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "express-basic-auth": "^1.2.0",
@@ -24,14 +23,14 @@
     "node-cleanup": "^2.1.2",
     "node-lame": "^1.2.2",
     "node-red": "^1.0.6",
-    "node-red-contrib-aloes": "^1.0.2",
+    "node-red-contrib-aloes": "^1.0.4",
     "node-red-contrib-aloes-ui": "^1.0.1",
     "node-red-contrib-browser-utils": "0.0.8",
     "node-red-contrib-osc": "~1.1.0",
     "node-red-contrib-slip": "~1.1.0",
     "node-red-dashboard": "^2.22.1",
     "node-red-node-email": "^1.7.8",
-    "node-red-node-serialport": "~0.10.2"
+    "node-red-node-serialport": "~0.10.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
