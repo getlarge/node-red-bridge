@@ -1,321 +1,6 @@
 [
     {
-        "id": "bd375408.2f8e08",
-        "type": "subflow",
-        "name": "get-oma-references",
-        "info": "",
-        "category": "aloes",
-        "in": [
-            {
-                "x": 100,
-                "y": 180,
-                "wires": [
-                    {
-                        "id": "6578ca28.bcb0e4"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 1140,
-                "y": 180,
-                "wires": [
-                    {
-                        "id": "6da7a926.876a38",
-                        "port": 0
-                    },
-                    {
-                        "id": "e74065bc.3288e8",
-                        "port": 0
-                    },
-                    {
-                        "id": "54eb348f.9f4eac",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "debug",
-                "type": "bool",
-                "value": "true"
-            },
-            {
-                "name": "ALOES_HTTP_HOST",
-                "type": "env",
-                "value": "ALOES_HTTP_HOST"
-            },
-            {
-                "name": "ALOES_HTTP_PORT",
-                "type": "env",
-                "value": "ALOES_HTTP_PORT"
-            },
-            {
-                "name": "ALOES_HTTP_SECURE",
-                "type": "env",
-                "value": "ALOES_HTTP_SECURE"
-            },
-            {
-                "name": "ALOES_TOKEN",
-                "type": "env",
-                "value": "ALOES_TOKEN"
-            },
-            {
-                "name": "ALOES_USER_ID",
-                "type": "env",
-                "value": "ALOES_USER_ID"
-            },
-            {
-                "name": "ALOES_HTTP_API_ROOT",
-                "type": "env",
-                "value": "ALOES_HTTP_API_ROOT"
-            },
-            {
-                "name": "NODE_RED_STORE_TYPE",
-                "type": "env",
-                "value": "NODE_RED_STORE_TYPE"
-            }
-        ],
-        "status": {
-            "x": 1140,
-            "y": 100,
-            "wires": [
-                {
-                    "id": "61024bab.04f6f4",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "d1482720.bb9e78",
-        "type": "subflow:634979f8.a08618",
-        "z": "bd375408.2f8e08",
-        "name": "OmaObjects",
-        "env": [
-            {
-                "name": "collection",
-                "type": "str",
-                "value": "OmaObjects"
-            }
-        ],
-        "x": 590,
-        "y": 180,
-        "wires": [
-            [
-                "6da7a926.876a38"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "6578ca28.bcb0e4",
-        "type": "delay",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "x": 240,
-        "y": 180,
-        "wires": [
-            [
-                "d1482720.bb9e78",
-                "68015dc6.65a6c4"
-            ]
-        ]
-    },
-    {
-        "id": "61024bab.04f6f4",
-        "type": "status",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "scope": [
-            "d1482720.bb9e78",
-            "abb66ae5.7a56a8",
-            "b8274b79.036a68"
-        ],
-        "x": 600,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b8274b79.036a68",
-        "type": "subflow:634979f8.a08618",
-        "z": "bd375408.2f8e08",
-        "name": "OmaViews",
-        "env": [
-            {
-                "name": "collection",
-                "type": "str",
-                "value": "OmaViews"
-            }
-        ],
-        "x": 590,
-        "y": 380,
-        "wires": [
-            [
-                "54eb348f.9f4eac"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "abb66ae5.7a56a8",
-        "type": "subflow:634979f8.a08618",
-        "z": "bd375408.2f8e08",
-        "name": "OmaResources",
-        "env": [
-            {
-                "name": "collection",
-                "type": "str",
-                "value": "OmaResources"
-            }
-        ],
-        "x": 600,
-        "y": 280,
-        "wires": [
-            [
-                "e74065bc.3288e8"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "54eb348f.9f4eac",
-        "type": "change",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "omaViews",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 860,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6da7a926.876a38",
-        "type": "change",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "omaObjects",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 860,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e74065bc.3288e8",
-        "type": "change",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "omaResources",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 870,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "68015dc6.65a6c4",
-        "type": "delay",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "500",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "x": 230,
-        "y": 280,
-        "wires": [
-            [
-                "abb66ae5.7a56a8",
-                "81d0941d.a20718"
-            ]
-        ]
-    },
-    {
-        "id": "81d0941d.a20718",
-        "type": "delay",
-        "z": "bd375408.2f8e08",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "500",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "x": 230,
-        "y": 380,
-        "wires": [
-            [
-                "b8274b79.036a68"
-            ]
-        ]
-    },
-    {
-        "id": "31bb48b9.494fa8",
+        "id": "35be4516.a176d2",
         "type": "subflow",
         "name": "aloes-status",
         "info": "",
@@ -326,7 +11,7 @@
                 "y": 160,
                 "wires": [
                     {
-                        "id": "7b482de.3c25ed4"
+                        "id": "bf64c9a2.9fc9f"
                     }
                 ]
             }
@@ -337,7 +22,7 @@
                 "y": 380,
                 "wires": [
                     {
-                        "id": "c354d250.1a2f6",
+                        "id": "3a2a8728.3afa1",
                         "port": 0
                     }
                 ]
@@ -346,9 +31,9 @@
         "env": []
     },
     {
-        "id": "cc85544a.dd4d58",
+        "id": "29a7420a.79cee6",
         "type": "change",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "aloesClientStatus",
         "rules": [
             {
@@ -368,15 +53,15 @@
         "y": 160,
         "wires": [
             [
-                "e7873d55.be2ff"
+                "ab7b6113.5c5f48"
             ]
         ]
     },
     {
-        "id": "e7873d55.be2ff",
+        "id": "ab7b6113.5c5f48",
         "type": "ui_template",
-        "z": "31bb48b9.494fa8",
-        "group": "f49a24d0.7ac858",
+        "z": "35be4516.a176d2",
+        "group": "8e0c00bc.0d5d28",
         "name": "aloes-status-icon",
         "order": 1,
         "width": "6",
@@ -393,9 +78,9 @@
         ]
     },
     {
-        "id": "37468039.52b2b",
+        "id": "86f990f8.0ad3a8",
         "type": "change",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "devicesStatus",
         "rules": [
             {
@@ -415,15 +100,15 @@
         "y": 220,
         "wires": [
             [
-                "d3fce206.a6712"
+                "3e97b26c.02f12e"
             ]
         ]
     },
     {
-        "id": "d3fce206.a6712",
+        "id": "3e97b26c.02f12e",
         "type": "ui_template",
-        "z": "31bb48b9.494fa8",
-        "group": "f49a24d0.7ac858",
+        "z": "35be4516.a176d2",
+        "group": "8e0c00bc.0d5d28",
         "name": "device-status-icon",
         "order": 3,
         "width": "6",
@@ -440,11 +125,11 @@
         ]
     },
     {
-        "id": "c354d250.1a2f6",
+        "id": "3a2a8728.3afa1",
         "type": "ui_button",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "refresh state",
-        "group": "f49a24d0.7ac858",
+        "group": "8e0c00bc.0d5d28",
         "order": 7,
         "width": "6",
         "height": "1",
@@ -464,14 +149,14 @@
         ]
     },
     {
-        "id": "619c22.92e673e",
+        "id": "4defaf20.f9cd8",
         "type": "ui_dropdown",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "devicesSelection",
         "label": "Devices selection",
         "tooltip": "",
         "place": "Select option",
-        "group": "f49a24d0.7ac858",
+        "group": "8e0c00bc.0d5d28",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -492,9 +177,9 @@
         ]
     },
     {
-        "id": "6974c755.1a5c78",
+        "id": "5cdd84f8.fcab24",
         "type": "change",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "devicesSelection",
         "rules": [
             {
@@ -514,14 +199,14 @@
         "y": 280,
         "wires": [
             [
-                "619c22.92e673e"
+                "4defaf20.f9cd8"
             ]
         ]
     },
     {
-        "id": "7b482de.3c25ed4",
+        "id": "bf64c9a2.9fc9f",
         "type": "delay",
-        "z": "31bb48b9.494fa8",
+        "z": "35be4516.a176d2",
         "name": "",
         "pauseType": "rate",
         "timeout": "5",
@@ -537,25 +222,25 @@
         "y": 160,
         "wires": [
             [
-                "cc85544a.dd4d58",
-                "37468039.52b2b",
-                "6974c755.1a5c78"
+                "29a7420a.79cee6",
+                "86f990f8.0ad3a8",
+                "5cdd84f8.fcab24"
             ]
         ]
     },
     {
-        "id": "f49a24d0.7ac858",
+        "id": "8e0c00bc.0d5d28",
         "type": "ui_group",
         "z": "",
         "name": "status",
-        "tab": "f6f0242.21726d8",
+        "tab": "c8302d17.78ec3",
         "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "f6f0242.21726d8",
+        "id": "c8302d17.78ec3",
         "type": "ui_tab",
         "z": "",
         "name": "status",
@@ -565,7 +250,7 @@
         "hidden": false
     },
     {
-        "id": "dabefe0c.eebd7",
+        "id": "2081b405.5d4b6c",
         "type": "subflow",
         "name": "ui-router",
         "info": "",
@@ -576,7 +261,7 @@
                 "y": 400,
                 "wires": [
                     {
-                        "id": "4165997f.318d98"
+                        "id": "d33a14fa.c95998"
                     }
                 ]
             }
@@ -587,7 +272,7 @@
                 "y": 220,
                 "wires": [
                     {
-                        "id": "10b949a.86c1ab6",
+                        "id": "fa949cdc.c7a088",
                         "port": 0
                     }
                 ]
@@ -597,11 +282,11 @@
                 "y": 320,
                 "wires": [
                     {
-                        "id": "4e2a5661.2f7318",
+                        "id": "3783d2c9.d8ffb6",
                         "port": 0
                     },
                     {
-                        "id": "dfe7079f.f7b978",
+                        "id": "5b3fba5.facef44",
                         "port": 0
                     }
                 ]
@@ -620,9 +305,9 @@
         ]
     },
     {
-        "id": "f9e81d2e.56f76",
+        "id": "e409ffe3.71382",
         "type": "comment",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "INPUT",
         "info": "- receive tabs ( pages ) changes events.\n\n- validate group diplay based on each tab accessed and global state",
         "x": 150,
@@ -630,9 +315,9 @@
         "wires": []
     },
     {
-        "id": "4165997f.318d98",
+        "id": "d33a14fa.c95998",
         "type": "switch",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "tab name",
         "property": "name",
         "propertyType": "msg",
@@ -660,20 +345,20 @@
         "y": 400,
         "wires": [
             [
-                "10b949a.86c1ab6"
+                "fa949cdc.c7a088"
             ],
             [
-                "6f2fbb8a.1f7314"
+                "56cdd7ba.34d86"
             ],
             [
-                "bb872e53.be7e7"
+                "907099f5.39de4"
             ]
         ]
     },
     {
-        "id": "d35ffcd7.d0e9a",
+        "id": "de943733.e9ae08",
         "type": "ui_ui_control",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "init-ui",
         "x": 990,
         "y": 500,
@@ -682,9 +367,9 @@
         ]
     },
     {
-        "id": "bb872e53.be7e7",
+        "id": "907099f5.39de4",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "showAuth",
         "rules": [
             {
@@ -704,14 +389,14 @@
         "y": 500,
         "wires": [
             [
-                "d35ffcd7.d0e9a"
+                "de943733.e9ae08"
             ]
         ]
     },
     {
-        "id": "b872def3.c571a",
+        "id": "f9701c29.07f8e",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "showContent",
         "rules": [
             {
@@ -731,14 +416,14 @@
         "y": 560,
         "wires": [
             [
-                "d35ffcd7.d0e9a"
+                "de943733.e9ae08"
             ]
         ]
     },
     {
-        "id": "62ee95c.05b236c",
+        "id": "7d861f97.b45e8",
         "type": "function",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "func": "try {\n    let sequenceIsValid = false;\n    let tooManyAttempts = false;\n    let number1;\n    flow.get(\"number1\", \"memory\", (err, res) => {\n        if (err) throw err;\n        number1 = res;\n    })\n    let number2;\n    flow.get(\"number2\", \"memory\", (err, res) => {\n        if (err) throw err;\n        number2 = res;\n    })\n    let number3;\n    flow.get(\"number3\", \"memory\", (err, res) => {\n        if (err) throw err;\n        number3 = res;\n    })\n    \n    if (number1 === 1 && number2 === 1 && number3 === 2) {\n        sequenceIsValid = true;\n    }\n    // increment countdown\n    if (sequenceIsValid === true) {\n        return msg;\n    } \n    return null;\n} catch(error) {\n    return error;\n}",
         "outputs": 1,
@@ -747,16 +432,16 @@
         "y": 560,
         "wires": [
             [
-                "b872def3.c571a"
+                "f9701c29.07f8e"
             ]
         ]
     },
     {
-        "id": "faca1689.3231f8",
+        "id": "740aa84f.39127",
         "type": "ui_button",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
-        "group": "936ca0d1.a08ad",
+        "group": "90e66c08.82ba8",
         "order": 4,
         "width": "3",
         "height": "1",
@@ -773,18 +458,18 @@
         "y": 560,
         "wires": [
             [
-                "62ee95c.05b236c"
+                "7d861f97.b45e8"
             ]
         ]
     },
     {
-        "id": "cc59aa61.adfe48",
+        "id": "42f2eca3.7fa51c",
         "type": "ui_numeric",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "number1",
         "label": "",
         "tooltip": "",
-        "group": "936ca0d1.a08ad",
+        "group": "90e66c08.82ba8",
         "order": 1,
         "width": "2",
         "height": "1",
@@ -798,18 +483,18 @@
         "y": 620,
         "wires": [
             [
-                "532dc777.705758"
+                "c038bb9c.1b9928"
             ]
         ]
     },
     {
-        "id": "f309a38b.40fe9",
+        "id": "24a2c4a3.4e9614",
         "type": "ui_numeric",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "number2",
         "label": "",
         "tooltip": "",
-        "group": "936ca0d1.a08ad",
+        "group": "90e66c08.82ba8",
         "order": 2,
         "width": "2",
         "height": "1",
@@ -823,18 +508,18 @@
         "y": 660,
         "wires": [
             [
-                "26b608de.95bd78"
+                "397c105d.fc2f88"
             ]
         ]
     },
     {
-        "id": "1b45d249.10428e",
+        "id": "57ef0d5c.45d9fc",
         "type": "ui_numeric",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "number3",
         "label": "",
         "tooltip": "",
-        "group": "936ca0d1.a08ad",
+        "group": "90e66c08.82ba8",
         "order": 3,
         "width": "2",
         "height": "1",
@@ -848,14 +533,14 @@
         "y": 700,
         "wires": [
             [
-                "18814e9.263aeb1"
+                "27862323.2707f4"
             ]
         ]
     },
     {
-        "id": "532dc777.705758",
+        "id": "c038bb9c.1b9928",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "rules": [
             {
@@ -878,9 +563,9 @@
         ]
     },
     {
-        "id": "26b608de.95bd78",
+        "id": "397c105d.fc2f88",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "rules": [
             {
@@ -903,9 +588,9 @@
         ]
     },
     {
-        "id": "18814e9.263aeb1",
+        "id": "27862323.2707f4",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "rules": [
             {
@@ -928,13 +613,13 @@
         ]
     },
     {
-        "id": "c14b3fcd.29158",
+        "id": "1edc4303.d1a59d",
         "type": "ui_text_input",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "label": "",
         "tooltip": "",
-        "group": "936ca0d1.a08ad",
+        "group": "90e66c08.82ba8",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -946,14 +631,14 @@
         "y": 800,
         "wires": [
             [
-                "d147e023.380ec"
+                "a6eab0a4.8d6e3"
             ]
         ]
     },
     {
-        "id": "d147e023.380ec",
+        "id": "a6eab0a4.8d6e3",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "rules": [
             {
@@ -976,9 +661,9 @@
         ]
     },
     {
-        "id": "dfe7079f.f7b978",
+        "id": "5b3fba5.facef44",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "setDeviceTrigger",
         "rules": [
             {
@@ -1015,9 +700,9 @@
         ]
     },
     {
-        "id": "fa03cde9.4c569",
+        "id": "f240aa5.0efe358",
         "type": "debug",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1030,9 +715,9 @@
         "wires": []
     },
     {
-        "id": "6f2fbb8a.1f7314",
+        "id": "56cdd7ba.34d86",
         "type": "function",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "showDevicesSelection",
         "func": "try {\n    const storeType = env.get(\"store_type\") || \"file\";\n    const storeType2 = env.get(\"store_type2\") || \"memoryOnly\";\n    let devicesSelection;\n    global.get(\"devicesSelection\", storeType, (err,res) => {\n        if (err) throw err;\n        devicesSelection = res;\n    });\n    let devicesList;\n    global.get(\"devicesList\", storeType2, (err,res) => {\n        if (err) throw err;\n        devicesList = res;\n    });\n    msg.payload = {group: {hide: [], show : []}};\n    msg.devicesList = devicesList;\n    msg.showList = [];\n    msg.hideList = [];\n    delete msg.socketid;\n    delete msg.socketip;\n    delete msg.tab;\n    devicesList.forEach(deviceName => {\n        if (devicesSelection.find(dev => dev === deviceName)) {\n            msg.showList.push(`${deviceName}`);\n            msg.payload.group.show.push(`devices_${deviceName}`);\n        } else {\n            msg.hideList.push(`${deviceName}`);\n            msg.payload.group.hide.push(`devices_${deviceName}`);\n        }\n    });\n    return msg;\n} catch(error){\n    return null;\n} \n\n        ",
         "outputs": 1,
@@ -1041,15 +726,15 @@
         "y": 400,
         "wires": [
             [
-                "d35ffcd7.d0e9a",
-                "113b1c60.ee5964"
+                "de943733.e9ae08",
+                "793bd27b.118d74"
             ]
         ]
     },
     {
-        "id": "113b1c60.ee5964",
+        "id": "793bd27b.118d74",
         "type": "function",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "showListUpdate",
         "func": "try {\n    if (!msg.showList) return null;\n    msg.devicesList.forEach(deviceName => node.send({deviceName, topic: `refresh/${deviceName}`}));\n    //  msg.showList.forEach(deviceName => node.send({deviceName, topic: `refresh/device/${deviceName}`}));\n} catch(error){\n    return null;\n} \n\n        ",
         "outputs": 1,
@@ -1058,15 +743,15 @@
         "y": 340,
         "wires": [
             [
-                "dfe7079f.f7b978",
-                "4e2a5661.2f7318"
+                "5b3fba5.facef44",
+                "3783d2c9.d8ffb6"
             ]
         ]
     },
     {
-        "id": "4e2a5661.2f7318",
+        "id": "3783d2c9.d8ffb6",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "setSensorTrigger",
         "rules": [
             {
@@ -1108,9 +793,9 @@
         ]
     },
     {
-        "id": "10b949a.86c1ab6",
+        "id": "fa949cdc.c7a088",
         "type": "change",
-        "z": "dabefe0c.eebd7",
+        "z": "2081b405.5d4b6c",
         "name": "setStatusTrigger",
         "rules": [
             {
@@ -1140,418 +825,18 @@
         ]
     },
     {
-        "id": "936ca0d1.a08ad",
+        "id": "90e66c08.82ba8",
         "type": "ui_group",
         "z": "",
         "name": "auth",
-        "tab": "e96a2f97.c158c",
+        "tab": "a92aa2d9.26d21",
         "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "634979f8.a08618",
-        "type": "subflow",
-        "name": "set-aloes-request",
-        "info": "",
-        "category": "aloes",
-        "in": [
-            {
-                "x": 140,
-                "y": 180,
-                "wires": [
-                    {
-                        "id": "3218c745.3b9bc8"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 1200,
-                "y": 180,
-                "wires": [
-                    {
-                        "id": "71aa7052.ff007",
-                        "port": 1
-                    },
-                    {
-                        "id": "1cdd0c10.dea2b4",
-                        "port": 0
-                    }
-                ]
-            },
-            {
-                "x": 1200,
-                "y": 260,
-                "wires": [
-                    {
-                        "id": "b43239b2.d6b468",
-                        "port": 1
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "aloes_token",
-                "type": "env",
-                "value": "ALOES_TOKEN"
-            },
-            {
-                "name": "aloes_http_secure",
-                "type": "env",
-                "value": "ALOES_HTTP_SECURE"
-            },
-            {
-                "name": "aloes_http_host",
-                "type": "env",
-                "value": "ALOES_HTTP_HOST"
-            },
-            {
-                "name": "aloes_http_port",
-                "type": "env",
-                "value": "ALOES_HTTP_PORT"
-            },
-            {
-                "name": "aloes_http_api_root",
-                "type": "env",
-                "value": "ALOES_HTTP_API_ROOT"
-            },
-            {
-                "name": "content_type",
-                "type": "str",
-                "value": "application/json"
-            },
-            {
-                "name": "collection",
-                "type": "str",
-                "value": "Devices"
-            },
-            {
-                "name": "method",
-                "type": "str",
-                "value": "GET"
-            },
-            {
-                "name": "path",
-                "type": "str",
-                "value": ""
-            }
-        ],
-        "icon": "node-red/white-globe.png",
-        "status": {
-            "x": 1200,
-            "y": 60,
-            "wires": [
-                {
-                    "id": "6375d397.d1ef0c",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "3218c745.3b9bc8",
-        "type": "function",
-        "z": "634979f8.a08618",
-        "name": "set-aloes-request",
-        "func": "const token = env.get('aloes_token');\nconst path = env.get('path');\nmsg.contentType = env.get(\"content_type\") || \"application/json\";\nmsg.method = env.get(\"method\") || 'GET';\nmsg.headers = {};\nmsg.headers['Authorization'] = token;\nmsg.headers['Accept'] = `${msg.contentType}, text/plain`;\nmsg.headers['Content-Type'] = msg.contentType;\nmsg.headers['x-access-token'] = token;\n//  msg.headers['Origin'] = 'http://localhost:8000';\n//  msg.headers['Connection'] = 'keep-alive';\nlet protocol = 'http';\nif (env.get('aloes_http_secure') === 'true') {\n    protocol = 'https';\n}\nconst collection = msg.collection || env.get('collection') || 'Devices';\nconst aloesApiRoot = env.get('aloes_http_api_root') || '/api';\nmsg.baseUrl = `${protocol}://${env.get('aloes_http_host')}:${env.get('aloes_http_port')}${aloesApiRoot}`;\nmsg.url = `${msg.baseUrl}/${collection}`;\nif (path) {\n    msg.url = `${msg.url}/${path}`;\n}\nif (msg.filter) {\n    //  msg.url = `${msg.url}?filter=${JSON.stringify(msg.filter).toString()}`;\n    msg.url = `${msg.url}?filter=${msg.filter}`;\n}\nreturn msg; \n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 310,
-        "y": 180,
-        "wires": [
-            [
-                "6a8ace38.90b31"
-            ]
-        ]
-    },
-    {
-        "id": "6a8ace38.90b31",
-        "type": "http request",
-        "z": "634979f8.a08618",
-        "name": "",
-        "method": "use",
-        "ret": "txt",
-        "paytoqs": false,
-        "url": "",
-        "tls": "",
-        "proxy": "",
-        "authType": "basic",
-        "x": 530,
-        "y": 180,
-        "wires": [
-            [
-                "b43239b2.d6b468"
-            ]
-        ]
-    },
-    {
-        "id": "71aa7052.ff007",
-        "type": "switch",
-        "z": "634979f8.a08618",
-        "name": "",
-        "property": "contentType",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "application/json",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 950,
-        "y": 160,
-        "wires": [
-            [
-                "1cdd0c10.dea2b4"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "1cdd0c10.dea2b4",
-        "type": "json",
-        "z": "634979f8.a08618",
-        "name": "",
-        "property": "payload",
-        "action": "obj",
-        "pretty": false,
-        "x": 1070,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b43239b2.d6b468",
-        "type": "function",
-        "z": "634979f8.a08618",
-        "name": "parse-HTTP-response",
-        "func": "try {\n    if (msg.statusCode && msg.statusCode === 200) {\n        node.status({fill:\"green\",shape:\"ring\",text:\"success\"});\n        return [msg,null];\n    }\n    node.status({fill:\"red\",shape:\"ring\",text:\"error\"});\n    return [null,msg];\n} catch(error) {\n    return null;\n}\n",
-        "outputs": 2,
-        "noerr": 0,
-        "x": 740,
-        "y": 180,
-        "wires": [
-            [
-                "71aa7052.ff007"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "6375d397.d1ef0c",
-        "type": "status",
-        "z": "634979f8.a08618",
-        "name": "",
-        "scope": [
-            "6a8ace38.90b31",
-            "b43239b2.d6b468"
-        ],
-        "x": 720,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fbfe0691.2c23a8",
-        "type": "subflow",
-        "name": "get-measurements",
-        "info": "",
-        "category": "aloes",
-        "in": [
-            {
-                "x": 100,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "7a490c66.5b5cf4"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 1020,
-                "y": 160,
-                "wires": [
-                    {
-                        "id": "93c5373e.928708",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "debug",
-                "type": "bool",
-                "value": "true"
-            },
-            {
-                "name": "ALOES_HTTP_HOST",
-                "type": "env",
-                "value": "ALOES_HTTP_HOST"
-            },
-            {
-                "name": "ALOES_HTTP_PORT",
-                "type": "env",
-                "value": "ALOES_HTTP_PORT"
-            },
-            {
-                "name": "ALOES_HTTP_SECURE",
-                "type": "env",
-                "value": "ALOES_HTTP_SECURE"
-            },
-            {
-                "name": "ALOES_TOKEN",
-                "type": "env",
-                "value": "ALOES_TOKEN"
-            },
-            {
-                "name": "ALOES_USER_ID",
-                "type": "env",
-                "value": "ALOES_USER_ID"
-            },
-            {
-                "name": "ALOES_HTTP_API_ROOT",
-                "type": "env",
-                "value": "ALOES_HTTP_API_ROOT"
-            },
-            {
-                "name": "NODE_RED_STORE_TYPE",
-                "type": "env",
-                "value": "NODE_RED_STORE_TYPE"
-            }
-        ],
-        "status": {
-            "x": 1020,
-            "y": 80,
-            "wires": [
-                {
-                    "id": "a394d1d3.5ab6",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "ac1aa61c.0f8b68",
-        "type": "debug",
-        "z": "fbfe0691.2c23a8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 830,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "93c5373e.928708",
-        "type": "function",
-        "z": "fbfe0691.2c23a8",
-        "name": "parse-payload",
-        "func": "const debug = env.get(\"debug\");\ntry {\n    if (msg.payload && msg.payload !== null) {\n        msg.payload.forEach((measurement,index) => {\n            let message;\n            const method = \"HEAD\";\n            const userId = env.get(\"ALOES_USER_ID\");\n            message = {measurement, topic: `${userId}/Measurement/${method}`};\n            if (index === msg.payload.length - 1 ) {\n                message.complete = true;\n            }\n            if (debug) {\n                console.log('MEASUREMENT : ', message.measurement);\n            }\n            node.send(message);\n        });\n        return null;\n    }\n    throw new Error(\"Wrong payload format\")\n} catch(error){\n    return error;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 860,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "78012690.454f98",
-        "type": "function",
-        "z": "fbfe0691.2c23a8",
-        "name": "set-query",
-        "func": "try {\n    const ownerId = env.get('ALOES_USER_ID');\n    const filter = {\n        where : { \n            and : [\n                { ownerId },\n                {rp : { inq : ['0s', '2h'] } },\n            ] \n        },\n        limit: 10000\n    };\nconst fieldsValues = msg.values;\nconst fielsOperators = msg.operators; // ['=', '!=', '>', '>=', '<', '<=']\nconst fieldsConditions = msg.conditions; // ['and', 'or']\n//if (fieldsValues && fielsOperators && fieldsConditions) {\n// does not work with field time\n// arrays must all have the same length and contain valid values\n// query = `${query} and (`;\n// values.forEach((value, index) => {  \n//    query = `${query} ${resourceId} ${operators[index]} ${value} ${conditions[index]}`\n//  }):\n// query = `${query} )`;\n//}\n\n    //  console.log(\"filter\", filter.where.and[2].or[1]);\n    msg.filter = JSON.stringify(filter).toString();\n    return msg; \n} catch(error) {\n    return error;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 400,
-        "y": 160,
-        "wires": [
-            [
-                "30a2ddb7.9cd112"
-            ]
-        ]
-    },
-    {
-        "id": "30a2ddb7.9cd112",
-        "type": "subflow:634979f8.a08618",
-        "z": "fbfe0691.2c23a8",
-        "name": "",
-        "env": [
-            {
-                "name": "collection",
-                "type": "str",
-                "value": "Measurements"
-            }
-        ],
-        "x": 610,
-        "y": 160,
-        "wires": [
-            [
-                "93c5373e.928708"
-            ],
-            [
-                "ac1aa61c.0f8b68"
-            ]
-        ]
-    },
-    {
-        "id": "7a490c66.5b5cf4",
-        "type": "delay",
-        "z": "fbfe0691.2c23a8",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "minute",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "x": 240,
-        "y": 160,
-        "wires": [
-            [
-                "78012690.454f98"
-            ]
-        ]
-    },
-    {
-        "id": "a394d1d3.5ab6",
-        "type": "status",
-        "z": "fbfe0691.2c23a8",
-        "name": "",
-        "scope": [
-            "30a2ddb7.9cd112"
-        ],
-        "x": 580,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ee9e0cea.d1206",
+        "id": "5888280d.dff488",
         "type": "subflow",
         "name": "set-device-status",
         "info": "",
@@ -1562,7 +847,7 @@
                 "y": 200,
                 "wires": [
                     {
-                        "id": "df81382e.ce1898"
+                        "id": "f85c8f7c.5a7168"
                     }
                 ]
             }
@@ -1573,7 +858,7 @@
                 "y": 200,
                 "wires": [
                     {
-                        "id": "62331bae.f35a34",
+                        "id": "5f8bafa8.bd415",
                         "port": 0
                     }
                 ]
@@ -1594,9 +879,9 @@
         "color": "#DDAA99"
     },
     {
-        "id": "6b434165.d29ce",
+        "id": "62af2afc.55df94",
         "type": "function",
-        "z": "ee9e0cea.d1206",
+        "z": "5888280d.dff488",
         "name": "setDevicesStatus",
         "func": "try {\n    const debug = env.get(\"debug\");\n    const storeType = env.get(\"store_type\") || \"file\";\n    const storeType2 = \"memoryOnly\";\n    // based on selected devices for the scenario\n    // read devices status in memory\n    let devicesSelection = [];\n    global.get(\"devicesSelection\", storeType, (err,res) => {\n        if (err) throw err;\n        devicesSelection = res;\n    });\n    let devicesStatus = true;\n    if (debug) {\n        console.log(\"setDevicesStatus:req\", devicesSelection);\n    }\n    if (!devicesSelection) {\n        global.set(\"devicesSelection\", [], storeType, err => {\n            if (err) throw err;\n        });\n        devicesStatus = true;\n    } else if (devicesSelection.length < 1) {\n        devicesStatus = true;\n    } else {\n        const validators = devicesSelection.map(deviceName => {\n            let device;\n            global.get(`device-${deviceName}`, storeType2, (err, res) => {\n                if (err) throw err;\n                device = res;\n            });\n            if (device && device.status) {\n                return true;\n            }\n            return false;\n        });\n        if (validators.some(v => v === false)) {\n            devicesStatus = false;\n        } else {\n            devicesStatus = true;\n        }\n    }\n    if (debug) {\n        console.log(\"setDevicesStatus:res\", devicesStatus);\n    }\n    global.set(\"devicesStatus\", devicesStatus, storeType, err => {\n        if (err) throw err;\n    });\n    msg.devicesStatus = devicesStatus;\n    return msg;\n} catch(error){\n    return error;\n}\n",
         "outputs": 1,
@@ -1605,14 +890,14 @@
         "y": 200,
         "wires": [
             [
-                "62331bae.f35a34"
+                "5f8bafa8.bd415"
             ]
         ]
     },
     {
-        "id": "df81382e.ce1898",
+        "id": "f85c8f7c.5a7168",
         "type": "delay",
-        "z": "ee9e0cea.d1206",
+        "z": "5888280d.dff488",
         "name": "debounce",
         "pauseType": "rate",
         "timeout": "5",
@@ -1628,14 +913,14 @@
         "y": 200,
         "wires": [
             [
-                "6a98bfbd.4aa08"
+                "156d5733.0b85b1"
             ]
         ]
     },
     {
-        "id": "6a98bfbd.4aa08",
+        "id": "156d5733.0b85b1",
         "type": "delay",
-        "z": "ee9e0cea.d1206",
+        "z": "5888280d.dff488",
         "name": "",
         "pauseType": "delay",
         "timeout": "300",
@@ -1651,14 +936,14 @@
         "y": 200,
         "wires": [
             [
-                "6b434165.d29ce"
+                "62af2afc.55df94"
             ]
         ]
     },
     {
-        "id": "62331bae.f35a34",
+        "id": "5f8bafa8.bd415",
         "type": "change",
-        "z": "ee9e0cea.d1206",
+        "z": "5888280d.dff488",
         "name": "",
         "rules": [
             {
@@ -1681,7 +966,7 @@
         ]
     },
     {
-        "id": "f64c7b58.f8e8a8",
+        "id": "9d9cc747.bb803",
         "type": "subflow",
         "name": "save-settings",
         "info": "",
@@ -1692,7 +977,7 @@
                 "y": 140,
                 "wires": [
                     {
-                        "id": "ace3a751.5d31f8"
+                        "id": "1f896d83.626d12"
                     }
                 ]
             }
@@ -1703,7 +988,7 @@
                 "y": 140,
                 "wires": [
                     {
-                        "id": "5f1aa4a6.55d3cc",
+                        "id": "dc998099.cce658",
                         "port": 0
                     }
                 ]
@@ -1719,25 +1004,25 @@
         "icon": "node-red/file-out.png"
     },
     {
-        "id": "6ff3cecf.40e95",
+        "id": "f0cf6fba.e0eb8",
         "type": "function",
-        "z": "f64c7b58.f8e8a8",
+        "z": "9d9cc747.bb803",
         "name": "update-env-file",
-        "func": "try {\n    const storeType = env.get(\"store_type\") || \"memory\";\n    const processEnv = global.get(\"processEnv\", storeType);\n    if (!processEnv) throw new Error(\"process.env not available\");\n    if (!processEnv.NODE_ENV) {\n        msg.filename = \"./.env\";\n    } else {\n        msg.filename = `./deploy/.env_${processEnv.NODE_ENV}`;\n    }\n    msg.payload = `NODE_ENV=${env.get(\"NODE_ENV\")}\nNODE_NAME=${env.get(\"NODE_NAME\")}\nNODE_RED_URL=${env.get(\"NODE_RED_URL\")}\nNODE_RED_HOST=${env.get(\"NODE_RED_HOST\")}\nNODE_RED_PORT=${env.get(\"NODE_RED_PORT\")}\nNODE_RED_ADMIN_ROOT=${env.get(\"NODE_RED_ADMIN_ROOT\")}\nNODE_RED_API_ROOT=${env.get(\"NODE_RED_API_ROOT\")}\nNODE_RED_UI_PATH=${env.get(\"NODE_RED_UI_PATH\")}\nNODE_RED_USER_DIR=${env.get(\"NODE_RED_USER_DIR\")}\nNODE_RED_USERNAME=${env.get(\"NODE_RED_USERNAME\")}\nNODE_RED_USERPASS=${env.get(\"NODE_RED_USERPASS\")}\nNODE_RED_PASSHASH=${env.get(\"NODE_RED_PASSHASH\")}\nNODE_RED_ADMIN_PASSHASH=${env.get(\"NODE_RED_ADMIN_PASSHASH\")}\nNODE_RED_SESSION_SECRET=${env.get(\"NODE_RED_SESSION_SECRET\")}\nNODE_RED_CREDENTIAL_SECRET=${env.get(\"NODE_RED_CREDENTIAL_SECRET\")}\nNODE_RED_STORE_TYPE=${env.get(\"NODE_RED_STORE_TYPE\")}\nALOES_HTTP_HOST=${env.get(\"ALOES_HTTP_HOST\")}\nALOES_HTTP_PORT=${env.get(\"ALOES_HTTP_PORT\")}\nALOES_HTTP_API_ROOT=${env.get(\"ALOES_HTTP_API_ROOT\")}\nALOES_HTTP_SECURE=${env.get(\"ALOES_HTTP_SECURE\")}\nALOES_MQTT_HOST=${env.get(\"ALOES_MQTT_HOST\")}\nALOES_MQTT_PORT=${env.get(\"ALOES_MQTT_PORT\")}\nALOES_MQTT_SECURE=${env.get(\"ALOES_MQTT_SECURE\")}\nALOES_USER_ID=${env.get(\"ALOES_USER_ID\")}\nALOES_USER_EMAIL=${env.get(\"ALOES_USER_EMAIL\")}\nALOES_USER_PASSWORD=${env.get(\"ALOES_USER_PASSWORD\")}\nALOES_TOKEN=${env.get(\"ALOES_TOKEN\")}\nALOES_TOPIC_IN=${env.get(\"ALOES_TOPIC_IN\")}\nSERVER_LOGGER_LEVEL=${env.get(\"SERVER_LOGGER_LEVEL\")}\nTUNNEL_URL=${env.get(\"TUNNEL_URL\")}\nGIT_REPO_SSH_URL=${env.get(\"GIT_REPO_SSH_URL\")}\nVPS_HOST=${env.get(\"VPS_HOST\")}\nVPS_USER=${env.get(\"VPS_USER\")}`\n    return msg;\n} catch(error) {\n    return null;\n}\n",
+        "func": "const storeType = env.get(\"store_type\") || \"memory\";\nconst processEnv = global.get(\"processEnv\", storeType);\nif (!processEnv) throw new Error(\"process.env not available\");\nif (!processEnv.NODE_ENV) {\n    msg.filename = \"./.env\";\n} else {\n    msg.filename = `./deploy/.env_${processEnv.NODE_ENV}`;\n}\nmsg.payload = `NODE_ENV=${env.get(\"NODE_ENV\")}\nNODE_NAME=${env.get(\"NODE_NAME\")}\nNODE_RED_URL=${env.get(\"NODE_RED_URL\")}\nNODE_RED_HOST=${env.get(\"NODE_RED_HOST\")}\nNODE_RED_PORT=${env.get(\"NODE_RED_PORT\")}\nNODE_RED_ADMIN_ROOT=${env.get(\"NODE_RED_ADMIN_ROOT\")}\nNODE_RED_API_ROOT=${env.get(\"NODE_RED_API_ROOT\")}\nNODE_RED_UI_PATH=${env.get(\"NODE_RED_UI_PATH\")}\nNODE_RED_USER_DIR=${env.get(\"NODE_RED_USER_DIR\")}\nNODE_RED_USERNAME=${env.get(\"NODE_RED_USERNAME\")}\nNODE_RED_USERPASS=${env.get(\"NODE_RED_USERPASS\")}\nNODE_RED_PASSHASH=${env.get(\"NODE_RED_PASSHASH\")}\nNODE_RED_ADMIN_PASSHASH=${env.get(\"NODE_RED_ADMIN_PASSHASH\")}\nNODE_RED_SESSION_SECRET=${env.get(\"NODE_RED_SESSION_SECRET\")}\nNODE_RED_CREDENTIAL_SECRET=${env.get(\"NODE_RED_CREDENTIAL_SECRET\")}\nNODE_RED_STORE_TYPE=${env.get(\"NODE_RED_STORE_TYPE\")}\nALOES_USER_EMAIL=${env.get(\"ALOES_USER_EMAIL\")}\nALOES_USER_PASSWORD=${env.get(\"ALOES_USER_PASSWORD\")}\nEXTERNAL_MODULES=${env.get(\"EXTERNAL_MODULES\")}\nSERVER_LOGGER_LEVEL=${env.get(\"SERVER_LOGGER_LEVEL\")}\nTUNNEL_URL=${env.get(\"TUNNEL_URL\")}\nGIT_REPO_SSH_URL=${env.get(\"GIT_REPO_SSH_URL\")}\nVPS_HOST=${env.get(\"VPS_HOST\")}\nVPS_USER=${env.get(\"VPS_USER\")}`\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "x": 440,
         "y": 140,
         "wires": [
             [
-                "5f1aa4a6.55d3cc"
+                "dc998099.cce658"
             ]
         ]
     },
     {
-        "id": "5f1aa4a6.55d3cc",
+        "id": "dc998099.cce658",
         "type": "file",
-        "z": "f64c7b58.f8e8a8",
+        "z": "9d9cc747.bb803",
         "name": "",
         "filename": "",
         "appendNewline": false,
@@ -1748,14 +1033,14 @@
         "y": 140,
         "wires": [
             [
-                "a27e92b7.56709"
+                "7e73d6b2.6ca8e8"
             ]
         ]
     },
     {
-        "id": "a6183d2e.3c86",
+        "id": "4d045224.66bd04",
         "type": "ui_toast",
-        "z": "f64c7b58.f8e8a8",
+        "z": "9d9cc747.bb803",
         "position": "top right",
         "displayTime": "3",
         "highlight": "",
@@ -1769,9 +1054,9 @@
         "wires": []
     },
     {
-        "id": "a27e92b7.56709",
+        "id": "7e73d6b2.6ca8e8",
         "type": "function",
-        "z": "f64c7b58.f8e8a8",
+        "z": "9d9cc747.bb803",
         "name": "buildNotif",
         "func": "msg.payload = \"Environment variables file updated, please restart app to validate them.\"\nreturn msg;",
         "outputs": 1,
@@ -1780,14 +1065,14 @@
         "y": 200,
         "wires": [
             [
-                "a6183d2e.3c86"
+                "4d045224.66bd04"
             ]
         ]
     },
     {
-        "id": "ace3a751.5d31f8",
+        "id": "1f896d83.626d12",
         "type": "delay",
-        "z": "f64c7b58.f8e8a8",
+        "z": "9d9cc747.bb803",
         "name": "",
         "pauseType": "rate",
         "timeout": "5",
@@ -1803,12 +1088,12 @@
         "y": 140,
         "wires": [
             [
-                "6ff3cecf.40e95"
+                "f0cf6fba.e0eb8"
             ]
         ]
     },
     {
-        "id": "9efc52fb.fd653",
+        "id": "30f4a499.4b3d84",
         "type": "subflow",
         "name": "node-red-settings",
         "info": "",
@@ -1819,25 +1104,25 @@
                 "y": 180,
                 "wires": [
                     {
-                        "id": "d30fdbbb.52c298"
+                        "id": "a32f8c2.d9e527"
                     },
                     {
-                        "id": "f5dc7730.efe0a8"
+                        "id": "fb89aa6a.36265"
                     },
                     {
-                        "id": "43f06b7e.eb6d14"
+                        "id": "e9d47336.02eab8"
                     },
                     {
-                        "id": "b0251496.8a0668"
+                        "id": "df2f8f91.2a262"
                     },
                     {
-                        "id": "e1e1e57a.1d4068"
+                        "id": "81806b3.7724298"
                     },
                     {
-                        "id": "2deff4be.8085dc"
+                        "id": "588da5cb.0fb8a4"
                     },
                     {
-                        "id": "5ec5e489.2e9adc"
+                        "id": "dc0bf44.4a21188"
                     }
                 ]
             }
@@ -1848,7 +1133,7 @@
                 "y": 540,
                 "wires": [
                     {
-                        "id": "4198403d.5c5c7",
+                        "id": "aa6f44b1.31c45",
                         "port": 0
                     }
                 ]
@@ -1858,7 +1143,7 @@
                 "y": 600,
                 "wires": [
                     {
-                        "id": "e12110c3.3fb8b",
+                        "id": "676c9b4.bbfd364",
                         "port": 0
                     }
                 ]
@@ -1909,9 +1194,9 @@
         "icon": "font-awesome/fa-cog"
     },
     {
-        "id": "d30fdbbb.52c298",
+        "id": "a32f8c2.d9e527",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedHost",
         "rules": [
             {
@@ -1931,14 +1216,14 @@
         "y": 140,
         "wires": [
             [
-                "413c2a60.8f7214"
+                "80fbac5f.cfb318"
             ]
         ]
     },
     {
-        "id": "bddb9184.b1c9c",
+        "id": "27c876e3.a7bbca",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedHost",
         "rules": [
             {
@@ -1961,13 +1246,13 @@
         ]
     },
     {
-        "id": "413c2a60.8f7214",
+        "id": "80fbac5f.cfb318",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "HTTP Host",
         "tooltip": "",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -1979,14 +1264,14 @@
         "y": 140,
         "wires": [
             [
-                "bddb9184.b1c9c"
+                "27c876e3.a7bbca"
             ]
         ]
     },
     {
-        "id": "43f06b7e.eb6d14",
+        "id": "e9d47336.02eab8",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedPort",
         "rules": [
             {
@@ -2006,14 +1291,14 @@
         "y": 180,
         "wires": [
             [
-                "e69e3e5c.d682a"
+                "14df103b.f1aae"
             ]
         ]
     },
     {
-        "id": "8b30a114.6e91e",
+        "id": "58b6bd7d.9f3c14",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedPort",
         "rules": [
             {
@@ -2036,13 +1321,13 @@
         ]
     },
     {
-        "id": "e69e3e5c.d682a",
+        "id": "14df103b.f1aae",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "HTTP Port",
         "tooltip": "",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -2054,14 +1339,14 @@
         "y": 180,
         "wires": [
             [
-                "8b30a114.6e91e"
+                "58b6bd7d.9f3c14"
             ]
         ]
     },
     {
-        "id": "f5dc7730.efe0a8",
+        "id": "fb89aa6a.36265",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedUrl",
         "rules": [
             {
@@ -2081,14 +1366,14 @@
         "y": 100,
         "wires": [
             [
-                "93ddc01e.34acf"
+                "e30c10b3.0f9d8"
             ]
         ]
     },
     {
-        "id": "68e5bcf7.e71244",
+        "id": "5e3e602.fe386a",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedUrl",
         "rules": [
             {
@@ -2111,13 +1396,13 @@
         ]
     },
     {
-        "id": "93ddc01e.34acf",
+        "id": "e30c10b3.0f9d8",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "HTTP URL",
         "tooltip": "",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -2129,14 +1414,14 @@
         "y": 100,
         "wires": [
             [
-                "68e5bcf7.e71244"
+                "5e3e602.fe386a"
             ]
         ]
     },
     {
-        "id": "b0251496.8a0668",
+        "id": "df2f8f91.2a262",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedAdminRoot",
         "rules": [
             {
@@ -2156,14 +1441,14 @@
         "y": 220,
         "wires": [
             [
-                "992885a2.9c00b8"
+                "77fdbbdf.ba287c"
             ]
         ]
     },
     {
-        "id": "f81721b7.e7b2b",
+        "id": "5ff56a76.3f9664",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedAdminRoot",
         "rules": [
             {
@@ -2186,13 +1471,13 @@
         ]
     },
     {
-        "id": "992885a2.9c00b8",
+        "id": "77fdbbdf.ba287c",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "HTTP Admin Root",
         "tooltip": "URL/<admin root>",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -2204,18 +1489,18 @@
         "y": 220,
         "wires": [
             [
-                "f81721b7.e7b2b"
+                "5ff56a76.3f9664"
             ]
         ]
     },
     {
-        "id": "c436df4a.4e60e",
+        "id": "4dc438fd.5b8838",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "HTTP API Root",
         "tooltip": "URL/<api root>",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 5,
         "width": 0,
         "height": 0,
@@ -2227,14 +1512,14 @@
         "y": 260,
         "wires": [
             [
-                "66b43687.5f8888"
+                "384e2df0.30dffa"
             ]
         ]
     },
     {
-        "id": "e1e1e57a.1d4068",
+        "id": "81806b3.7724298",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedApiRoot",
         "rules": [
             {
@@ -2254,14 +1539,14 @@
         "y": 260,
         "wires": [
             [
-                "c436df4a.4e60e"
+                "4dc438fd.5b8838"
             ]
         ]
     },
     {
-        "id": "66b43687.5f8888",
+        "id": "384e2df0.30dffa",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedApiRoot",
         "rules": [
             {
@@ -2284,9 +1569,9 @@
         ]
     },
     {
-        "id": "e6050ac2.bb3008",
+        "id": "4696a3fb.c13104",
         "type": "debug",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "NodeRedSettingsUpdate",
         "active": true,
         "tosidebar": true,
@@ -2299,11 +1584,11 @@
         "wires": []
     },
     {
-        "id": "e12110c3.3fb8b",
+        "id": "676c9b4.bbfd364",
         "type": "ui_button",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 8,
         "width": "3",
         "height": "1",
@@ -2323,13 +1608,13 @@
         ]
     },
     {
-        "id": "9219e72a.e9e318",
+        "id": "bd9ded23.8ba698",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "Tunnel URL",
         "tooltip": "leave empty for no tunnel; starts with https://..",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 6,
         "width": 0,
         "height": 0,
@@ -2341,14 +1626,14 @@
         "y": 300,
         "wires": [
             [
-                "352f80.8691008"
+                "ee978cf3.70649"
             ]
         ]
     },
     {
-        "id": "2deff4be.8085dc",
+        "id": "588da5cb.0fb8a4",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "tunnelUrl",
         "rules": [
             {
@@ -2368,14 +1653,14 @@
         "y": 300,
         "wires": [
             [
-                "9219e72a.e9e318"
+                "bd9ded23.8ba698"
             ]
         ]
     },
     {
-        "id": "352f80.8691008",
+        "id": "ee978cf3.70649",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "tunnelUrl",
         "rules": [
             {
@@ -2398,11 +1683,11 @@
         ]
     },
     {
-        "id": "5fe3bae5.130bd4",
+        "id": "dcd998e.3c53568",
         "type": "ui_button",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 7,
         "width": "3",
         "height": "1",
@@ -2419,16 +1704,16 @@
         "y": 540,
         "wires": [
             [
-                "810b0d3f.60e68"
+                "86d1ede3.72c66"
             ]
         ]
     },
     {
-        "id": "4198403d.5c5c7",
+        "id": "aa6f44b1.31c45",
         "type": "function",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "set-node-red-env",
-        "func": "try {\n    const storeType = env.get(\"store_type\") || \"memoryOnly\";\n    const processEnv = global.get(\"processEnv\", storeType);\n    if (!processEnv) throw new Error(\"process.env unavailable\");\n    const nodeRedUrl = flow.get(\"nodeRedUrl\")\n    if (nodeRedUrl) {\n        processEnv.NODE_RED_URL = nodeRedUrl;\n    }  \n    const nodeRedPort = flow.get(\"nodeRedPort\")\n    if (nodeRedPort) {\n        processEnv.NODE_RED_PORT = nodeRedPort;\n    }\n    const nodeRedHost = flow.get(\"nodeRedHost\")\n    if (nodeRedHost) {\n        processEnv.NODE_RED_HOST = nodeRedHost;\n    }  \n    const nodeRedAdminRoot = flow.get(\"nodeRedAdminRoot\")\n    if (nodeRedAdminRoot) {\n        processEnv.NODE_RED_ADMIN_ROOT = nodeRedAdminRoot;\n    } \n    const nodeRedApiRoot = flow.get(\"nodeRedApiRoot\")\n    if (nodeRedApiRoot) {\n        processEnv.NODE_RED_API_ROOT = nodeRedApiRoot;\n    }\n    const nodeRedUsername = flow.get(\"nodeRedUsername\")\n    if (nodeRedUsername) {\n        processEnv.NODE_RED_USERNAME = nodeRedUsername;\n    }\n    const nodeRedPassword = flow.get(\"nodeRedPassword\")\n    if (nodeRedPassword) {\n        processEnv.NODE_RED_USERPASS = nodeRedPassword;\n    }\n    const tunnelUrl = flow.get(\"tunnelUrl\")\n    if (tunnelUrl) {\n        processEnv.TUNNEL_URL = tunnelUrl;\n    }\n    if (env.get(\"debug\")) {\n        return [msg,msg];\n    }\n    return [msg,null];\n}catch(error){\n    return null;\n}\n",
+        "func": "const storeType = env.get(\"store_type\") || \"memoryOnly\";\nconst processEnv = global.get(\"processEnv\", storeType);\nif (!processEnv) throw new Error(\"process.env unavailable\");\nconst nodeRedUrl = flow.get(\"nodeRedUrl\")\nif (nodeRedUrl) {\n    processEnv.NODE_RED_URL = nodeRedUrl;\n}  \nconst nodeRedPort = flow.get(\"nodeRedPort\")\nif (nodeRedPort) {\n    processEnv.NODE_RED_PORT = nodeRedPort;\n}\nconst nodeRedHost = flow.get(\"nodeRedHost\")\nif (nodeRedHost) {\n    processEnv.NODE_RED_HOST = nodeRedHost;\n}  \nconst nodeRedAdminRoot = flow.get(\"nodeRedAdminRoot\")\nif (nodeRedAdminRoot) {\n    processEnv.NODE_RED_ADMIN_ROOT = nodeRedAdminRoot;\n} \nconst nodeRedApiRoot = flow.get(\"nodeRedApiRoot\")\nif (nodeRedApiRoot) {\n    processEnv.NODE_RED_API_ROOT = nodeRedApiRoot;\n}\nconst nodeRedUsername = flow.get(\"nodeRedUsername\")\nif (nodeRedUsername) {\n    processEnv.NODE_RED_USERNAME = nodeRedUsername;\n}\nconst nodeRedPassword = flow.get(\"nodeRedPassword\")\nif (nodeRedPassword) {\n    processEnv.NODE_RED_USERPASS = nodeRedPassword;\n}\nconst tunnelUrl = flow.get(\"tunnelUrl\")\nif (tunnelUrl) {\n    processEnv.TUNNEL_URL = tunnelUrl;\n}\nif (env.get(\"debug\")) {\n    return [msg,msg];\n}\nreturn [msg,null];\n\n",
         "outputs": 2,
         "noerr": 0,
         "x": 750,
@@ -2436,14 +1721,14 @@
         "wires": [
             [],
             [
-                "e6050ac2.bb3008"
+                "4696a3fb.c13104"
             ]
         ]
     },
     {
-        "id": "810b0d3f.60e68",
+        "id": "86d1ede3.72c66",
         "type": "delay",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "1msg/3s",
         "pauseType": "rate",
         "timeout": "5",
@@ -2459,18 +1744,18 @@
         "y": 540,
         "wires": [
             [
-                "4198403d.5c5c7"
+                "aa6f44b1.31c45"
             ]
         ]
     },
     {
-        "id": "9b8854b6.9b6b58",
+        "id": "84fc08b6.5a93d8",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "User",
         "tooltip": "user to connect on /app/ui",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 6,
         "width": 0,
         "height": 0,
@@ -2482,14 +1767,14 @@
         "y": 340,
         "wires": [
             [
-                "5d7abfd2.1290f"
+                "1ba5d38a.fba554"
             ]
         ]
     },
     {
-        "id": "5ec5e489.2e9adc",
+        "id": "dc0bf44.4a21188",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedUsername",
         "rules": [
             {
@@ -2509,18 +1794,18 @@
         "y": 340,
         "wires": [
             [
-                "9b8854b6.9b6b58"
+                "84fc08b6.5a93d8"
             ]
         ]
     },
     {
-        "id": "eb07045c.aaa698",
+        "id": "edde95ee.b39e18",
         "type": "ui_text_input",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "",
         "label": "Pass",
         "tooltip": "password to connect on /app/ui",
-        "group": "ef2e1ee6.6cb68",
+        "group": "3f33740d.763dcc",
         "order": 6,
         "width": 0,
         "height": 0,
@@ -2532,14 +1817,14 @@
         "y": 380,
         "wires": [
             [
-                "16e50d42.1af6b3"
+                "23a1e0d7.25b378"
             ]
         ]
     },
     {
-        "id": "5d7abfd2.1290f",
+        "id": "1ba5d38a.fba554",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedUsername",
         "rules": [
             {
@@ -2562,9 +1847,9 @@
         ]
     },
     {
-        "id": "16e50d42.1af6b3",
+        "id": "23a1e0d7.25b378",
         "type": "change",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "nodeRedPassword",
         "rules": [
             {
@@ -2587,18 +1872,18 @@
         ]
     },
     {
-        "id": "ef2e1ee6.6cb68",
+        "id": "3f33740d.763dcc",
         "type": "ui_group",
-        "z": "9efc52fb.fd653",
+        "z": "30f4a499.4b3d84",
         "name": "node-red",
-        "tab": "e96a2f97.c158c",
+        "tab": "a92aa2d9.26d21",
         "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "e96a2f97.c158c",
+        "id": "a92aa2d9.26d21",
         "type": "ui_tab",
         "z": "",
         "name": "settings",
@@ -2608,7 +1893,7 @@
         "hidden": false
     },
     {
-        "id": "231a8ec9.ae4b12",
+        "id": "2e223102.3cf776",
         "type": "subflow",
         "name": "http-api",
         "info": "",
@@ -2619,7 +1904,7 @@
                 "y": 320,
                 "wires": [
                     {
-                        "id": "7ba783cf.ccc94c"
+                        "id": "fda78413.c59978"
                     }
                 ]
             }
@@ -2630,7 +1915,7 @@
                 "y": 320,
                 "wires": [
                     {
-                        "id": "786cd88f.f250f8",
+                        "id": "af3667b4.df845",
                         "port": 0
                     }
                 ]
@@ -2676,9 +1961,9 @@
         "icon": "font-awesome/fa-cloud"
     },
     {
-        "id": "a2a25eba.466c7",
+        "id": "cc9e9f4e.63f598",
         "type": "http response",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -2687,9 +1972,9 @@
         "wires": []
     },
     {
-        "id": "d215de95.ae78",
+        "id": "d631f9ce.6c9b98",
         "type": "function",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "Set Content-Type header",
         "func": "msg.headers = {\n    \"Content-Type\":\"image/jpeg\"\n};\nreturn msg;",
         "outputs": 1,
@@ -2698,14 +1983,14 @@
         "y": 140,
         "wires": [
             [
-                "a2a25eba.466c7"
+                "cc9e9f4e.63f598"
             ]
         ]
     },
     {
-        "id": "13d992c7.c87b6d",
+        "id": "61a99d4b.f26984",
         "type": "file in",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "",
         "filename": "/tmp/example.jpg",
         "format": "",
@@ -2714,14 +1999,14 @@
         "y": 140,
         "wires": [
             [
-                "d215de95.ae78"
+                "d631f9ce.6c9b98"
             ]
         ]
     },
     {
-        "id": "dbb6b485.2fb6c8",
+        "id": "e54dce65.cf90b",
         "type": "http in",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "",
         "url": "/testImage",
         "method": "get",
@@ -2731,14 +2016,14 @@
         "y": 140,
         "wires": [
             [
-                "13d992c7.c87b6d"
+                "61a99d4b.f26984"
             ]
         ]
     },
     {
-        "id": "e46f2d35.3cbab",
+        "id": "ee4eaa74.4baca8",
         "type": "comment",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "HTTP API",
         "info": "",
         "x": 200,
@@ -2746,9 +2031,9 @@
         "wires": []
     },
     {
-        "id": "786cd88f.f250f8",
+        "id": "af3667b4.df845",
         "type": "http request",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "",
         "method": "use",
         "ret": "obj",
@@ -2764,9 +2049,9 @@
         ]
     },
     {
-        "id": "7ba783cf.ccc94c",
+        "id": "fda78413.c59978",
         "type": "function",
-        "z": "231a8ec9.ae4b12",
+        "z": "2e223102.3cf776",
         "name": "set-internal-request",
         "func": "try {\n    const host = env.get(\"node_red_host\");\n    const port = env.get(\"node_red_port\");\n    const apiRoot = env.get(\"node_red_api_root\");\n    const url = env.get(\"node_red_url\");\n    const token = env.get(\"node_red_admin_passhash\");\n    //  console.log(\"token\", token)\n    //  msg.url = `http://${host}:${port}/${apiRoot}/start`;\n    if (!token) throw new Error(\"No token retrieved\");\n    let reqUrl;\n    //  console.log(\"payload\", msg.payload)\n    if (msg.payload.requestUrl) {\n        reqUrl = msg.payload.requestUrl;\n    } else {\n        reqUrl = \"start\";\n    }\n    let method;\n    if (msg.payload.method) {\n        method = msg.payload.method;\n    } else {\n        method = \"GET\";\n    }\n    msg.url = `${url}/${reqUrl}`;\n    msg.method = method;\n    msg.headers = {};\n    msg.headers['Authorization'] = token;\n    msg.headers['Accept'] = \"application/json\";\n    msg.headers['Content-Type'] = \"application/json\";\n    msg.headers['x-access-token'] = token;\n    console.log(\"url\", msg.url)\n    console.log(\"headers\", msg.headers)\n\n    if (msg.payload.query) {\n        //  msg.body = msg.payload.query;\n        const query = JSON.stringify(msg.payload.query);\n        msg.payload = query;\n        console.log(\"payload\", msg.payload)\n    } else {\n        msg.payload = {token, userId: 'test'};\n    }\n    //  msg.query = {filter};\n    return msg;\n} catch(error) {\n    return null;\n}",
         "outputs": 1,
@@ -2775,21 +2060,21 @@
         "y": 320,
         "wires": [
             [
-                "786cd88f.f250f8"
+                "af3667b4.df845"
             ]
         ]
     },
     {
-        "id": "db6d41ec.358a7",
+        "id": "b11498a.48620e8",
         "type": "tab",
         "label": "Core",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "4e6c629c.0003dc",
+        "id": "6c72a4ba.29e05c",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Global rules",
         "info": "",
         "x": 810,
@@ -2797,39 +2082,48 @@
         "wires": []
     },
     {
-        "id": "a420df24.32282",
+        "id": "66b067eb.6a3f4",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "MQTT IN",
         "info": "- Declare device by using aloes-device node\n\n- Fill settings with device-id and device-name from Aloes\n- Link the output to a custom interfaces/scenario flow",
         "x": 140,
-        "y": 1080,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "edce620f.17871",
+        "id": "cf9d38fb.b17e7",
         "type": "inject",
-        "z": "db6d41ec.358a7",
-        "name": "Boot App",
+        "z": "b11498a.48620e8",
+        "name": "Refresh state",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "10",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "300",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "10",
         "x": 170,
         "y": 140,
         "wires": [
             [
-                "f6df1cad.76caa"
+                "29dda125.84a71e"
             ]
         ]
     },
     {
-        "id": "9845a3a3.be2ee",
+        "id": "1215d2c5.d719f5",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Initialization",
         "info": "",
         "x": 150,
@@ -2837,23 +2131,23 @@
         "wires": []
     },
     {
-        "id": "62390c30.03b5b4",
-        "type": "subflow:231a8ec9.ae4b12",
-        "z": "db6d41ec.358a7",
+        "id": "c156e518.05d988",
+        "type": "subflow:2e223102.3cf776",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [],
         "x": 260,
-        "y": 940,
+        "y": 1200,
         "wires": [
             [
-                "f1b2081d.940138"
+                "f9b525b6.538f98"
             ]
         ]
     },
     {
-        "id": "7246684d.40ee78",
+        "id": "4d4e0d86.fc7644",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "aloes-client-rx->",
         "links": [
             "10aa970f.91a6a9",
@@ -2864,33 +2158,35 @@
             "7e44def5.a8a58",
             "a66e0af6.7ebf78",
             "b51d6807.52f3e8",
-            "fef26247.8b1b3"
+            "fef26247.8b1b3",
+            "6694b0b9.bfc068",
+            "5b659281.5811a4"
         ],
         "x": 315,
-        "y": 1360,
+        "y": 800,
         "wires": []
     },
     {
-        "id": "455d3285.a0440c",
+        "id": "917c3eb.e666b4",
         "type": "status",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-in status",
         "scope": [
             "a6c154b9.d44ac8"
         ],
         "x": 180,
-        "y": 1220,
+        "y": 660,
         "wires": [
             [
-                "4a36b8fb.11bc98",
-                "ec768fa1.b60d1"
+                "f6b85404.fab588",
+                "27a0dd91.1373ba"
             ]
         ]
     },
     {
-        "id": "4a36b8fb.11bc98",
+        "id": "f6b85404.fab588",
         "type": "debug",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-in status",
         "active": false,
         "tosidebar": true,
@@ -2899,29 +2195,29 @@
         "complete": "true",
         "targetType": "full",
         "x": 380,
-        "y": 1220,
+        "y": 660,
         "wires": []
     },
     {
-        "id": "d6ae05b3.b462c8",
+        "id": "e6f5573c.4db66",
         "type": "status",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-out status",
         "scope": [
             "217651cb.fb5fbe"
         ],
-        "x": 920,
-        "y": 1200,
+        "x": 800,
+        "y": 640,
         "wires": [
             [
-                "bdbc0e42.8c3ed"
+                "fe27e2f4.946fd"
             ]
         ]
     },
     {
-        "id": "bdbc0e42.8c3ed",
+        "id": "fe27e2f4.946fd",
         "type": "debug",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-out status",
         "active": false,
         "tosidebar": true,
@@ -2929,14 +2225,14 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1120,
-        "y": 1200,
+        "x": 1010,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "dead1f6b.9f955",
+        "id": "73b96f2d.86fce8",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "get-resources->",
         "links": [
             "10aa970f.91a6a9",
@@ -2947,33 +2243,34 @@
             "7e44def5.a8a58",
             "a66e0af6.7ebf78",
             "b51d6807.52f3e8",
-            "fef26247.8b1b3"
+            "fef26247.8b1b3",
+            "5b659281.5811a4"
         ],
         "x": 495,
         "y": 400,
         "wires": []
     },
     {
-        "id": "3875fab7.913e46",
+        "id": "22ba924d.6a4346",
         "type": "catch",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-in error",
         "scope": [
             "a6c154b9.d44ac8"
         ],
         "uncaught": false,
         "x": 170,
-        "y": 1160,
+        "y": 600,
         "wires": [
             [
-                "607afd0d.e45c64"
+                "1ab11c31.98ec14"
             ]
         ]
     },
     {
-        "id": "607afd0d.e45c64",
+        "id": "1ab11c31.98ec14",
         "type": "debug",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-in error",
         "active": true,
         "tosidebar": true,
@@ -2982,30 +2279,30 @@
         "complete": "true",
         "targetType": "full",
         "x": 380,
-        "y": 1160,
+        "y": 600,
         "wires": []
     },
     {
-        "id": "1329ac97.39e4b3",
+        "id": "1d04524f.af3386",
         "type": "catch",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-out error",
         "scope": [
             "217651cb.fb5fbe"
         ],
         "uncaught": false,
-        "x": 920,
-        "y": 1149,
+        "x": 800,
+        "y": 589,
         "wires": [
             [
-                "2f8e7cba.8a9a94"
+                "2c1ccdfb.aaf3c2"
             ]
         ]
     },
     {
-        "id": "2f8e7cba.8a9a94",
+        "id": "2c1ccdfb.aaf3c2",
         "type": "debug",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Aloes-Client-out error",
         "active": true,
         "tosidebar": true,
@@ -3013,104 +2310,104 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1120,
-        "y": 1149,
+        "x": 1010,
+        "y": 589,
         "wires": []
     },
     {
-        "id": "ec768fa1.b60d1",
+        "id": "27a0dd91.1373ba",
         "type": "function",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "update-client-status",
         "func": "try {\n    const storeType = \"file\";\n    let status = false;\n    if (msg.status && msg.status.text && msg.status.text.startsWith(\"node-red:common.status.\")) {\n        if (msg.status.text.endsWith(\"disconnected\")) {\n            status = false;\n        } else if (msg.status.text.endsWith(\"connected\")) {\n            status = true;\n        } \n    }\n    const storeKey = `aloesClientStatus`;\n    let prevConnStatus;\n    global.get(storeKey, storeType, (err, res) => {\n        if(err) throw err;\n        prevConnStatus = res\n    });\n    \n    if (!status || status !== prevConnStatus) {\n        // change Client Id\n        const userId = env.get(\"ALOES_USER_ID\");\n        const clientId = `${userId}-${Math.random().toString(16).substr(2, 8)}`;\n        flow.set(\"client-id\", clientId);\n        const processEnv = global.get(\"processEnv\");\n        if (processEnv) processEnv.ALOES_CLIENT_ID = clientId;\n    } else {\n        const clientId = flow.get(\"client-id\") || `${env.get(\"ALOES_USER_ID\")}-${Math.random().toString(16).substr(2, 8)}`;\n        const processEnv = global.get(\"processEnv\");\n        if (processEnv) processEnv.ALOES_CLIENT_ID = clientId;\n    }\n    \n    global.set(storeKey, status, storeType, (err) => {\n        if(err) throw err;\n    });\n    return msg;\n} catch(error){\n    //  console.log('error', error);\n    return null;\n}\n",
         "outputs": 1,
         "noerr": 0,
         "x": 380,
-        "y": 1260,
+        "y": 700,
         "wires": [
             []
         ]
     },
     {
-        "id": "130621a2.ea60ce",
+        "id": "fa33bfb3.d51478",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "->node-red-http-in",
         "links": [
-            "26964589.1da45a",
+            "15472e41.e35132",
             "f0f0bfb2.dac5c"
         ],
         "x": 95,
-        "y": 940,
+        "y": 1200,
         "wires": [
             [
-                "62390c30.03b5b4"
+                "c156e518.05d988"
             ]
         ]
     },
     {
-        "id": "f1b2081d.940138",
+        "id": "f9b525b6.538f98",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "node-red-http-in->",
         "links": [],
         "x": 455,
-        "y": 940,
+        "y": 1200,
         "wires": []
     },
     {
-        "id": "26964589.1da45a",
+        "id": "15472e41.e35132",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "reboot-app",
         "links": [
-            "130621a2.ea60ce"
+            "fa33bfb3.d51478"
         ],
         "x": 1115,
         "y": 280,
         "wires": []
     },
     {
-        "id": "3fffa9d2.772006",
+        "id": "6e2cd9.08e82b28",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "MQTT OUT",
         "info": "Wait for valid device/sensor instance to send via MQTT\n\nUse update-instance node before, to validate your instance.\n",
-        "x": 890,
-        "y": 1080,
+        "x": 770,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "ec453fea.6d78d",
+        "id": "c6c5c1c9.6e48f",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "HTTP IN",
         "info": "",
         "x": 140,
-        "y": 860,
+        "y": 1120,
         "wires": []
     },
     {
-        "id": "186dff98.95929",
+        "id": "d34bc327.31a828",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "refresh-state",
         "links": [
-            "55672bec.c16da4",
-            "b026d0fe.9224e",
-            "d3dab247.45bb5",
+            "4f605a75.43f52c",
+            "d3024ff7.0d9f18",
             "957fcaee.81c6d8",
             "d8d1020b.c8e43",
-            "e578fa3d.081548"
+            "7601cc5d.74596c",
+            "24b6d1c7.644fe6"
         ],
         "x": 1115,
         "y": 160,
         "wires": []
     },
     {
-        "id": "f9571b19.9ce7b8",
-        "type": "subflow:9efc52fb.fd653",
-        "z": "db6d41ec.358a7",
+        "id": "884796b8.b19d1",
+        "type": "subflow:30f4a499.4b3d84",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [
             {
@@ -3123,52 +2420,52 @@
         "y": 260,
         "wires": [
             [
-                "6a6729ce.01a908"
+                "92dcaa94.f686c"
             ],
             [
-                "26964589.1da45a"
+                "15472e41.e35132"
             ]
         ]
     },
     {
-        "id": "fbfd06de.bb3028",
+        "id": "146d1589.6dfe22",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "->node-red-settings-interface",
         "links": [
-            "f6df1cad.76caa"
+            "29dda125.84a71e"
         ],
         "x": 755,
         "y": 260,
         "wires": [
             [
-                "f9571b19.9ce7b8"
+                "884796b8.b19d1"
             ]
         ]
     },
     {
-        "id": "f6df1cad.76caa",
+        "id": "29dda125.84a71e",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "boot-app",
         "links": [
-            "55672bec.c16da4",
-            "fbfd06de.bb3028",
+            "4f605a75.43f52c",
+            "146d1589.6dfe22",
             "5b949eb3.216f9",
-            "b026d0fe.9224e",
-            "d3dab247.45bb5",
+            "24b6d1c7.644fe6",
+            "d3024ff7.0d9f18",
             "957fcaee.81c6d8",
             "d8d1020b.c8e43",
-            "e578fa3d.081548"
+            "7601cc5d.74596c"
         ],
         "x": 315,
         "y": 140,
         "wires": []
     },
     {
-        "id": "b31b403c.ee0e3",
-        "type": "subflow:f64c7b58.f8e8a8",
-        "z": "db6d41ec.358a7",
+        "id": "e00c9ef4.c6c1e",
+        "type": "subflow:9d9cc747.bb803",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [
             {
@@ -3184,26 +2481,26 @@
         ]
     },
     {
-        "id": "a31e41ce.1160e",
+        "id": "e89489cd.be935",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "before-save-env-vars",
         "links": [
             "d9b64c61.9d87e",
-            "6a6729ce.01a908"
+            "92dcaa94.f686c"
         ],
         "x": 755,
         "y": 400,
         "wires": [
             [
-                "b31b403c.ee0e3"
+                "e00c9ef4.c6c1e"
             ]
         ]
     },
     {
-        "id": "1f069c1e.e824e4",
+        "id": "80edd413.c1325",
         "type": "debug",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "INIT",
         "active": false,
         "tosidebar": true,
@@ -3216,56 +2513,56 @@
         "wires": []
     },
     {
-        "id": "bc6a8c01.27b52",
+        "id": "b64665ee.caa9c8",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "after-state-init",
         "links": [
             "47e1064b.d2332",
             "bae2504a.c7f51",
-            "927cab1e.3fc8e8"
+            "3a185ea3.612f6a"
         ],
         "x": 495,
         "y": 240,
         "wires": []
     },
     {
-        "id": "55672bec.c16da4",
+        "id": "4f605a75.43f52c",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "before-state-init",
         "links": [
-            "186dff98.95929",
-            "f6df1cad.76caa",
+            "d34bc327.31a828",
+            "29dda125.84a71e",
             "c466b8fd.1ffd68",
             "104ff5e.f177c0a",
             "f561ddd7.4dfdf",
-            "2955ab32.62c124"
+            "cfffca02.e6601"
         ],
         "x": 95,
         "y": 240,
         "wires": [
             [
-                "43f259e1.02d918"
+                "9cc143d.12a8dc"
             ]
         ]
     },
     {
-        "id": "6a6729ce.01a908",
+        "id": "92dcaa94.f686c",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "node-red-settings-interface->",
         "links": [
-            "a31e41ce.1160e"
+            "e89489cd.be935"
         ],
         "x": 1115,
         "y": 240,
         "wires": []
     },
     {
-        "id": "43f259e1.02d918",
-        "type": "subflow:ee9e0cea.d1206",
-        "z": "db6d41ec.358a7",
+        "id": "9cc143d.12a8dc",
+        "type": "subflow:5888280d.dff488",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [
             {
@@ -3283,16 +2580,16 @@
         "y": 240,
         "wires": [
             [
-                "bc6a8c01.27b52",
-                "1f069c1e.e824e4"
+                "b64665ee.caa9c8",
+                "80edd413.c1325"
             ]
         ]
     },
     {
-        "id": "3ff72d1a.ab2eb2",
+        "id": "4cf596d6.e5488",
         "type": "ui_template",
-        "z": "db6d41ec.358a7",
-        "group": "a021c151.289ce",
+        "z": "b11498a.48620e8",
+        "group": "71d0e110.38a99",
         "name": "clock-toolbar",
         "order": 2,
         "width": "0",
@@ -3308,26 +2605,26 @@
         ]
     },
     {
-        "id": "b026d0fe.9224e",
+        "id": "24b6d1c7.644fe6",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "->get-resources",
         "links": [
-            "186dff98.95929",
-            "f6df1cad.76caa"
+            "29dda125.84a71e",
+            "d34bc327.31a828"
         ],
         "x": 95,
         "y": 400,
         "wires": [
             [
-                "8ca276b4.1ece38"
+                "4e009773.b8f06"
             ]
         ]
     },
     {
-        "id": "69821fcd.3dc9b",
+        "id": "343d6582.e8e302",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "->aloes-client-tx",
         "links": [
             "17625f77.c39e19",
@@ -3379,179 +2676,83 @@
             "3177a4ab.3e2eec",
             "4c85ecb2.da6544",
             "d1f2c218.13853",
-            "c1debd8d.6d078"
+            "c1debd8d.6d078",
+            "d6bfad17.f45028",
+            "ceeab63c.59a3e8"
         ],
-        "x": 835,
-        "y": 1360,
+        "x": 715,
+        "y": 800,
         "wires": [
             [
-                "334f0c53.386e04"
+                "8e76946c.f92638"
             ]
         ]
     },
     {
-        "id": "99d41e81.47a6d",
-        "type": "subflow:fbfe0691.2c23a8",
-        "z": "db6d41ec.358a7",
-        "name": "",
-        "env": [
-            {
-                "name": "debug",
-                "value": "false",
-                "type": "bool"
-            }
-        ],
-        "x": 310,
-        "y": 520,
-        "wires": [
-            [
-                "231c94d3.011dac"
-            ]
-        ],
-        "icon": "node-red/white-globe.png"
-    },
-    {
-        "id": "d3dab247.45bb5",
-        "type": "link in",
-        "z": "db6d41ec.358a7",
-        "name": "->get-measurements",
-        "links": [
-            "186dff98.95929",
-            "f6df1cad.76caa"
-        ],
-        "x": 95,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "231c94d3.011dac",
-        "type": "link out",
-        "z": "db6d41ec.358a7",
-        "name": "get-measurements->",
-        "links": [
-            "511f392e.da52f",
-            "a89450f3.3912e8",
-            "e1c656a7.fc7008",
-            "ac485d96.b7d278",
-            "bde0c443.ed9eb8",
-            "4df484f0.fb1624",
-            "a005e74d.e2165",
-            "79c31aa3.d8c0d4",
-            "f41808ed.86da98",
-            "5258e1df.b27f78",
-            "3dd0bc7.9d16ec4",
-            "8605dbb1.3f11a8",
-            "30a5ed58.ae3d2a",
-            "ff4aab68.2148a",
-            "c9db4a65.03a608",
-            "8a7c8514.83b33",
-            "269880b7.fa8da",
-            "5345f387.85cefc",
-            "5da4e55c.cf0d44",
-            "15f715f5.1bec32",
-            "8242c35f.adad8",
-            "3e681330.7cec44",
-            "5ada657f.598c54",
-            "9cbf0f62.a6c9b8",
-            "d77ef8ee.a7223",
-            "476d8314.8b9bec",
-            "a00b4c72.1bbe88",
-            "201091ca.6c0576",
-            "ba3d0de.378857",
-            "94f04601.84c6d",
-            "51fd69f8.54238",
-            "b084255e.64af08",
-            "5b22c72f.2a27a8",
-            "bf3129d6.c2d22",
-            "6b0bb636.7f4888",
-            "b2bea352.7090e",
-            "9e140969.02703",
-            "695d50a5.85e6e8",
-            "c9f0107e.7a5b9",
-            "3e285989.0d473e",
-            "25900e40.97fe7a",
-            "f3fd8d9e.07228",
-            "ac888a4a.22f57",
-            "a5a8ac30.c195a",
-            "5de6d433.77b7bc",
-            "e7dfbc92.40a81",
-            "a955c9f9.ed1638",
-            "3be8b62.24a9d4a",
-            "f2c6ab6a.355f",
-            "a9a7d843.849898",
-            "6d3f96d4.bc158"
-        ],
-        "x": 495,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "80c65f2.8c69aa",
+        "id": "b459f868.096e98",
         "type": "comment",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "Interfaces Router",
         "info": "",
         "x": 160,
-        "y": 720,
+        "y": 940,
         "wires": []
     },
     {
-        "id": "c5ea44f.90231b8",
+        "id": "4330698b.f01fe8",
         "type": "ui_ui_control",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "init-ui",
         "x": 350,
-        "y": 780,
+        "y": 1000,
         "wires": [
             [
-                "fd369441.63f808"
+                "6427eaaf.037f8c"
             ]
         ]
     },
     {
-        "id": "d1d8c9ab.423ba8",
+        "id": "e1e82c18.b3e03",
         "type": "inject",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "landing page",
-        "topic": "",
-        "payload": "{\"tab\":\"status\",\"tabs\":{\"show\":[\"settings\"]}}",
-        "payloadType": "json",
         "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"tab\":\"status\",\"tabs\":{\"show\":[\"settings\"]}}",
+        "payloadType": "json",
         "x": 170,
-        "y": 780,
+        "y": 1000,
         "wires": [
             [
-                "c5ea44f.90231b8"
+                "4330698b.f01fe8"
             ]
         ]
     },
     {
-        "id": "fd369441.63f808",
-        "type": "subflow:dabefe0c.eebd7",
-        "z": "db6d41ec.358a7",
+        "id": "6427eaaf.037f8c",
+        "type": "subflow:2081b405.5d4b6c",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [],
         "x": 500,
-        "y": 780,
+        "y": 1000,
         "wires": [
             [
-                "2955ab32.62c124"
+                "cfffca02.e6601"
             ],
             [
-                "4ca56cc1.49a954"
+                "7c822f5a.a78178"
             ],
             []
         ]
     },
     {
-        "id": "4ca56cc1.49a954",
+        "id": "7c822f5a.a78178",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "router-trigger->",
         "links": [
             "ec118092.5a618",
@@ -3562,120 +2763,92 @@
             "18c313aa.647b5c",
             "2dd3d0a0.37ecf",
             "3564481d.8ef888",
-            "bc773cee.ec98f"
+            "bc773cee.ec98f",
+            "3b963f5d.9fe128"
         ],
         "x": 635,
-        "y": 780,
+        "y": 1000,
         "wires": []
     },
     {
-        "id": "2955ab32.62c124",
+        "id": "cfffca02.e6601",
         "type": "link out",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "reload-state",
         "links": [
-            "55672bec.c16da4",
+            "4f605a75.43f52c",
             "957fcaee.81c6d8",
             "d8d1020b.c8e43"
         ],
         "x": 635,
-        "y": 740,
+        "y": 960,
         "wires": []
     },
     {
-        "id": "35c02ca1.2bf314",
-        "type": "subflow:31bb48b9.494fa8",
-        "z": "db6d41ec.358a7",
+        "id": "5071aaf.47e0554",
+        "type": "subflow:35be4516.a176d2",
+        "z": "b11498a.48620e8",
         "name": "",
         "env": [],
         "x": 950,
         "y": 160,
         "wires": [
             [
-                "186dff98.95929"
+                "d34bc327.31a828"
             ]
         ]
     },
     {
-        "id": "927cab1e.3fc8e8",
+        "id": "3a185ea3.612f6a",
         "type": "link in",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "->aloes-status-interface",
         "links": [
-            "bc6a8c01.27b52"
+            "b64665ee.caa9c8"
         ],
         "x": 755,
         "y": 160,
         "wires": [
             [
-                "35c02ca1.2bf314"
+                "5071aaf.47e0554"
             ]
         ]
     },
     {
-        "id": "6972eb9e.330cc4",
-        "type": "subflow:bd375408.2f8e08",
-        "z": "db6d41ec.358a7",
-        "name": "",
-        "env": [],
-        "x": 300,
-        "y": 620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e578fa3d.081548",
-        "type": "link in",
-        "z": "db6d41ec.358a7",
-        "name": "->get-oma-ref",
-        "links": [
-            "186dff98.95929",
-            "f6df1cad.76caa"
-        ],
-        "x": 95,
-        "y": 620,
-        "wires": [
-            [
-                "6972eb9e.330cc4"
-            ]
-        ]
-    },
-    {
-        "id": "334f0c53.386e04",
+        "id": "8e76946c.f92638",
         "type": "aloes-tx",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "",
-        "aloesNetwork": "6b56f1ad.0e8ae8",
+        "aloesNetwork": "242153d4.133ed4",
         "qos": 0,
         "retain": "",
-        "x": 960,
-        "y": 1360,
+        "x": 840,
+        "y": 800,
         "wires": []
     },
     {
-        "id": "e525c918.5a8cc8",
+        "id": "618b3c0.294de44",
         "type": "aloes-rx",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "",
-        "aloesNetwork": "6b56f1ad.0e8ae8",
+        "aloesNetwork": "242153d4.133ed4",
         "qos": "0",
         "datatype": "json",
         "collection": "",
         "x": 140,
-        "y": 1360,
+        "y": 800,
         "wires": [
             [
-                "7246684d.40ee78"
+                "4d4e0d86.fc7644"
             ]
         ]
     },
     {
-        "id": "8ca276b4.1ece38",
+        "id": "4e009773.b8f06",
         "type": "get-aloes-devices",
-        "z": "db6d41ec.358a7",
+        "z": "b11498a.48620e8",
         "name": "get-devices",
-        "aloesNetwork": "6b56f1ad.0e8ae8",
+        "aloesNetwork": "242153d4.133ed4",
         "preferredApi": "graph",
         "includeSensors": "true",
         "includeSensorsResources": "true",
@@ -3683,21 +2856,21 @@
         "y": 400,
         "wires": [
             [
-                "dead1f6b.9f955"
+                "73b96f2d.86fce8"
             ]
         ]
     },
     {
-        "id": "a021c151.289ce",
+        "id": "71d0e110.38a99",
         "type": "ui_group",
         "name": "Group",
-        "tab": "f6f0242.21726d8",
+        "tab": "c8302d17.78ec3",
         "order": 1,
         "disp": true,
         "width": 6
     },
     {
-        "id": "6b56f1ad.0e8ae8",
+        "id": "242153d4.133ed4",
         "type": "aloes-network",
         "z": "",
         "name": "aloes-prod",
@@ -3705,9 +2878,11 @@
         "httpPort": "443",
         "httpApiRoot": "/app/api",
         "httpSecure": true,
+        "httpTls": "",
         "mqttHost": "aloes.io",
         "mqttPort": "8883",
         "mqttSecure": true,
+        "mqttTls": "",
         "compatmode": false,
         "keepalive": "60",
         "cleansession": true
