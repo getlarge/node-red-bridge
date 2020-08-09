@@ -4,7 +4,7 @@
   "description": "Node-RED running in local mode, served by Express",
   "scripts": {
     "lint": "npx eslint --ext js .",
-    "build": "npx babel lib --out-dir dist --ignore './lib/uitemplates/*'",
+    "build": "npx babel lib --out-dir dist",
     "build:docker": "cp deploy/.env_docker .env ; docker build -t getlarge/node-red-bridge:staging .",
     "start": "node node_modules/node-red/red.js -v -u .",
     "start:dev": "cp deploy/.env_development .env ; NODE_ENV=development node ./nodemon.js",
@@ -23,7 +23,7 @@
     "node-cleanup": "^2.1.2",
     "node-lame": "^1.2.2",
     "node-red": "^1.0.6",
-    "node-red-contrib-aloes": "^1.1.0",
+    "node-red-contrib-aloes": "^1.1.2",
     "node-red-contrib-aloes-ui": "^1.0.1",
     "node-red-contrib-browser-utils": "0.0.8",
     "node-red-contrib-osc": "~1.1.0",
@@ -77,6 +77,10 @@
       "@babel/plugin-proposal-numeric-separator",
       "@babel/plugin-proposal-throw-expressions",
       "@babel/plugin-transform-runtime"
+    ],
+    "ignore": [
+      "./lib/uitemplates/*",
+      "./lib/functions/*"
     ]
   },
   "eslintConfig": {
